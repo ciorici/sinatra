@@ -191,7 +191,7 @@ if ( ! class_exists( 'Sinatra_Admin' ) ) :
 		public function filter_admin_footer_text( $text ) {
 
 			if ( sinatra_is_admin_page() ) {
-				return;
+				return '';
 			}
 
 			return $text;

@@ -22,6 +22,13 @@ if ( ! class_exists( 'Sinatra_Customizer_Widget_Socials' ) ) :
 	class Sinatra_Customizer_Widget_Socials extends Sinatra_Customizer_Widget_Nav {
 
 		/**
+		 * Available styles for this widget.
+		 *
+		 * @var array
+		 */
+		public $styles = array();
+
+		/**
 		 * Primary class constructor.
 		 *
 		 * @since 1.0.0
