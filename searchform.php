@@ -21,7 +21,7 @@ $sinatra_post_type = 'all' !== $sinatra_post_type ? '<input type="hidden" name="
 
 <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<div>
-		<input type="search" class="search-field" aria-label="<?php esc_attr_e( 'Enter search keywords', 'sinatra' ); ?>" placeholder="<?php esc_attr_e( 'Search', 'sinatra' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+		<input type="search" class="search-field" aria-label="<?php esc_attr_e( 'Enter search keywords', 'sinatra' ); ?>" placeholder="<?php esc_attr_e( 'Search', 'sinatra' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" />
 		<?php echo $sinatra_post_type; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 		<button role="button" type="submit" class="search-submit" aria-label="<?php esc_attr_e( 'Search', 'sinatra' ); ?>">

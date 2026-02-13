@@ -560,10 +560,10 @@ class Sinatra_Breadcrumb_Trail {
 
 		// Add the posts page item.
 		if ( is_paged() ) {
-			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), $title );
+			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), esc_html( $title ) );
 
 		} elseif ( $title && true === $this->args['show_title'] ) {
-			$this->items[] = $title;
+			$this->items[] = esc_html( $title );
 		}
 	}
 
@@ -599,10 +599,10 @@ class Sinatra_Breadcrumb_Trail {
 		if ( $post_title ) {
 
 			if ( ( 1 < get_query_var( 'page' ) || is_paged() ) || ( get_option( 'page_comments' ) && 1 < absint( get_query_var( 'cpage' ) ) ) ) {
-				$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), $post_title );
+				$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), esc_html( $post_title ) );
 
 			} elseif ( true === $this->args['show_title'] ) {
-				$this->items[] = $post_title;
+				$this->items[] = esc_html( $post_title );
 			}
 		}
 	}
@@ -687,7 +687,7 @@ class Sinatra_Breadcrumb_Trail {
 				$post_id = get_option( 'page_for_posts' );
 
 				if ( 'posts' !== get_option( 'show_on_front' ) && 0 < $post_id ) {
-					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), get_the_title( $post_id ) );
+					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), esc_html( get_the_title( $post_id ) ) );
 				}
 
 				// If the post type is not 'post'.
@@ -1036,7 +1036,7 @@ class Sinatra_Breadcrumb_Trail {
 			}
 
 			// Add the formatted post link to the array of parents.
-			$parents[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), get_the_title( $post_id ) );
+			$parents[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), esc_html( get_the_title( $post_id ) ) );
 
 			// If there's no longer a post parent, break out of the loop.
 			if ( 0 >= $post->post_parent ) {
