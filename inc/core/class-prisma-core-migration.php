@@ -40,12 +40,23 @@ if ( ! class_exists( 'Prisma_Core_Migration' ) ) :
 		const OLD_PREFIX = 'sinatra_';
 
 		/**
+		 * Old plugin widget ID bases mapped to new equivalents.
+		 *
+		 * @var array
+		 */
+		const WIDGET_REMAP = array(
+			'sinatra-core-custom-list-widget' => 'prisma-companion-custom-list-widget',
+			'sinatra-core-posts-list-widget'  => 'prisma-companion-posts-list-widget',
+		);
+
+		/**
 		 * Primary class constructor.
 		 *
 		 * @since 1.4.0
 		 */
 		public function __construct() {
 			add_action( 'after_switch_theme', array( $this, 'maybe_migrate' ) );
+			add_action( 'admin_notices', array( $this, 'migration_notice' ) );
 		}
 
 		/**
@@ -80,6 +91,9 @@ if ( ! class_exists( 'Prisma_Core_Migration' ) ) :
 
 			// Mark migration complete.
 			update_option( $current_slug . '_migrated_from_sinatra', true );
+
+			// Trigger one-time admin notice.
+			set_transient( 'prisma_core_migration_notice', true, 60 );
 		}
 
 		/**
@@ -144,8 +158,34 @@ if ( ! class_exists( 'Prisma_Core_Migration' ) ) :
 				}
 			}
 
+			// Remap widget instance IDs inside each sidebar.
+			// e.g. 'sinatra-core-custom-list-widget-2' → 'prisma-companion-custom-list-widget-2'.
+			foreach ( $sidebars as $sidebar_id => $widgets ) {
+				if ( ! is_array( $widgets ) ) {
+					continue;
+				}
+				foreach ( $widgets as $i => $widget_id ) {
+					foreach ( self::WIDGET_REMAP as $old_base => $new_base ) {
+						if ( strpos( $widget_id, $old_base ) === 0 ) {
+							$sidebars[ $sidebar_id ][ $i ] = str_replace( $old_base, $new_base, $widget_id );
+							$changed = true;
+							break;
+						}
+					}
+				}
+			}
+
 			if ( $changed ) {
 				update_option( 'sidebars_widgets', $sidebars );
+			}
+
+			// Copy widget option data.
+			// e.g. 'widget_sinatra-core-custom-list-widget' → 'widget_prisma-companion-custom-list-widget'.
+			foreach ( self::WIDGET_REMAP as $old_base => $new_base ) {
+				$old_option = get_option( 'widget_' . $old_base );
+				if ( false !== $old_option && false === get_option( 'widget_' . $new_base ) ) {
+					update_option( 'widget_' . $new_base, $old_option );
+				}
 			}
 		}
 
@@ -179,6 +219,38 @@ if ( ! class_exists( 'Prisma_Core_Migration' ) ) :
 				return $new_prefix . substr( $key, strlen( self::OLD_PREFIX ) );
 			}
 			return $key;
+		}
+
+		/**
+		 * Display a one-time admin notice after migration.
+		 *
+		 * @since 1.4.0
+		 */
+		public function migration_notice() {
+			if ( ! get_transient( 'prisma_core_migration_notice' ) ) {
+				return;
+			}
+
+			delete_transient( 'prisma_core_migration_notice' );
+			?>
+			<div class="notice notice-success is-dismissible">
+				<p>
+					<strong><?php esc_html_e( 'Sinatra settings migrated to Prisma Core.', 'prisma-core' ); ?></strong>
+				</p>
+				<p>
+					<?php esc_html_e( 'Your Customizer settings, menus, and widgets have been transferred. Please install and activate the Prisma Companion plugin to restore widget functionality.', 'prisma-core' ); ?>
+				</p>
+				<p>
+					<?php
+					printf(
+						/* translators: %s: plugin name wrapped in a link */
+						esc_html__( 'Note: The Social Links widget from Sinatra Core has no equivalent in Prisma Companion. We recommend %s as a replacement.', 'prisma-core' ),
+						'<a href="' . esc_url( admin_url( 'plugin-install.php?s=Social+Icons+Widget+WPZOOM&tab=search&type=term' ) ) . '">Social Icons Widget & Block by WPZOOM</a>'
+					);
+					?>
+				</p>
+			</div>
+			<?php
 		}
 	}
 
