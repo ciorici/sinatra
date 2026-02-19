@@ -268,7 +268,7 @@ if ( ! class_exists( 'Prisma_Core_Endurance' ) ) :
 					'next'     => 'prisma-core-pointer-03',
 					'options'  => array(
 						'content'  => '<h3>' . esc_html__( 'Your website design and theme', 'prisma-core' ) . '</h3>' .
-									'<p>' . sprintf( wp_kses( 'To help you get building as fast as possible, we pre-installed our favorite theme, %3$sPrisma Core%4$s, but you can change this theme at any time. %1$sRead more about Prisma Core.%2$s', prisma_core_get_allowed_html_tags() ), '<a href="https://github.com/ciorici/prisma-core" rel="noopener noreferrer" target="_blank">', '</a>', '<strong>', '</strong>' ) . '</p>',
+									'<p>' . sprintf( wp_kses( 'To help you get building as fast as possible, we pre-installed our favorite theme, %3$sPrisma Core%4$s, but you can change this theme at any time. %1$sRead more about Prisma Core.%2$s', prisma_core_get_allowed_html_tags() ), '<a href="https://github.com/wpzoom/prisma-core" rel="noopener noreferrer" target="_blank">', '</a>', '<strong>', '</strong>' ) . '</p>',
 						'position' => array(
 							'edge'  => 'left',
 							'align' => 'middle',

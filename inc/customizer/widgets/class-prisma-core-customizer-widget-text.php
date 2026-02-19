@@ -63,7 +63,7 @@ if ( ! class_exists( 'Prisma_Core_Customizer_Widget_Text' ) ) :
 						sprintf(
 							/* translators: %1$s is opening anchor tag, %2$s is a closing anchor tag. */
 							__( 'Shortcodes and basic html elements allowed. See the list of %1$savailable dynamic strings%2$s.', 'prisma-core' ),
-							'<a href="' . esc_url( 'https://github.com/ciorici/prisma-core' ) . '" target="_blank" rel="noopener noreferrer">',
+							'<a href="' . esc_url( 'https://www.wpzoom.com/themes/prisma-core' ) . '" target="_blank" rel="noopener noreferrer">',
 							'</a>'
 						)
 					);

@@ -98,7 +98,7 @@ if ( ! class_exists( 'Prisma_Core_Jetpack' ) ) :
 		 * @since 1.0.0
 		 */
 		public function tweak_credits_link() {
-			return '<a href="https://wordpress.org/" rel="noopener noreferrer" target="_blank">' . esc_html__( 'Proudly powered by WordPress', 'prisma-core' ) . '</a> | <a href="https://github.com/ciorici/prisma-core" rel="noopener noreferrer" target="_blank">Prisma Core Theme</a>';
+			return '<a href="https://wordpress.org/" rel="noopener noreferrer" target="_blank">' . esc_html__( 'Proudly powered by WordPress', 'prisma-core' ) . '</a> | <a href="https://www.wpzoom.com/themes/prisma-core" rel="noopener noreferrer" target="_blank">Prisma Core Theme</a>';
 		}
 
 		/**

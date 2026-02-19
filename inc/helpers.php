@@ -1505,7 +1505,7 @@ function prisma_core_dynamic_strings( $content ) {
 	$content = str_replace( '{{the_year}}', date_i18n( 'Y' ), $content );
 	$content = str_replace( '{{the_date}}', date_i18n( get_option( 'date_format' ) ), $content );
 	$content = str_replace( '{{site_title}}', get_bloginfo( 'name' ), $content );
-	$content = str_replace( '{{theme_link}}', '<a href="https://wordpress.org/themes/prisma-core/" class="imprint" target="_blank" rel="noopener noreferrer">Prisma Core WordPress Theme</a>', $content );
+	$content = str_replace( '{{theme_link}}', '<a href="https://www.wpzoom.com/themes/prisma-core/" class="imprint" target="_blank" rel="noopener noreferrer">Prisma Core WordPress Theme</a>', $content );
 
 	if ( false !== strpos( $content, '{{current_user}}' ) ) {
 		$current_user = wp_get_current_user();
