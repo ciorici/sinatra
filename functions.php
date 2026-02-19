@@ -28,7 +28,7 @@ final class Prisma_Core {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $version = '1.0.0';
+	public $version = '';
 
 	/**
 	 * Theme options.
@@ -110,6 +110,8 @@ final class Prisma_Core {
 	 * @return void
 	 */
 	private function constants() {
+
+		$this->version = wp_get_theme( get_template() )->get( 'Version' );
 
 		if ( ! defined( 'PRISMA_CORE_THEME_VERSION' ) ) {
 			define( 'PRISMA_CORE_THEME_VERSION', $this->version );
