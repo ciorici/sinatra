@@ -3,7 +3,7 @@
 
 Community-maintained fork of the original Sinatra theme by [Sinatra Team](https://sinatrawp.com). Includes security fixes, PHP 8.2+ compatibility, WordPress 6.9+ support, and updated WooCommerce templates.
 
-[Download Latest Release](https://github.com/ciorici/sinatra/releases) &nbsp;&middot;&nbsp; [View on WordPress.org](https://wordpress.org/themes/flavor/)
+[Download Latest Release](https://github.com/ciorici/sinatra/releases)
 
 ![Sinatra Theme Screenshot](screenshot.jpg)
 
@@ -18,7 +18,7 @@ Community-maintained fork of the original Sinatra theme by [Sinatra Team](https:
 
 A lightweight and highly customizable multi-purpose theme that makes it easy for anyone to create their perfect website.
 
-## Description ##
+## Description
 Sinatra is a lightweight and highly customizable multi-purpose theme that makes it easy for anyone to create their perfect website. It comes with microdata integration, unlimited colors, multiple layouts and so much more. It's also translatable and built with best SEO practices. It works well with your favorite plugins such as WooCommerce, JetPack, page builders, SEO plugins and others.
 
 This is a community-maintained fork of the original Sinatra theme by Sinatra Team. The original theme was last updated in 2023 and is no longer maintained. This fork includes security fixes, PHP 8.2+ compatibility, WordPress 6.7+ compatibility, and updated WooCommerce support.
@@ -49,12 +49,12 @@ Source code: https://github.com/ciorici/sinatra
 * Improved: Dropped legacy browser support (IE11).
 * Improved: Modern autoprefixer configuration.
 
-### 1.3.0 ###
+### 1.3.0
 * Updated: WooCommerce templates.
 * Updated: WordPress 6.3 compatibility.
 * Updated: Google Fonts list.
 
-### 1.2.1 ###
+### 1.2.1
 * Fixed: Square icon displaying on mobile navigation.
 * Fixed: Table alignment not working.
 * Fixed: Pre-Footer not displaying on homepage.
@@ -62,7 +62,7 @@ Source code: https://github.com/ciorici/sinatra
 * Updated: Google Fonts list.
 * Improved: CSS enhancements.
 
-### 1.2.0 ###
+### 1.2.0
 * Added: Responsive visibility for Sticky header.
 * Fixed: Sticky sidebar option in combination with sticky header.
 * Fixed: WooCommerce archive title in breadcrumbs.
@@ -73,7 +73,7 @@ Source code: https://github.com/ciorici/sinatra
 * Improved: CSS enhancements.
 * Improved: Accessibility.
 
-### 1.1.6 ###
+### 1.1.6
 * Fixed: Headings on Block Editor display incorrectly.
 * Fixed: Background and Content Background color incorrect for Boxed and Boxed Content layout.
 * Fixed: Displaying "Blog" in breadcrumbs on single pages.
@@ -81,26 +81,26 @@ Source code: https://github.com/ciorici/sinatra
 * Fixed: Header Cart widget - Variable product displaying wrong price and name.
 * Improved: TablePress compatibility.
 
-### 1.1.5 ###
+### 1.1.5
 * Updated: WooCommerce templates.
 * Fixed: Mobile menu visibility.
 * Fixed: SSL support for uploads folder.
 * Improved: Code formatting.
 
-### 1.1.4 ###
+### 1.1.4
 * Updated: WordPress 5.5 compatibility.
 * Fixed: Range control in Customizer not working.
 * Fixed: Page Header background color overlay not working.
 * Improved: Block Editor styles to match frontend design.
 
-### 1.1.3 ###
+### 1.1.3
 * Added: 'sinatra_entry_meta_post_type' filter that allows post meta tags to be displayed on custom post types.
 * Added: Sticky header option.
 * Added: New Main Footer column layout: 1/3 + 2/3.
 * Added: New Main Footer column layout: 2/3 + 1/3.
 * Improved: CSS enhancements.
 
-### 1.1.2 ###
+### 1.1.2
 * Added: Option to control sidebar position on smaller screens.
 * Fixed: CSS issue with mobile (hamburger) menu colors.
 * Fixed: CSS issue with copyright menu not displaying on mobile devices.
@@ -110,7 +110,7 @@ Source code: https://github.com/ciorici/sinatra
 * Improved: Block Editor styles to match frontend design.
 * Improved: CSS enhancements.
 
-### 1.1.1 ###
+### 1.1.1
 * Added: Transparent Header - option to set alternative logo.
 * Added: Transparent Header - options for logo size and spacing.
 * Added: Transparent Header - color options.
@@ -122,7 +122,7 @@ Source code: https://github.com/ciorici/sinatra
 * Improved: Block Editor styles to match frontend design.
 * Improved: CSS enhancements.
 
-### 1.1.0 ###
+### 1.1.0
 * Added: Blog - Horizontal Layout and options to customize the layout.
 * Added: Option to choose image size for Blog / Archive layout.
 * Added: Breadcrumbs section in Customizer.
@@ -156,7 +156,7 @@ Source code: https://github.com/ciorici/sinatra
 * Improved: CSS enhancements.
 * Improved: WPML plugin compatibility.
 
-## Copyright ##
+## Copyright
 
 Sinatra WordPress Theme, Copyright 2025 ciorici
 Originally created by Sinatra Team (https://sinatrawp.com).

@@ -148,6 +148,7 @@ final class Sinatra {
 		require_once SINATRA_THEME_PATH . '/inc/core/class-sinatra-fonts.php';
 		require_once SINATRA_THEME_PATH . '/inc/core/class-sinatra-theme-setup.php';
 		require_once SINATRA_THEME_PATH . '/inc/core/class-sinatra-db-updater.php';
+		require_once SINATRA_THEME_PATH . '/inc/core/class-sinatra-migration.php';
 
 		// Compatibility.
 		require_once SINATRA_THEME_PATH . '/inc/compatibility/woocommerce/class-sinatra-woocommerce.php';

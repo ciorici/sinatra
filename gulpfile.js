@@ -260,10 +260,249 @@ function readme( cb ) {
 	cb();
 }
 
+// ─── Theme rename ────────────────────────────────────────────────────
+// Usage: gulp rename --name=Flavor [--prefix=flv]
+//
+// One-time task that renames the theme (and sinatra-core plugin) from
+// "Sinatra" to the given name.  Review the result with `git diff`.
+
+function themeRename( cb ) {
+	const args = process.argv;
+	const nameFlag = args.find( ( a ) => a.startsWith( '--name=' ) );
+	const prefixFlag = args.find( ( a ) => a.startsWith( '--prefix=' ) );
+
+	if ( ! nameFlag ) {
+		console.error( 'Usage: gulp rename --name=Flavor [--prefix=flv]' );
+		return cb( new Error( 'Missing --name argument' ) );
+	}
+
+	const Name = nameFlag.split( '=' )[ 1 ]; // Title Case
+	const name = Name.toLowerCase(); // lowercase slug
+	const NAME = Name.toUpperCase(); // UPPER_CASE
+	const prefix = prefixFlag
+		? prefixFlag.split( '=' )[ 1 ]
+		: name.substring( 0, 2 ); // default: first 2 chars
+
+	if ( ! /^[A-Z][a-zA-Z]+$/.test( Name ) ) {
+		return cb( new Error( 'Name must be TitleCase, letters only (e.g. Flavor)' ) );
+	}
+
+	// Verify the theme hasn't already been renamed.
+	const styleCss = fs.readFileSync( 'style.css', 'utf8' );
+	if ( ! /Theme Name:\s*Sinatra/.test( styleCss ) ) {
+		return cb( new Error( 'Theme already renamed. This task can only run once.' ) );
+	}
+
+	console.log( 'Renaming: Sinatra → ' + Name );
+	console.log( '  slug:       sinatra → ' + name );
+	console.log( '  CSS prefix: si- → ' + prefix + '-' );
+	console.log( '' );
+
+	const themeDir = path.resolve( '.' );
+	const pluginDir = path.resolve( themeDir, '..', '..', '..', 'plugins', 'sinatra-core' );
+	const extensions = [
+		'.php', '.css', '.scss', '.js', '.json', '.xml',
+		'.txt', '.md', '.pot', '.svg',
+	];
+	const excludedDirs = [ 'node_modules', '.git', 'vendor' ];
+
+	// ── Text replacements (most specific → least specific) ──
+
+	const replacements = [
+		// PHP constants (UPPER_CASE).
+		[ /\bSINATRA_CORE_/g, NAME + '_CORE_' ],
+		[ /\bSINATRA_THEME_/g, NAME + '_THEME_' ],
+		[ /\bSINATRA_/g, NAME + '_' ],
+
+		// PHP class names (Title_Case).
+		[ /\bSinatra_Core_/g, Name + '_Core_' ],
+		[ /\bSinatra_/g, Name + '_' ],
+
+		// PHP function/hook names (snake_case).
+		[ /\bsinatra_core_/g, name + '_core_' ],
+		[ /\bsinatra_core\b/g, name + '_core' ],
+		[ /\bsinatra_/g, name + '_' ],
+
+		// JS camelCase identifiers.
+		[ /\bsinatraCoreDemoLibrary\b/g, name + 'CoreDemoLibrary' ],
+		[ /\bsinatra([A-Z])/g, name + '$1' ],
+		[ /window\.sinatra\b/g, 'window.' + name ],
+		[ /\bsinatra\(\)/g, name + '()' ],
+
+		// Hyphenated identifiers (CSS classes, text domains, file refs).
+		[ /sinatra-core/g, name + '-core' ],
+		[ /sinatra-/g, name + '-' ],
+
+		// Short CSS prefix.
+		[ /\bsi-/g, prefix + '-' ],
+
+		// Remaining display text (catches comments, descriptions, etc.).
+		[ /Sinatra/g, Name ],
+		[ /sinatra/g, name ],
+		[ /SINATRA/g, NAME ],
+	];
+
+	// ── Helper: walk directory tree ──
+
+	function walkDir( dir ) {
+		const results = [];
+		const entries = fs.readdirSync( dir, { withFileTypes: true } );
+		for ( const entry of entries ) {
+			if ( excludedDirs.includes( entry.name ) ) {
+				continue;
+			}
+			const full = path.join( dir, entry.name );
+			if ( entry.isDirectory() ) {
+				results.push( ...walkDir( full ) );
+			} else if ( extensions.some( ( ext ) => entry.name.endsWith( ext ) ) ) {
+				results.push( full );
+			}
+		}
+		return results;
+	}
+
+	// ── 1. Replace file contents ──
+
+	function replaceContents( dir ) {
+		let count = 0;
+		const files = walkDir( dir );
+		for ( const filePath of files ) {
+			let content = fs.readFileSync( filePath, 'utf8' );
+			const original = content;
+			for ( const [ search, replacement ] of replacements ) {
+				content = content.replace( search, replacement );
+			}
+			if ( content !== original ) {
+				fs.writeFileSync( filePath, content );
+				count++;
+			}
+		}
+		return count;
+	}
+
+	let changed = replaceContents( themeDir );
+	console.log( 'Theme: ' + changed + ' files updated.' );
+
+	if ( fs.existsSync( pluginDir ) ) {
+		changed = replaceContents( pluginDir );
+		console.log( 'Plugin: ' + changed + ' files updated.' );
+	}
+
+	// ── 2. Rename files and directories ──
+
+	function collectRenames( dir ) {
+		const results = [];
+		const entries = fs.readdirSync( dir, { withFileTypes: true } );
+		for ( const entry of entries ) {
+			if ( excludedDirs.includes( entry.name ) ) {
+				continue;
+			}
+			const full = path.join( dir, entry.name );
+			if ( entry.isDirectory() ) {
+				results.push( ...collectRenames( full ) );
+			}
+			if ( entry.name.includes( 'sinatra' ) ) {
+				results.push( {
+					fullPath: full,
+					dir: dir,
+					name: entry.name,
+					isDir: entry.isDirectory(),
+				} );
+			}
+		}
+		return results;
+	}
+
+	function renameEntries( dir ) {
+		const entries = collectRenames( dir );
+		let count = 0;
+
+		// Files first.
+		entries
+			.filter( ( e ) => ! e.isDir )
+			.forEach( ( e ) => {
+				const newName = e.name.replace( /sinatra/g, name );
+				fs.renameSync( e.fullPath, path.join( e.dir, newName ) );
+				count++;
+			} );
+
+		// Directories deepest-first.
+		entries
+			.filter( ( e ) => e.isDir )
+			.sort( ( a, b ) => b.fullPath.length - a.fullPath.length )
+			.forEach( ( e ) => {
+				const newName = e.name.replace( /sinatra/g, name );
+				const newPath = path.join( path.dirname( e.fullPath ), newName );
+				if ( ! fs.existsSync( newPath ) ) {
+					fs.renameSync( e.fullPath, newPath );
+					count++;
+				}
+			} );
+
+		return count;
+	}
+
+	let renamed = renameEntries( themeDir );
+	console.log( 'Theme: ' + renamed + ' files/dirs renamed.' );
+
+	let currentPluginDir = pluginDir;
+	if ( fs.existsSync( pluginDir ) ) {
+		renamed = renameEntries( pluginDir );
+
+		// Rename the plugin directory itself.
+		const newPluginDir = path.resolve( pluginDir, '..', name + '-core' );
+		if ( ! fs.existsSync( newPluginDir ) ) {
+			fs.renameSync( pluginDir, newPluginDir );
+			currentPluginDir = newPluginDir;
+			renamed++;
+		}
+		console.log( 'Plugin: ' + renamed + ' files/dirs renamed.' );
+	}
+
+	// ── 3. Post-rename fixups ──
+
+	// Restore migration class backwards-compat constants.
+	const migrationFile = path.join(
+		themeDir, 'inc', 'core', 'class-' + name + '-migration.php'
+	);
+	if ( fs.existsSync( migrationFile ) ) {
+		let mc = fs.readFileSync( migrationFile, 'utf8' );
+		mc = mc.replace(
+			"const OLD_SLUG = '" + name + "'",
+			"const OLD_SLUG = 'sinatra'"
+		);
+		mc = mc.replace(
+			"const OLD_PREFIX = '" + name + "_'",
+			"const OLD_PREFIX = 'sinatra_'"
+		);
+		fs.writeFileSync( migrationFile, mc );
+		console.log( 'Fixed: migration class OLD_SLUG/OLD_PREFIX restored.' );
+	}
+
+	// Add backwards-compat theme check in plugin bootstrap.
+	const pluginBootstrap = path.join( currentPluginDir, name + '-core.php' );
+	if ( fs.existsSync( pluginBootstrap ) ) {
+		let pc = fs.readFileSync( pluginBootstrap, 'utf8' );
+		const newCheck =
+			"'" + Name + "' === $theme->name || '" + name + "' === $theme->template";
+		const compatCheck = newCheck +
+			" ||\n\t     'Sinatra' === $theme->name || 'sinatra' === $theme->template";
+		if ( pc.includes( newCheck ) && ! pc.includes( "'Sinatra'" ) ) {
+			pc = pc.replace( newCheck, compatCheck );
+			fs.writeFileSync( pluginBootstrap, pc );
+			console.log( 'Fixed: plugin theme check — added Sinatra backwards compat.' );
+		}
+	}
+
+	console.log( '\nDone! Review changes with: git diff' );
+	cb();
+}
+
 // ─── Exports ──────────────────────────────────────────────────────────
 
 exports.build = build;
 exports.watch = series( build, watchFiles );
 exports.readme = readme;
 exports[ 'version-bump' ] = series( versionBump, readme );
+exports.rename = themeRename;
 exports.default = build;
