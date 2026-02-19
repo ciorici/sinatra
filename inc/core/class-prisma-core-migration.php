@@ -83,7 +83,7 @@ if ( ! class_exists( 'Prisma_Core_Migration' ) ) :
 				return; // No Sinatra data to migrate.
 			}
 
-			$new_prefix = $current_slug . '_';
+			$new_prefix = str_replace( '-', '_', $current_slug ) . '_';
 
 			$this->migrate_theme_mods( $old_mods, $current_slug, $new_prefix );
 			$this->migrate_sidebar_widgets( $current_slug );
@@ -122,11 +122,12 @@ if ( ! class_exists( 'Prisma_Core_Migration' ) ) :
 				$new_mods['nav_menu_locations'] = $new_locations;
 			}
 
-			// Only write if the new theme doesn't already have mods.
+			// Merge migrated mods with any existing mods (existing values take precedence).
 			$existing = get_option( 'theme_mods_' . $current_slug );
-			if ( ! $existing || ! is_array( $existing ) || empty( $existing ) ) {
-				update_option( 'theme_mods_' . $current_slug, $new_mods );
+			if ( is_array( $existing ) && ! empty( $existing ) ) {
+				$new_mods = array_merge( $new_mods, $existing );
 			}
+			update_option( 'theme_mods_' . $current_slug, $new_mods );
 		}
 
 		/**
