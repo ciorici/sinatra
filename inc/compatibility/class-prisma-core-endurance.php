@@ -146,7 +146,7 @@ if ( ! class_exists( 'Prisma_Core_Endurance' ) ) :
 							'label'       => esc_html__( 'Prisma Core Theme Guide', 'prisma-core' ),
 							'section'     => 'prisma_core_section_help',
 							'button_text' => esc_html__( 'Help Articles', 'prisma-core' ),
-							'button_url'  => 'https://github.com/ciorici/prisma-core/docs/',
+							'button_url'  => 'https://www.wpzoom.com/documentation/prisma-core/',
 							'settings'    => 'prisma_core_help_prisma-core_docs',
 							'priority'    => 20,
 						)

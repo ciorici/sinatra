@@ -176,7 +176,7 @@ if ( ! class_exists( 'Prisma_Core_Admin' ) ) :
 			 * Only do this if we are on one of our plugin pages.
 			 */
 			if ( prisma_core_is_admin_page( $base ) ) {
-				return apply_filters( 'prisma_core_footer_version', esc_html__( 'Prisma Core Theme', 'prisma-core' ) . ' ' . PRISMA_CORE_THEME_VERSION . '<br/><a href="' . esc_url( 'https://twitter.com/prisma-corewp' ) . '" target="_blank" rel="noopener noreferrer"><span class="dashicons dashicons-twitter"></span></a><a href="' . esc_url( 'https://facebook.com/prisma-corewp' ) . '" target="_blank" rel="noopener noreferrer"><span class="dashicons dashicons-facebook"></span></a>' );
+				return apply_filters( 'prisma_core_footer_version', esc_html__( 'Prisma Core Theme', 'prisma-core' ) . ' ' . PRISMA_CORE_THEME_VERSION . '<br/><a href="' . esc_url( 'https://x.com/wpzoom' ) . '" target="_blank" rel="noopener noreferrer"><span class="dashicons dashicons-twitter"></span></a><a href="' . esc_url( 'https://facebook.com/wpzoom' ) . '" target="_blank" rel="noopener noreferrer"><span class="dashicons dashicons-facebook"></span></a>' );
 			} else {
 				return $text;
 			}
@@ -220,7 +220,7 @@ if ( ! class_exists( 'Prisma_Core_Admin' ) ) :
 
 					<span class="prisma-core-header-action">
 						<a href="<?php echo esc_url( admin_url( 'customize.php' ) ); ?>"><?php esc_html_e( 'Customize', 'prisma-core' ); ?></a>
-						<a href="<?php echo esc_url( 'https://github.com/ciorici/prisma-core' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Help Articles', 'prisma-core' ); ?></a>
+						<a href="<?php echo esc_url( 'https://www.wpzoom.com/documentation/prisma-core' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Help Articles', 'prisma-core' ); ?></a>
 					</span>
 
 				</div>
@@ -243,9 +243,9 @@ if ( ! class_exists( 'Prisma_Core_Admin' ) ) :
 			?>
 			<div id="prisma-core-footer">
 			<ul>
-				<li><a href="<?php echo esc_url( 'https://github.com/ciorici/prisma-core' ); ?>" target="_blank" rel="noopener noreferrer"><span><?php esc_html_e( 'Help Articles', 'prisma-core' ); ?></span></span></a></li>
-				<li><a href="<?php echo esc_url( 'https://github.com/ciorici/prisma-core' ); ?>" target="_blank" rel="noopener noreferrer"><span><?php esc_html_e( 'Join Facebook Group', 'prisma-core' ); ?></span></span></a></li>
-				<li><a href="<?php echo esc_url( 'https://wordpress.org/support/theme/prisma-core/reviews/#new-post' ); ?>" target="_blank" rel="noopener noreferrer"><span class="dashicons dashicons-heart" aria-hidden="true"></span><span><?php esc_html_e( 'Leave a Review', 'prisma-core' ); ?></span></a></li>
+				<li><a href="<?php echo esc_url( 'https://www.wpzoom.com/documentation/prisma-core' ); ?>" target="_blank" rel="noopener noreferrer"><span><?php esc_html_e( 'Help Articles', 'prisma-core' ); ?></span></span></a></li>
+				<li><a href="<?php echo esc_url( 'https://www.facebook.com/groups/wpzoom/' ); ?>" target="_blank" rel="noopener noreferrer"><span><?php esc_html_e( 'Join Facebook Group', 'prisma-core' ); ?></span></span></a></li>
+				<!-- <li><a href="<?php echo esc_url( 'https://wordpress.org/support/theme/prisma-core/reviews/#new-post' ); ?>" target="_blank" rel="noopener noreferrer"><span class="dashicons dashicons-heart" aria-hidden="true"></span><span><?php esc_html_e( 'Leave a Review', 'prisma-core' ); ?></span></a></li> -->
 			</ul>
 			</div><!-- END #prisma-core-footer -->
 

@@ -228,7 +228,7 @@ if ( ! class_exists( 'Prisma_Core_Dashboard' ) ) :
 							<p><?php esc_html_e( 'Head over to our site to learn more about the Prisma Core theme, read help articles and get support.', 'prisma-core' ); ?></p>
 
 							<div class="prisma-core-buttons">
-								<a href="https://github.com/ciorici/prisma-core" target="_blank" rel="noopener noreferrer" class="pr-btn secondary"><?php esc_html_e( 'Help Articles', 'prisma-core' ); ?></a>
+								<a href="https://www.wpzoom.com/documentation/prisma-core" target="_blank" rel="noopener noreferrer" class="pr-btn secondary"><?php esc_html_e( 'Help Articles', 'prisma-core' ); ?></a>
 							</div><!-- END .prisma-core-buttons -->
 						</div>
 					</div>
