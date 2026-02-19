@@ -1,6 +1,6 @@
 {
   "name": "prisma-core",
-  "version": "1.4.0",
+  "version": "1.0.0",
   "description": "Build tools for the Prisma Core WordPress theme",
   "private": true,
   "scripts": {

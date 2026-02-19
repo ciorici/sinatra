@@ -232,7 +232,7 @@ function readme( cb ) {
 	txt = txt.replace(
 		'## Resources ##',
 		'## Copyright ##\n\n' +
-		'Prisma Core WordPress Theme, Copyright 2025 ciorici\n' +
+		'Prisma Core WordPress Theme, Copyright 2026 wpzoom\n' +
 		'Originally created by Sinatra Team.\n' +
 		'Prisma Core is distributed under the terms of the GNU GPL.\n\n' +
 		'Prisma Core bundles the following third-party resources:'
@@ -244,10 +244,9 @@ function readme( cb ) {
 		'### A lightweight and highly customizable multi-purpose theme that makes it easy for anyone to create their perfect website.\n\n' +
 		'Community-maintained fork of the original Sinatra theme. ' +
 		'Includes security fixes, PHP 8.2+ compatibility, WordPress 6.9+ support, and updated WooCommerce templates.\n\n' +
-		'[Download Latest Release](https://github.com/ciorici/prisma-core/releases) ' +
+		'[Download Latest Release](https://github.com/wpzoom/prisma-core/releases) ' +
 		'&nbsp;&middot;&nbsp; ' +
-		'[View on WordPress.org](https://wordpress.org/themes/prisma-core/)\n\n' +
-		'![Prisma Core Theme Screenshot](screenshot.jpg)\n\n';
+		'![Prisma Core Theme Screenshot](screenshot.png)\n\n';
 
 	// Replace everything before "**Contributors:" with custom header.
 	const contribIndex = txt.indexOf( '**Contributors:' );
