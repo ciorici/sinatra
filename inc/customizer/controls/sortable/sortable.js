@@ -2,7 +2,7 @@
 
  	"use strict";
 
-	wp.customize.controlConstructor['sinatra-sortable'] = wp.customize.Control.extend({
+	wp.customize.controlConstructor['prisma-core-sortable'] = wp.customize.Control.extend({
 
 		ready: function() {
 
@@ -13,7 +13,7 @@
 			// Setup sortable.
 			if ( control.params.sortable ) {
 				control.container.find( 'ul' ).sortable({
-					items: '> .sinatra-sortable-item',
+					items: '> .prisma-core-sortable-item',
 					intersect: 'pointer',
 					axis: 'y',
 					update: function() {
@@ -24,14 +24,14 @@
 
 			// Set visibility.
 			control.container.on( 'click', '.dashicons-visibility', function(){
-				$(this).closest( '.sinatra-sortable-item' ).toggleClass( 'invisible' );
+				$(this).closest( '.prisma-core-sortable-item' ).toggleClass( 'invisible' );
 				control.update();
 			});
 		},
 
 		update: function() {
 
-			var items = this.container.find( '.sinatra-sortable-item' ),
+			var items = this.container.find( '.prisma-core-sortable-item' ),
 				new_val = {},
 				$item;
 

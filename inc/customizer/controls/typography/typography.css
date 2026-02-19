@@ -4,27 +4,27 @@
 /**
  * Import configuration file with variables.
  */
-.sinatra-typography-wrapper .sinatra-control-wrap {
+.prisma-core-typography-wrapper .prisma-core-control-wrap {
   width: 100%;
 }
-.sinatra-typography-wrapper .sinatra-range-wrapper {
+.prisma-core-typography-wrapper .prisma-core-range-wrapper {
   position: relative;
 }
-.sinatra-typography-wrapper .sinatra-range-wrapper label {
+.prisma-core-typography-wrapper .prisma-core-range-wrapper label {
   display: flex;
   align-items: center;
   margin-bottom: 6px;
 }
-.sinatra-typography-wrapper .sinatra-range-wrapper .sinatra-control-unit {
+.prisma-core-typography-wrapper .prisma-core-range-wrapper .prisma-core-control-unit {
   position: absolute;
   top: 4px;
   right: 0;
   z-index: 1;
 }
-.sinatra-typography-wrapper .sinatra-typography-heading {
+.prisma-core-typography-wrapper .prisma-core-typography-heading {
   flex-grow: 1;
 }
-.sinatra-typography-wrapper .sinatra-typography-advanced {
+.prisma-core-typography-wrapper .prisma-core-typography-advanced {
   background-color: #fff;
   padding: 15px 22px;
   position: absolute;
@@ -37,70 +37,70 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
-.sinatra-typography-wrapper .advanced-settings {
+.prisma-core-typography-wrapper .advanced-settings {
   display: flex;
   align-items: center;
   margin-left: auto;
   text-decoration: none;
   color: #555d66;
 }
-.sinatra-typography-wrapper .advanced-settings.active, .sinatra-typography-wrapper .advanced-settings:focus, .sinatra-typography-wrapper .advanced-settings:hover {
+.prisma-core-typography-wrapper .advanced-settings.active, .prisma-core-typography-wrapper .advanced-settings:focus, .prisma-core-typography-wrapper .advanced-settings:hover {
   background-color: #0284ba;
   color: #fff;
 }
-.sinatra-typography-wrapper .advanced-settings.hidden {
+.prisma-core-typography-wrapper .advanced-settings.hidden {
   display: none;
 }
-.sinatra-typography-wrapper .sinatra-typography-font-family,
-.sinatra-typography-wrapper .sinatra-typography-font-subsets,
-.sinatra-typography-wrapper .sinatra-typography-font-weight,
-.sinatra-typography-wrapper .sinatra-typography-font-style,
-.sinatra-typography-wrapper .sinatra-typography-text-transform,
-.sinatra-typography-wrapper .sinatra-typography-text-decoration {
+.prisma-core-typography-wrapper .prisma-core-typography-font-family,
+.prisma-core-typography-wrapper .prisma-core-typography-font-subsets,
+.prisma-core-typography-wrapper .prisma-core-typography-font-weight,
+.prisma-core-typography-wrapper .prisma-core-typography-font-style,
+.prisma-core-typography-wrapper .prisma-core-typography-text-transform,
+.prisma-core-typography-wrapper .prisma-core-typography-text-decoration {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   margin-top: 6px;
   margin-bottom: 6px;
 }
-.sinatra-typography-wrapper .sinatra-typography-font-family .select2-container,
-.sinatra-typography-wrapper .sinatra-typography-font-family select,
-.sinatra-typography-wrapper .sinatra-typography-font-subsets .select2-container,
-.sinatra-typography-wrapper .sinatra-typography-font-subsets select,
-.sinatra-typography-wrapper .sinatra-typography-font-weight .select2-container,
-.sinatra-typography-wrapper .sinatra-typography-font-weight select,
-.sinatra-typography-wrapper .sinatra-typography-font-style .select2-container,
-.sinatra-typography-wrapper .sinatra-typography-font-style select,
-.sinatra-typography-wrapper .sinatra-typography-text-transform .select2-container,
-.sinatra-typography-wrapper .sinatra-typography-text-transform select,
-.sinatra-typography-wrapper .sinatra-typography-text-decoration .select2-container,
-.sinatra-typography-wrapper .sinatra-typography-text-decoration select {
+.prisma-core-typography-wrapper .prisma-core-typography-font-family .select2-container,
+.prisma-core-typography-wrapper .prisma-core-typography-font-family select,
+.prisma-core-typography-wrapper .prisma-core-typography-font-subsets .select2-container,
+.prisma-core-typography-wrapper .prisma-core-typography-font-subsets select,
+.prisma-core-typography-wrapper .prisma-core-typography-font-weight .select2-container,
+.prisma-core-typography-wrapper .prisma-core-typography-font-weight select,
+.prisma-core-typography-wrapper .prisma-core-typography-font-style .select2-container,
+.prisma-core-typography-wrapper .prisma-core-typography-font-style select,
+.prisma-core-typography-wrapper .prisma-core-typography-text-transform .select2-container,
+.prisma-core-typography-wrapper .prisma-core-typography-text-transform select,
+.prisma-core-typography-wrapper .prisma-core-typography-text-decoration .select2-container,
+.prisma-core-typography-wrapper .prisma-core-typography-text-decoration select {
   width: 150px !important;
   margin-left: auto !important;
 }
-.sinatra-typography-wrapper .sinatra-typography-font-weight,
-.sinatra-typography-wrapper .sinatra-typography-font-style,
-.sinatra-typography-wrapper .sinatra-typography-text-transform,
-.sinatra-typography-wrapper .sinatra-typography-text-decoration {
+.prisma-core-typography-wrapper .prisma-core-typography-font-weight,
+.prisma-core-typography-wrapper .prisma-core-typography-font-style,
+.prisma-core-typography-wrapper .prisma-core-typography-text-transform,
+.prisma-core-typography-wrapper .prisma-core-typography-text-decoration {
   margin-top: 0;
   margin-bottom: 0;
 }
-.sinatra-typography-wrapper .sinatra-typography-font-weight,
-.sinatra-typography-wrapper .sinatra-typography-letter-spacing,
-.sinatra-typography-wrapper .sinatra-typography-line-height {
+.prisma-core-typography-wrapper .prisma-core-typography-font-weight,
+.prisma-core-typography-wrapper .prisma-core-typography-letter-spacing,
+.prisma-core-typography-wrapper .prisma-core-typography-line-height {
   margin-top: 12px;
 }
-.sinatra-typography-wrapper .sinatra-typography-line-height,
-.sinatra-typography-wrapper .sinatra-typography-text-decoration {
+.prisma-core-typography-wrapper .prisma-core-typography-line-height,
+.prisma-core-typography-wrapper .prisma-core-typography-text-decoration {
   margin-bottom: 24px;
 }
-.sinatra-typography-wrapper .sinatra-typography-font-family {
+.prisma-core-typography-wrapper .prisma-core-typography-font-family {
   margin-bottom: 12px;
 }
-.sinatra-typography-wrapper .sinatra-responsive-switchers {
+.prisma-core-typography-wrapper .prisma-core-responsive-switchers {
   margin-left: 6px;
 }
-.sinatra-typography-wrapper .advanced-settings {
+.prisma-core-typography-wrapper .advanced-settings {
   background-color: #FFF;
   border-radius: 2px;
   display: inline-flex;
@@ -112,12 +112,12 @@
   border: 1px solid #e0e0e0;
   transition: all 0.15s ease;
 }
-.sinatra-typography-wrapper .advanced-settings .dashicons {
+.prisma-core-typography-wrapper .advanced-settings .dashicons {
   transition: none;
 }
-.sinatra-typography-wrapper .reset-defaults {
+.prisma-core-typography-wrapper .reset-defaults {
   display: none;
 }
-.sinatra-typography-wrapper .reset-defaults.active {
+.prisma-core-typography-wrapper .reset-defaults.active {
   display: block;
 }

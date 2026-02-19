@@ -4,8 +4,8 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
@@ -18,11 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-<?php do_action( 'sinatra_before_entry_content' ); ?>
-<div class="entry-content si-entry"<?php sinatra_schema_markup( 'text' ); ?>>
+<?php do_action( 'prisma_core_before_entry_content' ); ?>
+<div class="entry-content pr-entry"<?php prisma_core_schema_markup( 'text' ); ?>>
 	<?php the_content(); ?>
 </div>
 
-<?php sinatra_link_pages(); ?>
+<?php prisma_core_link_pages(); ?>
 
-<?php do_action( 'sinatra_after_entry_content' ); ?>
+<?php do_action( 'prisma_core_after_entry_content' ); ?>

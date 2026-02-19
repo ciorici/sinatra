@@ -2,7 +2,7 @@
 
  	"use strict";
 
- 	wp.customize.controlConstructor['sinatra-design-options'] = wp.customize.Control.extend({
+ 	wp.customize.controlConstructor['prisma-core-design-options'] = wp.customize.Control.extend({
 
 		ready: function() {
 
@@ -13,12 +13,12 @@
 				range,
 				range_input,
 				value,
-				sinatra_range_input_number_timeout,
+				prisma_core_range_input_number_timeout,
 				popup_content = control.container.find( '.popup-content' );
 
 
 			// Range controls.
-			control.container.find( '.sinatra-range-wrapper' ).each( function() {
+			control.container.find( '.prisma-core-range-wrapper' ).each( function() {
 				var $this = $(this);
 
 				$this.rangeControl({
@@ -33,10 +33,10 @@
 			});
 
 			// Change the text value
-			control.container.find( 'input.sinatra-range-input' ).on( 'change keyup', function() {
-				control.autocorrect_range_input_number( $( this ), 1000, sinatra_range_input_number_timeout );
+			control.container.find( 'input.prisma-core-range-input' ).on( 'change keyup', function() {
+				control.autocorrect_range_input_number( $( this ), 1000, prisma_core_range_input_number_timeout );
 			} ).on( 'focusout', function() {
-				control.autocorrect_range_input_number( $( this ), 0, sinatra_range_input_number_timeout );
+				control.autocorrect_range_input_number( $( this ), 0, prisma_core_range_input_number_timeout );
 			});
 
 			// Visibility deps.
@@ -49,11 +49,11 @@
 			control.container.find( '[data-option="background-type"], [data-option="gradient-type"]' ).trigger('change');
 
 			// Changes.
-			control.container.on( 'color-updated', '.sinatra-color-control', function(){
+			control.container.on( 'color-updated', '.prisma-core-color-control', function(){
 				control.update_value();
 			});
 
-			control.container.on( 'change', '.sinatra-select-wrapper', function(){
+			control.container.on( 'change', '.prisma-core-select-wrapper', function(){
 				control.update_value();
 			});
 
@@ -207,7 +207,7 @@
 			// Spacing field.
 			
 			// Linked button
-			control.container.on( 'click', '.sinatra-spacing-linked', function() {
+			control.container.on( 'click', '.prisma-core-spacing-linked', function() {
 
 				// Set up variables
 				var $this = $( this );
@@ -220,7 +220,7 @@
 			});
 
 			// Unlinked button
-			control.container.on( 'click', '.sinatra-spacing-unlinked', function() {
+			control.container.on( 'click', '.prisma-core-spacing-unlinked', function() {
 
 				// Set up variables
 				var $this = $( this );
@@ -296,7 +296,7 @@
 			var range_input 	= input_number,
 				range 			= range_input.parent().find( 'input[type="range"]' ),
 				value 			= parseFloat( range_input.val() ),
-				reset 			= parseFloat( range.find( '.sinatra-reset-range' ).attr( 'data-reset_value' ) ),
+				reset 			= parseFloat( range.find( '.prisma-core-reset-range' ).attr( 'data-reset_value' ) ),
 				step 			= parseFloat( range_input.attr( 'step' ) ),
 				min 			= parseFloat( range_input.attr( 'min') ),
 				max 			= parseFloat( range_input.attr( 'max') );

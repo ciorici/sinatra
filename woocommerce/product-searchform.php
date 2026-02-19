@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * Sinatra changes: added search icon inside button.
+ * Prisma Core changes: added search icon inside button.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
@@ -24,10 +24,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <form role="search" method="get" class="search-form woocommerce-product-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<div>
-		<label class="screen-reader-text" for="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>"><?php esc_html_e( 'Search for:', 'sinatra' ); ?></label>
-		<input type="search" id="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>" class="search-field" placeholder="<?php echo esc_attr__( 'Search products&hellip;', 'sinatra' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" />
-		<button type="submit" class="search-submit" aria-label="<?php echo esc_attr_x( 'Search', 'submit button', 'sinatra' ); ?>" value="<?php echo esc_attr_x( 'Search', 'submit button', 'sinatra' ); ?>">
-			<?php echo sinatra()->icons->get_svg( 'search', array( 'aria-hidden' => 'true' ) ); ?>
+		<label class="screen-reader-text" for="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>"><?php esc_html_e( 'Search for:', 'prisma-core' ); ?></label>
+		<input type="search" id="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>" class="search-field" placeholder="<?php echo esc_attr__( 'Search products&hellip;', 'prisma-core' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" />
+		<button type="submit" class="search-submit" aria-label="<?php echo esc_attr_x( 'Search', 'submit button', 'prisma-core' ); ?>" value="<?php echo esc_attr_x( 'Search', 'submit button', 'prisma-core' ); ?>">
+			<?php echo prisma_core()->icons->get_svg( 'search', array( 'aria-hidden' => 'true' ) ); ?>
 			</button>
 		<input type="hidden" name="post_type" value="product" />
 	</div>

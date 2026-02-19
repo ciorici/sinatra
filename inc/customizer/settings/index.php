@@ -2,8 +2,8 @@
 /**
  * Index file
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 

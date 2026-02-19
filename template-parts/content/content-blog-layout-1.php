@@ -4,31 +4,31 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
 ?>
 
-<?php do_action( 'sinatra_before_article' ); ?>
+<?php do_action( 'prisma_core_before_article' ); ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'sinatra-article' ); ?><?php sinatra_schema_markup( 'article' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'prisma-core-article' ); ?><?php prisma_core_schema_markup( 'article' ); ?>>
 
 	<?php
-	$sinatra_blog_entry_format = get_post_format();
+	$prisma_core_blog_entry_format = get_post_format();
 
-	if ( 'quote' === $sinatra_blog_entry_format ) {
-		get_template_part( 'template-parts/entry/format/media', $sinatra_blog_entry_format );
+	if ( 'quote' === $prisma_core_blog_entry_format ) {
+		get_template_part( 'template-parts/entry/format/media', $prisma_core_blog_entry_format );
 	} else {
 
-		$sinatra_blog_entry_elements = sinatra_get_blog_entry_elements();
+		$prisma_core_blog_entry_elements = prisma_core_get_blog_entry_elements();
 
-		echo '<div class="si-blog-entry-content">';
+		echo '<div class="pr-blog-entry-content">';
 
-		if ( ! empty( $sinatra_blog_entry_elements ) ) {
-			foreach ( $sinatra_blog_entry_elements as $sinatra_element ) {
-				get_template_part( 'template-parts/entry/entry', $sinatra_element );
+		if ( ! empty( $prisma_core_blog_entry_elements ) ) {
+			foreach ( $prisma_core_blog_entry_elements as $prisma_core_element ) {
+				get_template_part( 'template-parts/entry/entry', $prisma_core_element );
 			}
 		}
 
@@ -38,4 +38,4 @@
 
 </article><!-- #post-<?php the_ID(); ?> -->
 
-<?php do_action( 'sinatra_after_article' ); ?>
+<?php do_action( 'prisma_core_after_article' ); ?>

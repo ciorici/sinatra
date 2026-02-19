@@ -1,6 +1,6 @@
 ;(function( $ ) {
 
-	wp.customize.controlConstructor['sinatra-button'] = wp.customize.Control.extend({
+	wp.customize.controlConstructor['prisma-core-button'] = wp.customize.Control.extend({
 
 		ready: function() {
 
@@ -20,11 +20,11 @@
 					$this.siblings( '.spinner' ).addClass( 'activated' );
 
 					var data = {
-						_ajax_nonce: sinatra_customizer_localized.wpnonce,
+						_ajax_nonce: prisma_core_customizer_localized.wpnonce,
 						action: action,
 					};
 
-			 		$.post( sinatra_customizer_localized.ajaxurl, data, function(response) {
+			 		$.post( prisma_core_customizer_localized.ajaxurl, data, function(response) {
 			 			
 			 			// Check response
 			 			if ( response.success ) {

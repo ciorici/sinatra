@@ -1,9 +1,9 @@
 <?php
 /**
- * Sinatra Customizer sanitization callback functions.
+ * Prisma Core Customizer sanitization callback functions.
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-function sinatra_partial_blogname() {
+function prisma_core_partial_blogname() {
 	return get_bloginfo( 'name', 'display' );
 }
 
@@ -28,6 +28,6 @@ function sinatra_partial_blogname() {
  *
  * @since 1.0.0
  */
-function sinatra_partial_blogdescription() {
+function prisma_core_partial_blogdescription() {
 	return get_bloginfo( 'description', 'display' );
 }

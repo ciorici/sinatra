@@ -2,8 +2,8 @@
 /**
  * Template part for displaying entry category.
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
@@ -12,19 +12,19 @@
 <div class="post-category">
 
 	<?php
-	do_action( 'sinatra_before_post_category' );
+	do_action( 'prisma_core_before_post_category' );
 
 	if ( is_singular() ) {
-		sinatra_entry_meta_category( ' ', false );
+		prisma_core_entry_meta_category( ' ', false );
 	} else {
-		if ( 'blog-horizontal' === sinatra_get_article_feed_layout() ) {
-			sinatra_entry_meta_category( ' ', false );
+		if ( 'blog-horizontal' === prisma_core_get_article_feed_layout() ) {
+			prisma_core_entry_meta_category( ' ', false );
 		} else {
-			sinatra_entry_meta_category( ', ', false );
+			prisma_core_entry_meta_category( ', ', false );
 		}
 	}
 
-	do_action( 'sinatra_after_post_category' );
+	do_action( 'prisma_core_after_post_category' );
 	?>
 
 </div>

@@ -4,10 +4,10 @@
 /**
  * Import configuration file with variables.
  */
-.sinatra-color-wrapper .wp-picker-container {
+.prisma-core-color-wrapper .wp-picker-container {
   margin-top: 6px;
 }
-.sinatra-color-wrapper .sinatra-color-control {
+.prisma-core-color-wrapper .prisma-core-color-control {
   border-radius: 3px 0 0 0px !important;
   margin-top: 0 !important;
 }
@@ -227,7 +227,7 @@ body.wp-customizer .wp-picker-clear {
 
 /* Responsive */
 @media only screen and (max-width: 640px) {
-  .wp-picker-input-wrap input[type=text].wp-color-picker.sinatra-color-control {
+  .wp-picker-input-wrap input[type=text].wp-color-picker.prisma-core-color-control {
     height: 33px;
   }
 }

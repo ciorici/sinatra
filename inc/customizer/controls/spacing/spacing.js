@@ -2,7 +2,7 @@
 
  	"use strict";
 
- 	wp.customize.controlConstructor['sinatra-spacing'] = wp.customize.Control.extend({
+ 	wp.customize.controlConstructor['prisma-core-spacing'] = wp.customize.Control.extend({
 
 		ready: function() {
 
@@ -11,7 +11,7 @@
 			var control = this;
 
 			// Linked button.
-			control.container.on( 'click', '.sinatra-spacing-linked', function() {
+			control.container.on( 'click', '.prisma-core-spacing-linked', function() {
 
 				// Set up variables.
 				var $this = $( this );
@@ -24,7 +24,7 @@
 			});
 
 			// Unlinked button.
-			control.container.on( 'click', '.sinatra-spacing-unlinked', function() {
+			control.container.on( 'click', '.prisma-core-spacing-unlinked', function() {
 
 				// Set up variables.
 				var $this = $( this );
@@ -43,7 +43,7 @@
 			});
 
 			// Change unit.
-			control.container.find( '.sinatra-control-unit input[type="radio"]' ).on( 'change', function() {
+			control.container.find( '.prisma-core-control-unit input[type="radio"]' ).on( 'change', function() {
 				control.save_value();
 			});
 
@@ -70,7 +70,7 @@
 				choices = this.params.choices,
 				choice,
 				device,
-				units   = this.container.find( '.sinatra-control-unit' );
+				units   = this.container.find( '.prisma-core-control-unit' );
 
 			if ( devices === undefined || devices.length == 0 ) {
 				for ( choice in choices ) {

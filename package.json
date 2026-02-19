@@ -1,7 +1,7 @@
 {
-  "name": "sinatra",
+  "name": "prisma-core",
   "version": "1.4.0",
-  "description": "Build tools for the Sinatra WordPress theme",
+  "description": "Build tools for the Prisma Core WordPress theme",
   "private": true,
   "scripts": {
     "build": "gulp build",

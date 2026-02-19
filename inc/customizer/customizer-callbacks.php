@@ -1,9 +1,9 @@
 <?php
 /**
- * Sinatra Customizer sanitization callback functions.
+ * Prisma Core Customizer sanitization callback functions.
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  * @param int $val Number.
  */
-function sinatra_sanitize_number( $val ) {
+function prisma_core_sanitize_number( $val ) {
 	return is_numeric( $val ) ? $val : 0;
 }
 
@@ -31,7 +31,7 @@ function sinatra_sanitize_number( $val ) {
  * @param mixed  $input    Value of the toggle field.
  * @param object $setting  Setting object.
  */
-function sinatra_sanitize_toggle( $input, $setting ) {
+function prisma_core_sanitize_toggle( $input, $setting ) {
 
 	// Ensure input is a slug.
 	$input = sanitize_key( $input );
@@ -46,7 +46,7 @@ function sinatra_sanitize_toggle( $input, $setting ) {
  * @param mixed  $input    Value of the select field.
  * @param object $setting  Setting object.
  */
-function sinatra_sanitize_select( $input, $setting ) {
+function prisma_core_sanitize_select( $input, $setting ) {
 
 	$multiple = isset( $setting->manager->get_control( $setting->id )->multiple ) ? $setting->manager->get_control( $setting->id )->multiple : false;
 
@@ -96,7 +96,7 @@ function sinatra_sanitize_select( $input, $setting ) {
  * @param mixed  $input    Value of the select field.
  * @param object $setting  Setting object.
  */
-function sinatra_sanitize_textarea( $input, $setting ) {
+function prisma_core_sanitize_textarea( $input, $setting ) {
 
 	return wp_kses_post( $input );
 }
@@ -107,17 +107,17 @@ function sinatra_sanitize_textarea( $input, $setting ) {
  * @since 1.0.0
  * @param string $color Color code.
  */
-function sinatra_sanitize_color( $color ) {
+function prisma_core_sanitize_color( $color ) {
 
 	if ( empty( $color ) || is_array( $color ) ) {
 		return '';
 	}
 
 	if ( false === strpos( $color, 'rgba' ) ) {
-		return sinatra_sanitize_hex_color( $color );
+		return prisma_core_sanitize_hex_color( $color );
 	}
 
-	return sinatra_sanitize_alpha_color( $color );
+	return prisma_core_sanitize_alpha_color( $color );
 }
 
 /**
@@ -126,7 +126,7 @@ function sinatra_sanitize_color( $color ) {
  * @since 1.0.0
  * @param string $color Color code in HEX.
  */
-function sinatra_sanitize_hex_color( $color ) {
+function prisma_core_sanitize_hex_color( $color ) {
 
 	if ( '' === $color ) {
 		return '';
@@ -146,7 +146,7 @@ function sinatra_sanitize_hex_color( $color ) {
  * @since 1.0.0
  * @param string $color Color code in RGBA.
  */
-function sinatra_sanitize_alpha_color( $color ) {
+function prisma_core_sanitize_alpha_color( $color ) {
 
 	if ( '' === $color ) {
 		return '';
@@ -154,7 +154,7 @@ function sinatra_sanitize_alpha_color( $color ) {
 
 	if ( false === strpos( $color, 'rgba' ) ) {
 		/* Hex sanitize */
-		return sinatra_sanitize_hex_color( $color );
+		return prisma_core_sanitize_hex_color( $color );
 	}
 
 	/* rgba sanitize */
@@ -170,7 +170,7 @@ function sinatra_sanitize_alpha_color( $color ) {
  * @param mixed  $image    Selected image..
  * @param object $setting  Setting object.
  */
-function sinatra_sanitize_image( $image, $setting ) {
+function prisma_core_sanitize_image( $image, $setting ) {
 	/*
 	 * Array of valid image file types.
 	 *
@@ -200,7 +200,7 @@ function sinatra_sanitize_image( $image, $setting ) {
  * @param array  $widgets Array of saved widgets.
  * @param object $setting WP Customize manager object.
  */
-function sinatra_sanitize_widget( $widgets, $setting ) {
+function prisma_core_sanitize_widget( $widgets, $setting ) {
 
 	// Widgets has to be an array.
 	if ( ! is_array( $widgets ) || empty( $widgets ) ) {
@@ -308,7 +308,7 @@ function sinatra_sanitize_widget( $widgets, $setting ) {
  * @since 1.0.0
  * @param mixed $val Value.
  */
-function sinatra_no_sanitize( $val ) {
+function prisma_core_no_sanitize( $val ) {
 	return $val;
 }
 
@@ -318,7 +318,7 @@ function sinatra_no_sanitize( $val ) {
  * @since 1.0.0
  * @param mixed $background Value.
  */
-function sinatra_sanitize_background( $background ) {
+function prisma_core_sanitize_background( $background ) {
 
 	$bg_params = array(
 		'background-image'      => '',
@@ -357,7 +357,7 @@ function sinatra_sanitize_background( $background ) {
  * @param object $setting WP Customize Setting instance.
  * @param mixed  $default Default Value.
  */
-function sinatra_sanitize_spacing( $values, $setting, $default = array() ) {
+function prisma_core_sanitize_spacing( $values, $setting, $default = array() ) {
 
 	$control         = $setting->manager->get_control( $setting->id );
 	$control_choices = $control->choices;
@@ -404,7 +404,7 @@ function sinatra_sanitize_spacing( $values, $setting, $default = array() ) {
  * @param object $setting WP Customize Setting instance.
  * @param mixed  $default Default Value.
  */
-function sinatra_sanitize_range( $value, $setting, $default = '' ) {
+function prisma_core_sanitize_range( $value, $setting, $default = '' ) {
 
 	if ( is_array( $value ) ) {
 		if ( isset( $value['value'], $value['unit'] ) ) {
@@ -428,10 +428,10 @@ function sinatra_sanitize_range( $value, $setting, $default = '' ) {
  * @param mixed  $values  Values.
  * @param object $setting WP Customize Setting instance.
  */
-function sinatra_sanitize_responsive( $values, $setting ) {
+function prisma_core_sanitize_responsive( $values, $setting ) {
 
 	$control       = $setting->manager->get_control( $setting->id );
-	$control_type  = str_replace( 'sinatra-', '', $control->type );
+	$control_type  = str_replace( 'prisma-core-', '', $control->type );
 	$control_units = isset( $control->unit ) ? $control->unit : false;
 
 	if ( is_array( $control->responsive ) && ! empty( $control->responsive ) ) {
@@ -458,7 +458,7 @@ function sinatra_sanitize_responsive( $values, $setting ) {
 
 			// Sanitize value.
 			$values[ $device ] = call_user_func_array(
-				'sinatra_sanitize_' . $control_type,
+				'prisma_core_sanitize_' . $control_type,
 				array(
 					$values[ $device ],
 					$setting,
@@ -478,7 +478,7 @@ function sinatra_sanitize_responsive( $values, $setting ) {
  * @param mixed  $value    Value of the toggle field.
  * @param object $setting  Setting object.
  */
-function sinatra_sanitize_typography( $value, $setting ) {
+function prisma_core_sanitize_typography( $value, $setting ) {
 
 	$defaults = array(
 		'font-family'         => '',
@@ -512,7 +512,7 @@ function sinatra_sanitize_typography( $value, $setting ) {
  * @param mixed  $value    Value of the toggle field.
  * @param object $setting  Setting object.
  */
-function sinatra_sanitize_design_options( $value, $setting ) {
+function prisma_core_sanitize_design_options( $value, $setting ) {
 
 	$control = $setting->manager->get_control( $setting->id );
 
@@ -532,7 +532,7 @@ function sinatra_sanitize_design_options( $value, $setting ) {
 			if ( array_key_exists( 'color', $control->display['background'] ) ) {
 
 				if ( isset( $value['background-color'] ) ) {
-					$sanitized['background-color'] = sinatra_sanitize_color( $value['background-color'] );
+					$sanitized['background-color'] = prisma_core_sanitize_color( $value['background-color'] );
 				}
 			}
 
@@ -540,19 +540,19 @@ function sinatra_sanitize_design_options( $value, $setting ) {
 			if ( array_key_exists( 'gradient', $control->display['background'] ) ) {
 
 				if ( isset( $value['gradient-color-1'] ) ) {
-					$sanitized['gradient-color-1'] = sinatra_sanitize_color( $value['gradient-color-1'] );
+					$sanitized['gradient-color-1'] = prisma_core_sanitize_color( $value['gradient-color-1'] );
 				}
 
 				if ( isset( $value['gradient-color-2'] ) ) {
-					$sanitized['gradient-color-2'] = sinatra_sanitize_color( $value['gradient-color-2'] );
+					$sanitized['gradient-color-2'] = prisma_core_sanitize_color( $value['gradient-color-2'] );
 				}
 
 				if ( isset( $value['gradient-color-1-location'] ) ) {
-					$sanitized['gradient-color-1-location'] = sinatra_sanitize_range( $value['gradient-color-1-location'], $setting );
+					$sanitized['gradient-color-1-location'] = prisma_core_sanitize_range( $value['gradient-color-1-location'], $setting );
 				}
 
 				if ( isset( $value['gradient-color-2-location'] ) ) {
-					$sanitized['gradient-color-2-location'] = sinatra_sanitize_range( $value['gradient-color-2-location'], $setting );
+					$sanitized['gradient-color-2-location'] = prisma_core_sanitize_range( $value['gradient-color-2-location'], $setting );
 				}
 
 				if ( isset( $value['gradient-type'] ) && in_array( $value['gradient-type'], array( 'linear', 'radial' ), true ) ) {
@@ -560,7 +560,7 @@ function sinatra_sanitize_design_options( $value, $setting ) {
 				}
 
 				if ( isset( $value['gradient-linear-angle'] ) ) {
-					$sanitized['gradient-linear-angle'] = sinatra_sanitize_range( $value['gradient-linear-angle'], $setting );
+					$sanitized['gradient-linear-angle'] = prisma_core_sanitize_range( $value['gradient-linear-angle'], $setting );
 				}
 
 				if ( isset( $value['gradient-position'] ) ) {
@@ -608,7 +608,7 @@ function sinatra_sanitize_design_options( $value, $setting ) {
 		if ( isset( $control->display['color'] ) ) {
 			foreach ( $control->display['color'] as $id => $title ) {
 				if ( isset( $value[ $id ] ) ) {
-					$sanitized[ $id ] = sinatra_sanitize_color( $value[ $id ] );
+					$sanitized[ $id ] = prisma_core_sanitize_color( $value[ $id ] );
 				}
 			}
 		}
@@ -617,7 +617,7 @@ function sinatra_sanitize_design_options( $value, $setting ) {
 
 			// Border Color.
 			if ( array_key_exists( 'color', $control->display['border'] ) && isset( $value['border-color'] ) ) {
-				$sanitized['border-color'] = sinatra_sanitize_color( $value['border-color'] );
+				$sanitized['border-color'] = prisma_core_sanitize_color( $value['border-color'] );
 			}
 
 			// Border Style.
@@ -627,7 +627,7 @@ function sinatra_sanitize_design_options( $value, $setting ) {
 
 			// Separator Border Style.
 			if ( isset( $value['separator-color'] ) ) {
-				$sanitized['separator-color'] = sinatra_sanitize_color( $value['separator-color'] );
+				$sanitized['separator-color'] = prisma_core_sanitize_color( $value['separator-color'] );
 			}
 
 			// Border Width.
@@ -651,7 +651,7 @@ function sinatra_sanitize_design_options( $value, $setting ) {
  * @param mixed  $value    Value of the toggle field.
  * @param object $setting  Setting object.
  */
-function sinatra_sanitize_sortable( $value, $setting ) {
+function prisma_core_sanitize_sortable( $value, $setting ) {
 
 	$control = $setting->manager->get_control( $setting->id );
 	$choices = $control->choices;

@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * Sinatra changes: removed parenthesis from output. Removed 'customer' from output.
+ * Prisma Core changes: removed parenthesis from output. Removed 'customer' from output.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
@@ -38,7 +38,7 @@ if ( $rating_count > 0 ) : ?>
 		<?php echo wc_get_rating_html( $average, $rating_count ); // phpcs:ignore ?>
 		<?php if ( comments_open() ) : ?>
 			<?php //phpcs:disable ?>
-			<a href="#reviews" class="woocommerce-review-link" rel="nofollow"><?php printf( _n( '%s review', '%s reviews', $review_count, 'sinatra' ), '<span class="count">' . esc_html( $review_count ) . '</span>' ); ?></a>
+			<a href="#reviews" class="woocommerce-review-link" rel="nofollow"><?php printf( _n( '%s review', '%s reviews', $review_count, 'prisma-core' ), '<span class="count">' . esc_html( $review_count ) . '</span>' ); ?></a>
 			<?php // phpcs:enable ?>
 		<?php endif ?>
 	</div>

@@ -1,18 +1,18 @@
 <wpml-config>
     <admin-texts>
-        <key name="theme_mods_sinatra">
-            <key name="sinatra_main_nav_mobile_label" />
-            <key name="sinatra_excerpt_more" />
-            <key name="sinatra_pre_footer_cta_text" />
-            <key name="sinatra_pre_footer_cta_btn_text" />
-            <key name="sinatra_header_widgets">
+        <key name="theme_mods_prisma-core">
+            <key name="prisma_core_main_nav_mobile_label" />
+            <key name="prisma_core_excerpt_more" />
+            <key name="prisma_core_pre_footer_cta_text" />
+            <key name="prisma_core_pre_footer_cta_btn_text" />
+            <key name="prisma_core_header_widgets">
                 <key name="*" />
             </key>
-            <key name="sinatra_copyright_widgets" >
+            <key name="prisma_core_copyright_widgets" >
                 <key name="*" />
             </key>
             <key name='custom_logo' />
-            <key name='sinatra_logo_default_retina' />
+            <key name='prisma_core_logo_default_retina' />
             <key name='blogname' />
         </key>
     </admin-texts>   

@@ -2,35 +2,35 @@
 /**
  * The template for displaying header layout 3.
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
 ?>
 
-<div class="si-header-container">
-	<div class="si-logo-container">
-		<div class="si-container">
+<div class="pr-header-container">
+	<div class="pr-logo-container">
+		<div class="pr-container">
 
 			<?php
-			do_action( 'sinatra_header_widget_location', 'left' );
-			sinatra_header_logo_template();
-			do_action( 'sinatra_header_widget_location', 'right' );
+			do_action( 'prisma_core_header_widget_location', 'left' );
+			prisma_core_header_logo_template();
+			do_action( 'prisma_core_header_widget_location', 'right' );
 			?>
 
-			<span class="si-header-element si-mobile-nav">
-				<?php sinatra_hamburger( sinatra_option( 'main_nav_mobile_label' ), 'sinatra-primary-nav' ); ?>
+			<span class="pr-header-element pr-mobile-nav">
+				<?php prisma_core_hamburger( prisma_core_option( 'main_nav_mobile_label' ), 'prisma-core-primary-nav' ); ?>
 			</span>
 
-		</div><!-- END .si-container -->
-	</div><!-- END .si-logo-container -->
+		</div><!-- END .pr-container -->
+	</div><!-- END .pr-logo-container -->
 
-	<div class="si-nav-container">
-		<div class="si-container">
+	<div class="pr-nav-container">
+		<div class="pr-container">
 
-			<?php sinatra_main_navigation_template(); ?>
+			<?php prisma_core_main_navigation_template(); ?>
 
-		</div><!-- END .si-container -->
-	</div><!-- END .si-nav-container -->
-</div><!-- END .si-header-container -->
+		</div><!-- END .pr-container -->
+	</div><!-- END .pr-nav-container -->
+</div><!-- END .pr-header-container -->

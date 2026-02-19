@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * Sinatra changes: custom button classes, SVG remove icon, si-woo-thumb class,
+ * Prisma Core changes: custom button classes, SVG remove icon, pr-woo-thumb class,
  * cart item count in header, continue shopping link.
  *
  * @see     https://woocommerce.com/document/template-structure/
@@ -30,10 +30,10 @@ do_action( 'woocommerce_before_cart' ); ?>
 			<tr>
 				<th class="product-remove"><span class="screen-reader-text"><?php esc_html_e( 'Remove item', 'woocommerce' ); ?></span></th>
 				<th class="product-thumbnail"><span class="screen-reader-text"><?php esc_html_e( 'Thumbnail image', 'woocommerce' ); ?></span></th>
-				<th scope="col" class="product-name"><?php esc_html_e( 'Product', 'sinatra' ); ?> <?php echo '(' . count( WC()->cart->get_cart() ) . ')'; ?></th>
-				<th scope="col" class="product-price"><?php esc_html_e( 'Price', 'sinatra' ); ?></th>
-				<th scope="col" class="product-quantity"><?php esc_html_e( 'Quantity', 'sinatra' ); ?></th>
-				<th scope="col" class="product-subtotal"><?php esc_html_e( 'Subtotal', 'sinatra' ); ?></th>
+				<th scope="col" class="product-name"><?php esc_html_e( 'Product', 'prisma-core' ); ?> <?php echo '(' . count( WC()->cart->get_cart() ) . ')'; ?></th>
+				<th scope="col" class="product-price"><?php esc_html_e( 'Price', 'prisma-core' ); ?></th>
+				<th scope="col" class="product-quantity"><?php esc_html_e( 'Quantity', 'prisma-core' ); ?></th>
+				<th scope="col" class="product-subtotal"><?php esc_html_e( 'Subtotal', 'prisma-core' ); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -60,11 +60,11 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 						<td class="product-remove">
 							<?php
-								// Sinatra: custom SVG icon instead of &times;.
+								// Prisma Core: custom SVG icon instead of &times;.
 								echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 									'woocommerce_cart_item_remove_link',
 									sprintf(
-										'<a role="button" href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">' . sinatra()->icons->get_svg( 'x' ) . '</a>',
+										'<a role="button" href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">' . prisma_core()->icons->get_svg( 'x' ) . '</a>',
 										esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 										/* translators: %s is the product name */
 										esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
@@ -92,8 +92,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 						if ( ! $product_permalink ) {
 							echo $thumbnail; // PHPCS: XSS ok.
 						} else {
-							// Sinatra: added si-woo-thumb class.
-							printf( '<a href="%s" class="si-woo-thumb">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
+							// Prisma Core: added pr-woo-thumb class.
+							printf( '<a href="%s" class="pr-woo-thumb">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
 						}
 						?>
 						</td>
@@ -173,15 +173,15 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 					<?php if ( wc_coupons_enabled() ) { ?>
 						<div class="coupon">
-							<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="si-btn btn-secondary" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
+							<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="pr-btn btn-secondary" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
 							<?php do_action( 'woocommerce_cart_coupon' ); ?>
 						</div>
 					<?php } ?>
 
-					<?php // Sinatra: continue shopping link. ?>
-					<a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="si-btn btn-text-1 mr-20"><span><?php esc_html_e( 'Continue Shopping', 'sinatra' ); ?></span></a>
+					<?php // Prisma Core: continue shopping link. ?>
+					<a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="pr-btn btn-text-1 mr-20"><span><?php esc_html_e( 'Continue Shopping', 'prisma-core' ); ?></span></a>
 
-					<button type="submit" class="si-btn btn-secondary" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+					<button type="submit" class="pr-btn btn-secondary" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
 
 					<?php do_action( 'woocommerce_cart_actions' ); ?>
 

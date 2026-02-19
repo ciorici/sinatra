@@ -2,7 +2,7 @@
 /**
  * Header Cart Widget cart & checkout buttons.
  *
- * @package Sinatra
+ * @package Prisma Core
  */
 
 // Exit if accessed directly.
@@ -11,12 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<div class="si-cart-buttons">
-	<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="si-btn btn-text-1" role="button">
-		<span><?php esc_html_e( 'View Cart', 'sinatra' ); ?></span>
+<div class="pr-cart-buttons">
+	<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="pr-btn btn-text-1" role="button">
+		<span><?php esc_html_e( 'View Cart', 'prisma-core' ); ?></span>
 	</a>
 
-	<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="si-btn btn-fw" role="button">
-		<span><?php esc_html_e( 'Checkout', 'sinatra' ); ?></span>
+	<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="pr-btn btn-fw" role="button">
+		<span><?php esc_html_e( 'Checkout', 'prisma-core' ); ?></span>
 	</a>
 </div>

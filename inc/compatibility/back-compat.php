@@ -2,12 +2,12 @@
 /**
  * Theme back compatibility functionality
  *
- * Prevents Sinatra from running on WordPress versions prior to 4.7,
+ * Prevents Prisma Core from running on WordPress versions prior to 4.7,
  * since this theme is not meant to be backward compatible beyond that and
  * relies on many newer functions and markup changes introduced in 4.7.
  *
- * @package Sinatra
- * @author  Sinatra Team <hello@sinatrawp.com>
+ * @package Prisma Core
+ * @author  Prisma Core Team
  * @since   1.0.0
  */
 
@@ -25,25 +25,25 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-function sinatra_switch_theme() {
+function prisma_core_switch_theme() {
 	switch_theme( WP_DEFAULT_THEME );
 	unset( $_GET['activated'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-	add_action( 'admin_notices', 'sinatra_upgrade_notice' );
+	add_action( 'admin_notices', 'prisma_core_upgrade_notice' );
 }
-add_action( 'after_switch_theme', 'sinatra_switch_theme' );
+add_action( 'after_switch_theme', 'prisma_core_switch_theme' );
 
 /**
  * Adds a message for unsuccessful theme switch.
  *
  * Prints an update nag after an unsuccessful attempt to switch to
- * Sinatra on WordPress versions prior to 4.7.
+ * Prisma Core on WordPress versions prior to 4.7.
  *
  * @since 1.0.0
  * @global string $wp_version WordPress version.
  */
-function sinatra_upgrade_notice() {
+function prisma_core_upgrade_notice() {
 	/* translators: %s WordPress version */
-	$message = sprintf( esc_html__( 'Sinatra theme requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again.', 'sinatra' ), $GLOBALS['wp_version'] );
+	$message = sprintf( esc_html__( 'Prisma Core theme requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again.', 'prisma-core' ), $GLOBALS['wp_version'] );
 	printf( '<div class="error"><p>%s</p></div>', esc_html( $message ) );
 }
 
@@ -53,14 +53,14 @@ function sinatra_upgrade_notice() {
  * @since 1.0.0
  * @global string $wp_version WordPress version.
  */
-function sinatra_customize_prevent() {
+function prisma_core_customize_prevent() {
 
 	/* translators: %s WordPress version */
-	$message = sprintf( esc_html__( 'Sinatra theme requires at least WordPress version 4.7. You are running version %s. Please upgrade your WordPress and try again.', 'sinatra' ), $GLOBALS['wp_version'] );
+	$message = sprintf( esc_html__( 'Prisma Core theme requires at least WordPress version 4.7. You are running version %s. Please upgrade your WordPress and try again.', 'prisma-core' ), $GLOBALS['wp_version'] );
 
 	wp_die( esc_html( $message ), '', array( 'back_link' => true ) );
 }
-add_action( 'load-customize.php', 'sinatra_customize_prevent' );
+add_action( 'load-customize.php', 'prisma_core_customize_prevent' );
 
 /**
  * Prevents the Theme Preview from being loaded on WordPress versions prior to 4.7.
@@ -68,14 +68,14 @@ add_action( 'load-customize.php', 'sinatra_customize_prevent' );
  * @since 1.0.0
  * @global string $wp_version WordPress version.
  */
-function sinatra_preview_prevent() {
+function prisma_core_preview_prevent() {
 	if ( isset( $_GET['preview'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		/* translators: %s WordPress version */
-		$message = sprintf( esc_html__( 'Sinatra theme requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again.', 'sinatra' ), $GLOBALS['wp_version'] );
+		$message = sprintf( esc_html__( 'Prisma Core theme requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again.', 'prisma-core' ), $GLOBALS['wp_version'] );
 		wp_die( esc_html( $message ) );
 	}
 }
-add_action( 'template_redirect', 'sinatra_preview_prevent' );
+add_action( 'template_redirect', 'prisma_core_preview_prevent' );
 
 if ( ! function_exists( 'wp_body_open' ) ) {
 	/**

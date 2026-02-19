@@ -4,31 +4,31 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?><?php sinatra_schema_markup( 'article' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?><?php prisma_core_schema_markup( 'article' ); ?>>
 
 <?php
-if ( sinatra_show_post_thumbnail() ) {
+if ( prisma_core_show_post_thumbnail() ) {
 	get_template_part( 'template-parts/entry/format/media', 'page' );
 }
 ?>
 
-<div class="entry-content si-entry">
+<div class="entry-content pr-entry">
 	<?php
-	do_action( 'sinatra_before_page_content' );
+	do_action( 'prisma_core_before_page_content' );
 
 	the_content();
 
-	do_action( 'sinatra_after_page_content' );
+	do_action( 'prisma_core_after_page_content' );
 	?>
 </div><!-- END .entry-content -->
 
-<?php sinatra_link_pages(); ?>
+<?php prisma_core_link_pages(); ?>
 
 </article><!-- #post-<?php the_ID(); ?> -->

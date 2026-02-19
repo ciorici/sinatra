@@ -1,7 +1,7 @@
 /* ==========================================================================
 *  Elementor styles.
 *  ========================================================================== */
-.sinatra-layout__boxed-separated.sinatra-sidebar-style-3 .elementor-widget-sidebar .si-widget {
+.prisma-core-layout__boxed-separated.prisma-core-sidebar-style-3 .elementor-widget-sidebar .pr-widget {
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.085);
 }
@@ -36,10 +36,10 @@
   margin-bottom: 0;
 }
 
-.sinatra-sidebar-style-2 .elementor-widget-sidebar .widget-title {
+.prisma-core-sidebar-style-2 .elementor-widget-sidebar .widget-title {
   padding-left: 1rem;
 }
-.sinatra-sidebar-style-2 .elementor-widget-sidebar .widget-title:before {
+.prisma-core-sidebar-style-2 .elementor-widget-sidebar .widget-title:before {
   content: "";
   position: absolute;
   top: 16%;
@@ -49,8 +49,8 @@
   height: 70%;
 }
 
-.sinatra-sidebar-style-2 .elementor-widget-sidebar .widget-title:after,
-.sinatra-sidebar-style-3 .elementor-widget-sidebar .widget-title:after {
+.prisma-core-sidebar-style-2 .elementor-widget-sidebar .widget-title:after,
+.prisma-core-sidebar-style-3 .elementor-widget-sidebar .widget-title:after {
   content: "";
   position: absolute;
   top: 50%;
@@ -61,36 +61,36 @@
   -webkit-transform-style: preserve-3d;
 }
 
-.sinatra-sidebar-style-3 .elementor-widget-sidebar .si-widget {
+.prisma-core-sidebar-style-3 .elementor-widget-sidebar .pr-widget {
   border: solid 1px rgba(0, 0, 0, 0.085);
   border-radius: 3px;
   margin-bottom: 20px;
   padding: 25px;
 }
-.sinatra-sidebar-style-3 .elementor-widget-sidebar .si-widget:last-child {
+.prisma-core-sidebar-style-3 .elementor-widget-sidebar .pr-widget:last-child {
   margin-bottom: 0;
 }
-.sinatra-sidebar-style-3 .elementor-widget-sidebar .widget-title {
+.prisma-core-sidebar-style-3 .elementor-widget-sidebar .widget-title {
   border-left-style: solid;
   border-left-width: 2px;
   margin-left: -26px;
   padding-left: 22px;
 }
 
-.sinatra-layout__boxed-separated.sinatra-sidebar-style-3 .elementor-widget-sidebar .si-widget {
+.prisma-core-layout__boxed-separated.prisma-core-sidebar-style-3 .elementor-widget-sidebar .pr-widget {
   margin-bottom: 20px;
 }
-.sinatra-layout__boxed-separated.sinatra-sidebar-style-3 .elementor-widget-sidebar .si-widget.widget_media_image {
+.prisma-core-layout__boxed-separated.prisma-core-sidebar-style-3 .elementor-widget-sidebar .pr-widget.widget_media_image {
   padding: 0;
   overflow: hidden;
 }
-.sinatra-layout__boxed-separated.sinatra-sidebar-style-3 .elementor-widget-sidebar .widget_media_image .widget-title {
+.prisma-core-layout__boxed-separated.prisma-core-sidebar-style-3 .elementor-widget-sidebar .widget_media_image .widget-title {
   padding-left: 25px;
   margin-left: 0;
   margin-top: 20px;
 }
 @media screen and (max-width: 960px) {
-  .sinatra-layout__boxed-separated.sinatra-sidebar-style-3 .elementor-widget-sidebar .si-widget {
+  .prisma-core-layout__boxed-separated.prisma-core-sidebar-style-3 .elementor-widget-sidebar .pr-widget {
     background: none !important;
     box-shadow: none;
     border: none;

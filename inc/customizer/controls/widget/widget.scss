@@ -7,23 +7,23 @@
  */
 @import '../../../../assets/sass/config';
 
-.sinatra-add-widget-wrap {
+.prisma-core-add-widget-wrap {
 	display: flex;
 	justify-content: flex-end;
 }
 
-.sinatra-control-wrapper.sinatra-widget-wrapper {
+.prisma-core-control-wrapper.prisma-core-widget-wrapper {
 	.customize-control-description {
 		margin-bottom: 12px !important;
 	}
 }
 
-.sinatra-customizer-widget-form,
-.sinatra-widget-tmpls {
+.prisma-core-customizer-widget-form,
+.prisma-core-widget-tmpls {
 	display: none;
 }
 
-.sinatra-add-widget {
+.prisma-core-add-widget {
 	&::before {
 		content: "\f132";
 		display: inline-block;
@@ -37,18 +37,18 @@
 	}
 }
 
-body.sinatra-adding-widget {
+body.prisma-core-adding-widget {
 
 	#customize-preview {
 		opacity: 0.4;
 	}
 
-	#sinatra-available-widgets {
+	#prisma-core-available-widgets {
 		transform: translate3d(0, 0, 0);
 		visibility: visible;
 	}
 
-	.sinatra-add-widget {
+	.prisma-core-add-widget {
 		background: #eee;
 		border-color: #929793;
 		color: #32373c;
@@ -60,7 +60,7 @@ body.sinatra-adding-widget {
 	}
 }
 
-.sinatra-widget-caption {
+.prisma-core-widget-caption {
 	padding: 0 0 0 25px;
 	display: flex;
 	align-items: center;
@@ -109,9 +109,9 @@ body.sinatra-adding-widget {
 	}
 }
 
-#sinatra-available-widgets-list {
+#prisma-core-available-widgets-list {
 
-	.sinatra-widget {
+	.prisma-core-widget {
 		position: relative;
 		padding: 15px 15px 15px 60px;
 		background-color: #fff;
@@ -186,7 +186,7 @@ body.sinatra-adding-widget {
 	}
 }
 
-.sinatra-widget-container {
+.prisma-core-widget-container {
 
 	.widget {
 		margin-bottom: 5px;
@@ -246,7 +246,7 @@ body.sinatra-adding-widget {
 			border-radius: 0 0 3px 3px;
 		}
 
-		&.sinatra-expanded {
+		&.prisma-core-expanded {
 
 			.widget-top {
 				background-color: #FFF;
@@ -276,17 +276,17 @@ body.sinatra-adding-widget {
 		}
 	}
 
-	.sinatra-widget-nav-selected {
+	.prisma-core-widget-nav-selected {
 		display: none;
 	}
 
-	.sinatra-widget-nav-has-menu {
+	.prisma-core-widget-nav-has-menu {
 
-		.sinatra-widget-nav-empty {
+		.prisma-core-widget-nav-empty {
 			display: none;
 		}
 
-		.sinatra-widget-nav-selected {
+		.prisma-core-widget-nav-selected {
 			display: block;
 		}
 	}

@@ -3,7 +3,7 @@
  	"use strict";
 
  	// Typography control
-	wp.customize.controlConstructor[ 'sinatra-typography' ] = wp.customize.Control.extend({
+	wp.customize.controlConstructor[ 'prisma-core-typography' ] = wp.customize.Control.extend({
 		
 		ready: function() {
 			"use strict";
@@ -31,7 +31,7 @@
 			});
 
 			// Range controls.
-			control.container.find( '.sinatra-range-wrapper' ).each( function() {
+			control.container.find( '.prisma-core-range-wrapper' ).each( function() {
 				var $this = $(this);
 
 				$this.rangeControl({
@@ -94,7 +94,7 @@
 				});
 
 				rangeFields.forEach( (item) => {
-					control.container.find( '[data-option-id="' + item + '"]' ).find( '.sinatra-reset-range' ).click();
+					control.container.find( '[data-option-id="' + item + '"]' ).find( '.prisma-core-reset-range' ).click();
 				});
 			});
 
@@ -166,7 +166,7 @@
 				});
 			} else {
 
-				$.each( sinatra_typography_vars.fonts, function( group_id, group ){
+				$.each( prisma_core_typography_vars.fonts, function( group_id, group ){
 
 					if ( 'undefined' !== typeof group.fonts[ font_family ] ) {
 						
@@ -186,7 +186,7 @@
 				});
 			}
 
-			self.container.find( '.sinatra-typography-font-weight' ).find( 'select' ).html( options );
+			self.container.find( '.prisma-core-typography-font-weight' ).find( 'select' ).html( options );
 		},
 
 		// Populate available font subsets for given font family.
@@ -196,14 +196,14 @@
 				options  = '',
 				selected = '',
 				setting  = self.setting.get(),
-				field    = self.container.find( '.sinatra-typography-font-subsets' );
+				field    = self.container.find( '.prisma-core-typography-font-subsets' );
 
 			if ( 'default' === font_family || 'inherit' === font_family ) {
 				field.hide();
 				return;
 			}
 
-			$.each( sinatra_typography_vars.fonts, function( group_id, group ){
+			$.each( prisma_core_typography_vars.fonts, function( group_id, group ){
 
 				if ( 'undefined' !== typeof group.fonts[ font_family ] ) {
 
@@ -244,7 +244,7 @@
 			selected = 'default' === setting['font-family'] ? ' selected="selected"' : '';
 			options += '<option value="default"' + selected + '>' + self.params.l10n.default + '</option>';
 
-			$.each( sinatra_typography_vars.fonts, function( group_id, group ){
+			$.each( prisma_core_typography_vars.fonts, function( group_id, group ){
 
 				options += '<optgroup label="' + group.name + '">';
 

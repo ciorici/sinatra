@@ -10,9 +10,9 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * Sinatra changes: added si-fw-section class, si-container wrappers,
+ * Prisma Core changes: added pr-fw-section class, pr-container wrappers,
  * span inside tab links for underline animation,
- * si-entry class on description panel.
+ * pr-entry class on description panel.
  *
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
@@ -34,9 +34,9 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
 if ( ! empty( $product_tabs ) ) : ?>
 
-	<div class="woocommerce-tabs si-fw-section wc-tabs-wrapper">
+	<div class="woocommerce-tabs pr-fw-section wc-tabs-wrapper">
 		<ul class="tabs wc-tabs" role="tablist">
-			<div class="si-container">
+			<div class="pr-container">
 				<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
 					<li role="presentation" class="<?php echo esc_attr( $key ); ?>_tab" id="tab-title-<?php echo esc_attr( $key ); ?>">
 						<a href="#tab-<?php echo esc_attr( $key ); ?>" role="tab" aria-controls="tab-<?php echo esc_attr( $key ); ?>">
@@ -47,8 +47,8 @@ if ( ! empty( $product_tabs ) ) : ?>
 			</div>
 		</ul>
 		<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
-			<div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--<?php echo esc_attr( $key ); ?><?php echo 'description' === $key ? ' si-entry' : ''; ?> panel entry-content wc-tab" id="tab-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="tab-title-<?php echo esc_attr( $key ); ?>">
-				<div class="si-container">
+			<div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--<?php echo esc_attr( $key ); ?><?php echo 'description' === $key ? ' pr-entry' : ''; ?> panel entry-content wc-tab" id="tab-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="tab-title-<?php echo esc_attr( $key ); ?>">
+				<div class="pr-container">
 					<?php
 					if ( isset( $product_tab['callback'] ) ) {
 						call_user_func( $product_tab['callback'], $key, $product_tab );

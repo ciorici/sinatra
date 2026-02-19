@@ -2,21 +2,21 @@
 /**
  * The template for displaying header navigation.
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
 ?>
 
-<nav class="site-navigation main-navigation sinatra-primary-nav sinatra-nav si-header-element" role="navigation"<?php sinatra_schema_markup( 'site_navigation' ); ?> aria-label="<?php esc_attr_e( 'Site Navigation', 'sinatra' ); ?>">
+<nav class="site-navigation main-navigation prisma-core-primary-nav prisma-core-nav pr-header-element" role="navigation"<?php prisma_core_schema_markup( 'site_navigation' ); ?> aria-label="<?php esc_attr_e( 'Site Navigation', 'prisma-core' ); ?>">
 <?php
 
-if ( has_nav_menu( 'sinatra-primary' ) ) {
+if ( has_nav_menu( 'prisma-core-primary' ) ) {
 	wp_nav_menu(
 		array(
-			'theme_location' => 'sinatra-primary',
-			'menu_id'        => 'sinatra-primary-nav',
+			'theme_location' => 'prisma-core-primary',
+			'menu_id'        => 'prisma-core-primary-nav',
 			'container'      => '',
 			'link_before'    => '<span>',
 			'link_after'     => '</span>',
@@ -25,7 +25,7 @@ if ( has_nav_menu( 'sinatra-primary' ) ) {
 } else {
 	wp_page_menu(
 		array(
-			'menu_class'  => 'sinatra-primary-nav',
+			'menu_class'  => 'prisma-core-primary-nav',
 			'show_home'   => true,
 			'container'   => 'ul',
 			'before'      => '',
@@ -37,4 +37,4 @@ if ( has_nav_menu( 'sinatra-primary' ) ) {
 }
 
 ?>
-</nav><!-- END .sinatra-nav -->
+</nav><!-- END .prisma-core-nav -->

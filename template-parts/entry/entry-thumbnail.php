@@ -4,8 +4,8 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
@@ -16,14 +16,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$sinatra_post_format = get_post_format();
+$prisma_core_post_format = get_post_format();
 
 if ( is_single() ) {
-	$sinatra_post_format = '';
+	$prisma_core_post_format = '';
 }
 
-do_action( 'sinatra_before_entry_thumbnail' );
+do_action( 'prisma_core_before_entry_thumbnail' );
 
-get_template_part( 'template-parts/entry/format/media', $sinatra_post_format );
+get_template_part( 'template-parts/entry/format/media', $prisma_core_post_format );
 
-do_action( 'sinatra_after_entry_thumbnail' );
+do_action( 'prisma_core_after_entry_thumbnail' );

@@ -9,12 +9,12 @@
 
 
 #customize-controls {
-	.customize-control.customize-control-sinatra-heading {
+	.customize-control.customize-control-prisma-core-heading {
 		&:after {
 			margin-top: 1px;
 		}
 
-		.sinatra-heading-top-space {
+		.prisma-core-heading-top-space {
 			height: 12px;
 			margin: -17px -12px 0 -12px;
 			background-color: #eee;
@@ -23,7 +23,7 @@
 	}
 }
 
-.sinatra-heading-wrapper {
+.prisma-core-heading-wrapper {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -47,7 +47,7 @@
 	&.toggle-heading:hover {
 		cursor: pointer;
 
-		.sinatra-heading-toggle label {
+		.prisma-core-heading-toggle label {
 			background-color: #f0f0f0;
 			
 			&:before {
@@ -60,7 +60,7 @@
 		margin-top: 0;
 	}
 
-	.sinatra-control-heading {
+	.prisma-core-control-heading {
 		margin-right: auto;
 		font-size: 11px;
 		text-transform: uppercase;
@@ -68,7 +68,7 @@
 		font-weight: 500;
 	}
 
-	.sinatra-heading-toggle {
+	.prisma-core-heading-toggle {
 		label {
 			pointer-events: none;
 			margin-left: 6px;

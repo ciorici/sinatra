@@ -11,10 +11,10 @@ $color_1:               #0085ba;
 $body_color: 			#ddd;
 $admin_border_color: 	#ddd;
 
-.sinatra-toggle-wrapper {
+.prisma-core-toggle-wrapper {
 	display: flex;
 
-	.sinatra-toggle {
+	.prisma-core-toggle {
 		margin-left: auto;
 		padding-left: 10px;
 		box-sizing: border-box;
@@ -26,7 +26,7 @@ $admin_border_color: 	#ddd;
 	}
 }
 
-.sinatra-toggle {
+.prisma-core-toggle {
 	display: flex;
 	align-items: center;
 	margin-left: auto;
@@ -34,7 +34,7 @@ $admin_border_color: 	#ddd;
 	input[type="checkbox"] {
 		display: none;
 
-		&:checked + label .sinatra-toggle-switch {
+		&:checked + label .prisma-core-toggle-switch {
 			background-color: $color_1 !important;
 
 			&:after {
@@ -43,7 +43,7 @@ $admin_border_color: 	#ddd;
 		}
 	}
 
-	.sinatra-toggle-switch {
+	.prisma-core-toggle-switch {
 		box-sizing: border-box;
 		background-color: darken( #c7d5df, 15 );
 		border-radius: 9px;
@@ -78,7 +78,7 @@ $admin_border_color: 	#ddd;
 		color: $color_3;
 
 		&:hover {
-			.sinatra-toggle-switch {
+			.prisma-core-toggle-switch {
 				background-color: darken( #c7d5df, 25 );
 			}
 		}

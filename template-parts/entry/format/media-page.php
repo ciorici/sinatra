@@ -4,8 +4,8 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Sinatra
- * @author  Sinatra Team <hello@sinatrawp.com>
+ * @package Prisma Core
+ * @author  Prisma Core Team
  * @since   1.0.0
  */
 
@@ -17,24 +17,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Get default post media.
-$sinatra_media = sinatra_get_post_media( '' );
+$prisma_core_media = prisma_core_get_post_media( '' );
 
-if ( ! $sinatra_media || post_password_required() ) {
+if ( ! $prisma_core_media || post_password_required() ) {
 	return;
 }
 
-$sinatra_media = apply_filters( 'sinatra_post_thumbnail', $sinatra_media, get_the_ID() );
+$prisma_core_media = apply_filters( 'prisma_core_post_thumbnail', $prisma_core_media, get_the_ID() );
 
-$sinatra_classes = array( 'post-thumb', 'entry-media', 'thumbnail' );
+$prisma_core_classes = array( 'post-thumb', 'entry-media', 'thumbnail' );
 
-$sinatra_classes = apply_filters( 'sinatra_post_thumbnail_wrapper_classes', $sinatra_classes, get_the_ID() );
-$sinatra_classes = trim( implode( ' ', array_unique( $sinatra_classes ) ) );
+$prisma_core_classes = apply_filters( 'prisma_core_post_thumbnail_wrapper_classes', $prisma_core_classes, get_the_ID() );
+$prisma_core_classes = trim( implode( ' ', array_unique( $prisma_core_classes ) ) );
 
 // Print the post thumbnail.
 echo wp_kses_post(
 	sprintf(
 		'<div class="%2$s">%1$s</div>',
-		$sinatra_media,
-		esc_attr( $sinatra_classes )
+		$prisma_core_media,
+		esc_attr( $prisma_core_classes )
 	)
 );

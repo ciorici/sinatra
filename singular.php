@@ -7,8 +7,8 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
@@ -16,31 +16,31 @@
 
 <?php get_header(); ?>
 
-<div class="si-container">
+<div class="pr-container">
 
 	<div id="primary" class="content-area">
 
-		<?php do_action( 'sinatra_before_content' ); ?>
+		<?php do_action( 'prisma_core_before_content' ); ?>
 
-		<main id="content" class="site-content" role="main"<?php sinatra_schema_markup( 'main' ); ?>>
+		<main id="content" class="site-content" role="main"<?php prisma_core_schema_markup( 'main' ); ?>>
 
 			<?php
-			do_action( 'sinatra_before_singular' );
+			do_action( 'prisma_core_before_singular' );
 
-			do_action( 'sinatra_content_singular' );
+			do_action( 'prisma_core_content_singular' );
 
-			do_action( 'sinatra_after_singular' );
+			do_action( 'prisma_core_after_singular' );
 			?>
 
 		</main><!-- #content .site-content -->
 
-		<?php do_action( 'sinatra_after_content' ); ?>
+		<?php do_action( 'prisma_core_after_content' ); ?>
 
 	</div><!-- #primary .content-area -->
 
-	<?php do_action( 'sinatra_sidebar' ); ?>
+	<?php do_action( 'prisma_core_sidebar' ); ?>
 
-</div><!-- END .si-container -->
+</div><!-- END .pr-container -->
 
 <?php
 get_footer();

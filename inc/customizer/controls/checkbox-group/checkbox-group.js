@@ -2,7 +2,7 @@
 
  	"use strict";
 
- 	wp.customize.controlConstructor['sinatra-checkbox-group'] = wp.customize.Control.extend({
+ 	wp.customize.controlConstructor['prisma-core-checkbox-group'] = wp.customize.Control.extend({
 
 		ready: function() {
 

@@ -2,8 +2,8 @@
 /**
  * SVG icons related functions and filters
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
@@ -23,10 +23,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param WP_Post  $item  Menu item data object.
  * @param int      $depth Depth of menu item. Used for padding.
  */
-function sinatra_nav_menu_item_args( $args, $item, $depth ) {
+function prisma_core_nav_menu_item_args( $args, $item, $depth ) {
 
-	if ( sinatra_option( 'main_nav_sub_indicators' ) ) {
-		$dropdown_indicator = sinatra()->icons->get_svg( 'chevron-down' );
+	if ( prisma_core_option( 'main_nav_sub_indicators' ) ) {
+		$dropdown_indicator = prisma_core()->icons->get_svg( 'chevron-down' );
 
 		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 			if ( false === strpos( $args->link_after, $dropdown_indicator ) ) {
@@ -39,7 +39,7 @@ function sinatra_nav_menu_item_args( $args, $item, $depth ) {
 
 	return $args;
 }
-add_filter( 'nav_menu_item_args', 'sinatra_nav_menu_item_args', 10, 3 );
+add_filter( 'nav_menu_item_args', 'prisma_core_nav_menu_item_args', 10, 3 );
 
 
 /**
@@ -51,19 +51,19 @@ add_filter( 'nav_menu_item_args', 'sinatra_nav_menu_item_args', 10, 3 );
  * @param  array   $args        wp_nav_menu() arguments.
  * @return string  $item_output The menu item output with social icon.
  */
-function sinatra_nav_menu_social_icons( $item_output, $item, $depth, $args ) {
+function prisma_core_nav_menu_social_icons( $item_output, $item, $depth, $args ) {
 
 	// Get supported social icons.
-	$social_icons = sinatra_social_links_icons();
+	$social_icons = prisma_core_social_links_icons();
 
 	// Change SVG icon inside social links menu if there is supported URL.
-	if ( false !== strpos( $args->menu_class, 'sinatra-socials-menu' ) ) {
+	if ( false !== strpos( $args->menu_class, 'prisma-core-socials-menu' ) ) {
 
 		foreach ( $social_icons as $attr => $value ) {
 			if ( false !== strpos( $item_output, $attr ) ) {
 				$item_output = str_replace(
 					$args->link_after,
-					'</span>' . sinatra()->icons->get_svg( $value, array( 'aria-hidden' => 'true' ) ) . sinatra()->icons->get_svg(
+					'</span>' . prisma_core()->icons->get_svg( $value, array( 'aria-hidden' => 'true' ) ) . prisma_core()->icons->get_svg(
 						$value,
 						array(
 							'class'       => 'bottom-icon',
@@ -78,14 +78,14 @@ function sinatra_nav_menu_social_icons( $item_output, $item, $depth, $args ) {
 
 	return $item_output;
 }
-add_filter( 'walker_nav_menu_start_el', 'sinatra_nav_menu_social_icons', 10, 4 );
+add_filter( 'walker_nav_menu_start_el', 'prisma_core_nav_menu_social_icons', 10, 4 );
 
 /**
  * Returns an array of supported social links (URL and icon name).
  *
  * @return array $social_links_icons
  */
-function sinatra_social_links_icons() {
+function prisma_core_social_links_icons() {
 
 	// Supported social links icons.
 	$social_links_icons = array(
@@ -125,21 +125,21 @@ function sinatra_social_links_icons() {
 	);
 
 	/**
-	 * Filter Sinatra social links icons.
+	 * Filter Prisma Core social links icons.
 	 *
 	 * @since 1.0.0
 	 * @param array $social_links_icons Array of social links icons.
 	 */
-	return apply_filters( 'sinatra_social_links_icons', $social_links_icons );
+	return apply_filters( 'prisma_core_social_links_icons', $social_links_icons );
 }
 
-if ( ! class_exists( 'Sinatra_Icons' ) ) :
+if ( ! class_exists( 'Prisma_Core_Icons' ) ) :
 	/**
-	 * Sinatra Icons class.
+	 * Prisma Core Icons class.
 	 *
 	 * @since 1.2.0
 	 */
-	class Sinatra_Icons {
+	class Prisma_Core_Icons {
 		/**
 		 * Primary class constructor.
 		 *
@@ -170,9 +170,9 @@ if ( ! class_exists( 'Sinatra_Icons' ) ) :
 				)
 			);
 
-			// .si-icon is a required class.
-			if ( false === strpos( $args['class'], 'si-icon' ) ) {
-				$args['class'] = trim( 'si-icon ' . $args['class'] );
+			// .pr-icon is a required class.
+			if ( false === strpos( $args['class'], 'pr-icon' ) ) {
+				$args['class'] = trim( 'pr-icon ' . $args['class'] );
 			}
 
 			$repl = '<svg ';
@@ -233,7 +233,7 @@ if ( ! class_exists( 'Sinatra_Icons' ) ) :
 		 * @return array
 		 */
 		public function get() {
-			return apply_filters( 'sinatra_icons_svg', self::$icons );
+			return apply_filters( 'prisma_core_icons_svg', self::$icons );
 		}
 
 		/**
@@ -273,16 +273,16 @@ if ( ! class_exists( 'Sinatra_Icons' ) ) :
 			$return = '';
 
 			if ( is_single( $post_id ) ) {
-				if ( sinatra_option( 'single_entry_meta_icons' ) ) {
+				if ( prisma_core_option( 'single_entry_meta_icons' ) ) {
 					$return = $icon;
 				}
 			} elseif ( ! is_single() ) {
-				if ( sinatra_option( 'entry_meta_icons' ) ) {
+				if ( prisma_core_option( 'entry_meta_icons' ) ) {
 					$return = $icon;
 				}
 			}
 
-			return apply_filters( 'sinatra_' . $slug . '_meta_icon', $return, $post_id );
+			return apply_filters( 'prisma_core_' . $slug . '_meta_icon', $return, $post_id );
 		}
 
 		/**

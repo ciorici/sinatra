@@ -7,13 +7,13 @@
  */
 @import '../../../../assets/sass/config';
 
-.sinatra-typography-wrapper {
+.prisma-core-typography-wrapper {
 
-	.sinatra-control-wrap {
+	.prisma-core-control-wrap {
 		width: 100%;
 	}
 
-	.sinatra-range-wrapper {
+	.prisma-core-range-wrapper {
 		position: relative;
 
 		label {
@@ -22,7 +22,7 @@
 			margin-bottom: 6px;
 		}
 
-		.sinatra-control-unit {
+		.prisma-core-control-unit {
 			position: absolute;
 			top: 4px;
 			right: 0;
@@ -30,11 +30,11 @@
 		}
 	}
 
-	.sinatra-typography-heading {
+	.prisma-core-typography-heading {
 		flex-grow: 1;
 	}
 
-	.sinatra-typography-advanced {
+	.prisma-core-typography-advanced {
 		background-color: #fff;
 		padding: 15px 22px;
 		position: absolute;
@@ -67,12 +67,12 @@
 		}
 	}
 
-	.sinatra-typography-font-family,
-	.sinatra-typography-font-subsets,
-	.sinatra-typography-font-weight,
-	.sinatra-typography-font-style,
-	.sinatra-typography-text-transform,
-	.sinatra-typography-text-decoration {
+	.prisma-core-typography-font-family,
+	.prisma-core-typography-font-subsets,
+	.prisma-core-typography-font-weight,
+	.prisma-core-typography-font-style,
+	.prisma-core-typography-text-transform,
+	.prisma-core-typography-text-decoration {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -86,30 +86,30 @@
 		}
 	}
 
-	.sinatra-typography-font-weight,
-	.sinatra-typography-font-style,
-	.sinatra-typography-text-transform,
-	.sinatra-typography-text-decoration {
+	.prisma-core-typography-font-weight,
+	.prisma-core-typography-font-style,
+	.prisma-core-typography-text-transform,
+	.prisma-core-typography-text-decoration {
 		margin-top: 0;
 		margin-bottom: 0;
 	}
 
-	.sinatra-typography-font-weight,
-	.sinatra-typography-letter-spacing,
-	.sinatra-typography-line-height {
+	.prisma-core-typography-font-weight,
+	.prisma-core-typography-letter-spacing,
+	.prisma-core-typography-line-height {
 		margin-top: 12px;
 	}
 
-	.sinatra-typography-line-height,
-	.sinatra-typography-text-decoration {
+	.prisma-core-typography-line-height,
+	.prisma-core-typography-text-decoration {
 		margin-bottom: 24px;
 	}
 
-	.sinatra-typography-font-family {
+	.prisma-core-typography-font-family {
 		margin-bottom: 12px;
 	}
 
-	.sinatra-responsive-switchers {
+	.prisma-core-responsive-switchers {
 		margin-left: 6px;
 	}
 

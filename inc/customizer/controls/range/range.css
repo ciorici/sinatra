@@ -4,19 +4,19 @@
 /**
  * Import configuration file with variables.
  */
-.sinatra-range-wrapper .sinatra-control-wrap {
+.prisma-core-range-wrapper .prisma-core-control-wrap {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   box-sizing: border-box;
   margin-top: 12px;
 }
-.sinatra-range-wrapper .sinatra-control-wrap input[type=range],
-.sinatra-range-wrapper .sinatra-control-wrap .sinatra-range-input,
-.sinatra-range-wrapper .sinatra-control-wrap .sinatra-reset-range {
+.prisma-core-range-wrapper .prisma-core-control-wrap input[type=range],
+.prisma-core-range-wrapper .prisma-core-control-wrap .prisma-core-range-input,
+.prisma-core-range-wrapper .prisma-core-control-wrap .prisma-core-reset-range {
   flex: 1;
 }
-.sinatra-range-wrapper input[type=range] {
+.prisma-core-range-wrapper input[type=range] {
   background-color: #ddd;
   height: 3px;
   padding: 0;
@@ -26,14 +26,14 @@
   border-radius: 3px;
   -webkit-appearance: none;
 }
-.sinatra-range-wrapper input[type=range]:focus {
+.prisma-core-range-wrapper input[type=range]:focus {
   box-shadow: none !important;
   outline: none !important;
 }
-.sinatra-range-wrapper input[type=range]:hover {
+.prisma-core-range-wrapper input[type=range]:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
-.sinatra-range-wrapper input[type=range]::-webkit-slider-thumb {
+.prisma-core-range-wrapper input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   background-color: #2e86b9;
   width: 15px;
@@ -43,31 +43,31 @@
   -webkit-transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
   transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
-.sinatra-range-wrapper input[type=range]::-webkit-slider-thumb:hover {
+.prisma-core-range-wrapper input[type=range]::-webkit-slider-thumb:hover {
   background-color: #008ec2;
   box-shadow: 0 0 0 10px rgba(46, 134, 185, 0.12);
 }
-.sinatra-range-wrapper input[type=range]::-webkit-slider-thumb:active {
+.prisma-core-range-wrapper input[type=range]::-webkit-slider-thumb:active {
   box-shadow: none;
   transform: scale(1.5);
   cursor: grabbing;
 }
-.sinatra-range-wrapper input[type=range]::-moz-range-track {
+.prisma-core-range-wrapper input[type=range]::-moz-range-track {
   border: inherit;
   background-color: transparent;
 }
-.sinatra-range-wrapper input[type=range]::-ms-track {
+.prisma-core-range-wrapper input[type=range]::-ms-track {
   border: inherit;
   color: transparent;
   background-color: transparent;
 }
-.sinatra-range-wrapper input[type=range]::-ms-fill-lower, .sinatra-range-wrapper input[type=range]::-ms-fill-upper {
+.prisma-core-range-wrapper input[type=range]::-ms-fill-lower, .prisma-core-range-wrapper input[type=range]::-ms-fill-upper {
   background-color: transparent;
 }
-.sinatra-range-wrapper input[type=range]::-ms-tooltip {
+.prisma-core-range-wrapper input[type=range]::-ms-tooltip {
   display: none;
 }
-.sinatra-range-wrapper input[type=range]::-moz-range-thumb {
+.prisma-core-range-wrapper input[type=range]::-moz-range-thumb {
   background-color: #2e86b9;
   width: 15px;
   height: 15px;
@@ -76,11 +76,11 @@
   -moz-transition: all 0.15s ease;
   transition: all 0.15s ease;
 }
-.sinatra-range-wrapper input[type=range]::-moz-range-thumb:hover {
+.prisma-core-range-wrapper input[type=range]::-moz-range-thumb:hover {
   background-color: #008ec2;
   transform: scale(1.25);
 }
-.sinatra-range-wrapper input[type=range]::-ms-thumb {
+.prisma-core-range-wrapper input[type=range]::-ms-thumb {
   background-color: #2e86b9;
   width: 15px;
   height: 15px;
@@ -89,11 +89,11 @@
   -ms-transition: all 0.15s ease;
   transition: all 0.15s ease;
 }
-.sinatra-range-wrapper input[type=range]::-ms-thumb:hover {
+.prisma-core-range-wrapper input[type=range]::-ms-thumb:hover {
   background-color: #008ec2;
   transform: scale(1.25);
 }
-.sinatra-range-wrapper .sinatra-range-input {
+.prisma-core-range-wrapper .prisma-core-range-input {
   max-width: 50px;
   height: 28px;
   text-align: center;
@@ -104,11 +104,11 @@
   -moz-appearance: textfield;
   margin-left: 6px !important;
 }
-.sinatra-range-wrapper .sinatra-range-input::-webkit-outer-spin-button, .sinatra-range-wrapper .sinatra-range-input::-webkit-inner-spin-button {
+.prisma-core-range-wrapper .prisma-core-range-input::-webkit-outer-spin-button, .prisma-core-range-wrapper .prisma-core-range-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.sinatra-range-wrapper .sinatra-reset-range {
+.prisma-core-range-wrapper .prisma-core-reset-range {
   max-width: 16px;
   margin-left: 12px;
   display: inline-block;
@@ -118,16 +118,16 @@
   cursor: pointer;
   text-align: center;
 }
-.sinatra-range-wrapper .sinatra-reset-range:hover {
+.prisma-core-range-wrapper .prisma-core-reset-range:hover {
   color: #f00;
 }
-.sinatra-range-wrapper .sinatra-reset-range span {
+.prisma-core-range-wrapper .prisma-core-reset-range span {
   width: 13px;
   height: 13px;
   font-size: 13px;
   line-height: 1;
 }
-.sinatra-range-wrapper .sinatra-range-unit {
+.prisma-core-range-wrapper .prisma-core-range-unit {
   margin-left: 6px;
   color: #555d66;
 }

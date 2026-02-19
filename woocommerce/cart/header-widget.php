@@ -2,7 +2,7 @@
 /**
  * Header Cart Widget.
  *
- * @package Sinatra
+ * @package Prisma Core
  */
 
 // Exit if accessed directly.
@@ -10,13 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$sinatra_cart_count = WC()->cart->get_cart_contents_count();
-$sinatra_cart_icon  = apply_filters( 'sinatra_wc_cart_widget_icon', 'shopping-cart' );
+$prisma_core_cart_count = WC()->cart->get_cart_contents_count();
+$prisma_core_cart_icon  = apply_filters( 'prisma_core_wc_cart_widget_icon', 'shopping-cart' );
 
 ?>
-<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="si-cart">
-	<?php echo sinatra()->icons->get_svg( $sinatra_cart_icon ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-	<?php if ( $sinatra_cart_count > 0 ) { ?>
-		<span class="si-cart-count"><?php echo esc_html( $sinatra_cart_count ); ?></span>
+<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="pr-cart">
+	<?php echo prisma_core()->icons->get_svg( $prisma_core_cart_icon ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<?php if ( $prisma_core_cart_count > 0 ) { ?>
+		<span class="pr-cart-count"><?php echo esc_html( $prisma_core_cart_count ); ?></span>
 	<?php } ?>
 </a>

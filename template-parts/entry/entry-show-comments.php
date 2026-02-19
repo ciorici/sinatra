@@ -2,8 +2,8 @@
 /**
  * Template part for displaying ”Show Comments” button.
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
@@ -12,16 +12,16 @@ if ( post_password_required() ) {
 	return;
 }
 
-$sinatra_comment_count = get_comments_number();
-$sinatra_comment_title = esc_html__( 'Leave a Comment', 'sinatra' );
+$prisma_core_comment_count = get_comments_number();
+$prisma_core_comment_title = esc_html__( 'Leave a Comment', 'prisma-core' );
 
-if ( $sinatra_comment_count > 0 ) {
+if ( $prisma_core_comment_count > 0 ) {
 	/* translators: %s is comment count */
-	$sinatra_comment_title = esc_html( sprintf( _n( 'Show %s Comment', 'Show %s Comments', $sinatra_comment_count, 'sinatra' ), $sinatra_comment_count ) );
+	$prisma_core_comment_title = esc_html( sprintf( _n( 'Show %s Comment', 'Show %s Comments', $prisma_core_comment_count, 'prisma-core' ), $prisma_core_comment_count ) );
 }
 
 ?>
-<a href="#" id="sinatra-comments-toggle" class="si-btn btn-large btn-fw btn-left-icon">
-	<?php echo sinatra()->icons->get_svg( 'chat' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-	<span><?php echo $sinatra_comment_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+<a href="#" id="prisma-core-comments-toggle" class="pr-btn btn-large btn-fw btn-left-icon">
+	<?php echo prisma_core()->icons->get_svg( 'chat' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<span><?php echo $prisma_core_comment_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 </a>

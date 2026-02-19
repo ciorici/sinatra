@@ -2,17 +2,17 @@
 /**
  * Theme functions and definitions.
  *
- * @package Sinatra
- * @author  Sinatra Team <hello@sinatrawp.com>
+ * @package Prisma Core
+ * @author  Prisma Core Team
  * @since   1.0.0
  */
 
 /**
- * Main Sinatra class.
+ * Main Prisma Core class.
  *
  * @since 1.0.0
  */
-final class Sinatra {
+final class Prisma_Core {
 
 	/**
 	 * Singleton instance of the class.
@@ -34,7 +34,7 @@ final class Sinatra {
 	 * Theme options.
 	 *
 	 * @since 1.0.0
-	 * @var Sinatra_Options
+	 * @var Prisma_Core_Options
 	 */
 	public $options;
 
@@ -42,7 +42,7 @@ final class Sinatra {
 	 * Fonts.
 	 *
 	 * @since 1.0.0
-	 * @var Sinatra_Fonts
+	 * @var Prisma_Core_Fonts
 	 */
 	public $fonts;
 
@@ -50,7 +50,7 @@ final class Sinatra {
 	 * Icons.
 	 *
 	 * @since 1.0.0
-	 * @var Sinatra_Icons
+	 * @var Prisma_Core_Icons
 	 */
 	public $icons;
 
@@ -58,7 +58,7 @@ final class Sinatra {
 	 * Customizer.
 	 *
 	 * @since 1.0.0
-	 * @var Sinatra_Customizer
+	 * @var Prisma_Core_Customizer
 	 */
 	public $customizer;
 
@@ -66,30 +66,30 @@ final class Sinatra {
 	 * Admin.
 	 *
 	 * @since 1.0.0
-	 * @var Sinatra_Admin
+	 * @var Prisma_Core_Admin
 	 */
 	public $admin;
 
 	/**
-	 * Main Sinatra Instance.
+	 * Main Prisma Core Instance.
 	 *
-	 * Insures that only one instance of Sinatra exists in memory at any one
+	 * Insures that only one instance of Prisma Core exists in memory at any one
 	 * time. Also prevents needing to define globals all over the place.
 	 *
 	 * @since 1.0.0
-	 * @return Sinatra
+	 * @return Prisma Core
 	 */
 	public static function instance() {
 
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Sinatra ) ) {
-			self::$instance = new Sinatra();
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Prisma_Core ) ) {
+			self::$instance = new Prisma_Core();
 
 			self::$instance->constants();
 			self::$instance->includes();
 			self::$instance->objects();
 
-			// Hook now that all of the Sinatra stuff is loaded.
-			do_action( 'sinatra_loaded' );
+			// Hook now that all of the Prisma Core stuff is loaded.
+			do_action( 'prisma_core_loaded' );
 		}
 		return self::$instance;
 	}
@@ -111,16 +111,16 @@ final class Sinatra {
 	 */
 	private function constants() {
 
-		if ( ! defined( 'SINATRA_THEME_VERSION' ) ) {
-			define( 'SINATRA_THEME_VERSION', $this->version );
+		if ( ! defined( 'PRISMA_CORE_THEME_VERSION' ) ) {
+			define( 'PRISMA_CORE_THEME_VERSION', $this->version );
 		}
 
-		if ( ! defined( 'SINATRA_THEME_URI' ) ) {
-			define( 'SINATRA_THEME_URI', get_parent_theme_file_uri() );
+		if ( ! defined( 'PRISMA_CORE_THEME_URI' ) ) {
+			define( 'PRISMA_CORE_THEME_URI', get_parent_theme_file_uri() );
 		}
 
-		if ( ! defined( 'SINATRA_THEME_PATH' ) ) {
-			define( 'SINATRA_THEME_PATH', get_parent_theme_file_path() );
+		if ( ! defined( 'PRISMA_CORE_THEME_PATH' ) ) {
+			define( 'PRISMA_CORE_THEME_PATH', get_parent_theme_file_path() );
 		}
 	}
 
@@ -132,42 +132,42 @@ final class Sinatra {
 	 */
 	public function includes() {
 
-		require_once SINATRA_THEME_PATH . '/inc/common.php';
-		require_once SINATRA_THEME_PATH . '/inc/deprecated.php';
-		require_once SINATRA_THEME_PATH . '/inc/helpers.php';
-		require_once SINATRA_THEME_PATH . '/inc/widgets.php';
-		require_once SINATRA_THEME_PATH . '/inc/template-tags.php';
-		require_once SINATRA_THEME_PATH . '/inc/template-parts.php';
-		require_once SINATRA_THEME_PATH . '/inc/icon-functions.php';
-		require_once SINATRA_THEME_PATH . '/inc/breadcrumbs.php';
-		require_once SINATRA_THEME_PATH . '/inc/class-sinatra-dynamic-styles.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/common.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/deprecated.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/helpers.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/widgets.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/template-tags.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/template-parts.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/icon-functions.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/breadcrumbs.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/class-prisma-core-dynamic-styles.php';
 
 		// Core.
-		require_once SINATRA_THEME_PATH . '/inc/core/class-sinatra-options.php';
-		require_once SINATRA_THEME_PATH . '/inc/core/class-sinatra-enqueue-scripts.php';
-		require_once SINATRA_THEME_PATH . '/inc/core/class-sinatra-fonts.php';
-		require_once SINATRA_THEME_PATH . '/inc/core/class-sinatra-theme-setup.php';
-		require_once SINATRA_THEME_PATH . '/inc/core/class-sinatra-db-updater.php';
-		require_once SINATRA_THEME_PATH . '/inc/core/class-sinatra-migration.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/core/class-prisma-core-options.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/core/class-prisma-core-enqueue-scripts.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/core/class-prisma-core-fonts.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/core/class-prisma-core-theme-setup.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/core/class-prisma-core-db-updater.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/core/class-prisma-core-migration.php';
 
 		// Compatibility.
-		require_once SINATRA_THEME_PATH . '/inc/compatibility/woocommerce/class-sinatra-woocommerce.php';
-		require_once SINATRA_THEME_PATH . '/inc/compatibility/socialsnap/class-sinatra-socialsnap.php';
-		require_once SINATRA_THEME_PATH . '/inc/compatibility/class-sinatra-wpforms.php';
-		require_once SINATRA_THEME_PATH . '/inc/compatibility/class-sinatra-jetpack.php';
-		require_once SINATRA_THEME_PATH . '/inc/compatibility/class-sinatra-endurance.php';
-		require_once SINATRA_THEME_PATH . '/inc/compatibility/class-sinatra-beaver-themer.php';
-		require_once SINATRA_THEME_PATH . '/inc/compatibility/class-sinatra-elementor.php';
-		require_once SINATRA_THEME_PATH . '/inc/compatibility/class-sinatra-elementor-pro.php';
-		require_once SINATRA_THEME_PATH . '/inc/compatibility/class-sinatra-hfe.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/compatibility/woocommerce/class-prisma-core-woocommerce.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/compatibility/socialsnap/class-prisma-core-socialsnap.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/compatibility/class-prisma-core-wpforms.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/compatibility/class-prisma-core-jetpack.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/compatibility/class-prisma-core-endurance.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/compatibility/class-prisma-core-beaver-themer.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/compatibility/class-prisma-core-elementor.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/compatibility/class-prisma-core-elementor-pro.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/compatibility/class-prisma-core-hfe.php';
 
 		if ( is_admin() ) {
-			require_once SINATRA_THEME_PATH . '/inc/utilities/class-sinatra-plugin-utilities.php';
-			require_once SINATRA_THEME_PATH . '/inc/admin/class-sinatra-admin.php';
+			require_once PRISMA_CORE_THEME_PATH . '/inc/utilities/class-prisma-core-plugin-utilities.php';
+			require_once PRISMA_CORE_THEME_PATH . '/inc/admin/class-prisma-core-admin.php';
 		}
 
 		// Customizer.
-		require_once SINATRA_THEME_PATH . '/inc/customizer/class-sinatra-customizer.php';
+		require_once PRISMA_CORE_THEME_PATH . '/inc/customizer/class-prisma-core-customizer.php';
 	}
 
 	/**
@@ -178,30 +178,30 @@ final class Sinatra {
 	 */
 	public function objects() {
 
-		sinatra()->options    = new Sinatra_Options();
-		sinatra()->fonts      = new Sinatra_Fonts();
-		sinatra()->icons      = new Sinatra_Icons();
-		sinatra()->customizer = new Sinatra_Customizer();
+		prisma_core()->options    = new Prisma_Core_Options();
+		prisma_core()->fonts      = new Prisma_Core_Fonts();
+		prisma_core()->icons      = new Prisma_Core_Icons();
+		prisma_core()->customizer = new Prisma_Core_Customizer();
 
 		if ( is_admin() ) {
-			sinatra()->admin = new Sinatra_Admin();
+			prisma_core()->admin = new Prisma_Core_Admin();
 		}
 	}
 }
 
 /**
- * The function which returns the one Sinatra instance.
+ * The function which returns the one Prisma Core instance.
  *
  * Use this function like you would a global variable, except without needing
  * to declare the global.
  *
- * Example: <?php $sinatra = sinatra(); ?>
+ * Example: <?php $prisma-core = prisma_core(); ?>
  *
  * @since 1.0.0
  * @return object
  */
-function sinatra() {
-	return Sinatra::instance();
+function prisma_core() {
+	return Prisma_Core::instance();
 }
 
-sinatra();
+prisma_core();

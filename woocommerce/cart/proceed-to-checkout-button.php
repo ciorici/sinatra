@@ -12,7 +12,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * Sinatra changes: button classes to include our own styling.
+ * Prisma Core changes: button classes to include our own styling.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="si-woo-checkout btn-right-icon si-btn btn-large btn-fw" role="button">
-	<span><?php esc_html_e( 'Proceed to Checkout', 'sinatra' ); ?></span>
-	<?php echo sinatra()->icons->get_svg( 'arrow-right', array( 'aria-hidden' => 'true' ) ); ?>
+<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="pr-woo-checkout btn-right-icon pr-btn btn-large btn-fw" role="button">
+	<span><?php esc_html_e( 'Proceed to Checkout', 'prisma-core' ); ?></span>
+	<?php echo prisma_core()->icons->get_svg( 'arrow-right', array( 'aria-hidden' => 'true' ) ); ?>
 </a>

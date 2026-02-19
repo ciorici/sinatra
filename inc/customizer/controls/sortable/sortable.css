@@ -4,19 +4,19 @@
 /**
  * Import configuration file with variables.
  */
-.sinatra-sortable-control {
+.prisma-core-sortable-control {
   margin-top: 12px;
   margin-bottom: 24px;
 }
 
-.sinatra-sortable-item.invisible {
+.prisma-core-sortable-item.invisible {
   background-color: rgba(255, 255, 255, 0);
 }
-.sinatra-sortable-item.invisible .dashicons-visibility:before {
+.prisma-core-sortable-item.invisible .dashicons-visibility:before {
   content: "\f530";
 }
 
-.sinatra-sortable-item {
+.prisma-core-sortable-item {
   display: flex;
   align-items: center;
   background-color: #fff;
@@ -27,7 +27,7 @@
   margin: 0 0 6px;
   border: 1px solid #dedede;
 }
-.sinatra-sortable-item .dashicons {
+.prisma-core-sortable-item .dashicons {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -36,16 +36,16 @@
   border-right: 1px solid #dedede;
   font-size: 16px;
 }
-.sinatra-sortable-item .dashicons-menu {
+.prisma-core-sortable-item .dashicons-menu {
   cursor: grab;
 }
-.sinatra-sortable-item .dashicons-menu:active {
+.prisma-core-sortable-item .dashicons-menu:active {
   cursor: grabbing;
 }
-.sinatra-sortable-item .dashicons-visibility {
+.prisma-core-sortable-item .dashicons-visibility {
   cursor: pointer;
 }
-.sinatra-sortable-item span {
+.prisma-core-sortable-item span {
   margin-left: 12px;
   font-weight: 400;
   white-space: nowrap;

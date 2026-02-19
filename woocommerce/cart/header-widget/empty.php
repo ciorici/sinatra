@@ -2,7 +2,7 @@
 /**
  * Header Cart Widget empty cart.
  *
- * @package Sinatra
+ * @package Prisma Core
  */
 
 // Exit if accessed directly.
@@ -11,4 +11,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<p class="si-empty-cart"><?php esc_html_e( 'No products in the cart.', 'sinatra' ); ?></p>
+<p class="pr-empty-cart"><?php esc_html_e( 'No products in the cart.', 'prisma-core' ); ?></p>

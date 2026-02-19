@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['sinatra-heading'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['prisma-core-heading'] = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -8,7 +8,7 @@ wp.customize.controlConstructor['sinatra-heading'] = wp.customize.Control.extend
 
 		// Change the value
 		if ( control.params.toggle ) {
-			control.container.on( 'click', '.sinatra-heading-wrapper', function() {
+			control.container.on( 'click', '.prisma-core-heading-wrapper', function() {
 				control.setting.set( ! control.setting.get() );
 
 				var $input  = control.container.find( 'input[type=checkbox]' );

@@ -2,7 +2,7 @@
 
  	"use strict";
 
- 	wp.customize.controlConstructor['sinatra-alignment'] = wp.customize.Control.extend({
+ 	wp.customize.controlConstructor['prisma-core-alignment'] = wp.customize.Control.extend({
 
 		ready: function() {
 

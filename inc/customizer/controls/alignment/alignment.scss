@@ -7,7 +7,7 @@
  */
 @import '../../../../assets/sass/config';
 
-.sinatra-alignment-control,
+.prisma-core-alignment-control,
 .background-position-control {
 	margin-top: 12px;
 	
@@ -30,7 +30,7 @@
 	}
 }
 
-.sinatra-alignment-control {
+.prisma-core-alignment-control {
 	.alignment-position-center-icon,
 	.alignment-position-center-icon:before {
 		display: inline-block;
@@ -97,28 +97,28 @@
 			}
 		}
 
-		&.si-top {
-			.si-left {
+		&.pr-top {
+			.pr-left {
 				.dashicons {
 					transform: rotate(45deg);
 				}
 			}
 
-			.si-right {
+			.pr-right {
 				.dashicons {
 					transform: rotate(-45deg);
 				}
 			}
 		}
 
-		&.si-bottom {
-			.si-left {
+		&.pr-bottom {
+			.pr-left {
 				.dashicons {
 					transform: rotate(-45deg);
 				}
 			}
 
-			.si-right {
+			.pr-right {
 				.dashicons {
 					transform: rotate(45deg);
 				}

@@ -1,7 +1,7 @@
 ;( function( api, $ ) {
 
-	// Extends our custom "sinatra-info" section. Make it visible.
-	api.sectionConstructor[ 'sinatra-info' ] = api.Section.extend( {
+	// Extends our custom "prisma-core-info" section. Make it visible.
+	api.sectionConstructor[ 'prisma-core-info' ] = api.Section.extend( {
 
 		// No events for this type of section.
 		attachEvents: function () {},
@@ -13,7 +13,7 @@
 	} );
 
 	// Custom Customizer Previewer class.
-	api.sinatraCustomizerPreviewer = {
+	api.prismaCoreCustomizerPreviewer = {
 		init: function () {
 			var self = this,
 				control;
@@ -40,19 +40,19 @@
 	};
 
 	// Store old previewer.
-	var sinatraOldPreviewer = api.Previewer;
-	api.Previewer = sinatraOldPreviewer.extend( {
+	var prismaCoreOldPreviewer = api.Previewer;
+	api.Previewer = prismaCoreOldPreviewer.extend( {
 		initialize: function( params, options ) {
 			// Store a reference to the Previewer
-			api.sinatraCustomizerPreviewer.preview = this;
+			api.prismaCoreCustomizerPreviewer.preview = this;
 
 			// Call the old Previewer's initialize function
-			sinatraOldPreviewer.prototype.initialize.call( this, params, options );
+			prismaCoreOldPreviewer.prototype.initialize.call( this, params, options );
 		}
 	} );
 
 	// Change preview url for certain sections.
-	_.each( sinatra_customizer_localized.preview_url_for_section, function( url, id ) {
+	_.each( prisma_core_customizer_localized.preview_url_for_section, function( url, id ) {
 		if ( url ) {
 			wp.customize.section( id, function ( section ) {
 				section.expanded.bind( function ( isExpanded ) {
@@ -67,21 +67,21 @@
 	$( document ).ready( function($) {
 
 		// Initialize our Previewer
-		api.sinatraCustomizerPreviewer.init();
+		api.prismaCoreCustomizerPreviewer.init();
 
 		// Display the first responsive control
-		$( '.sinatra-control-responsive' ).each( function(){
+		$( '.prisma-core-control-responsive' ).each( function(){
 			$( this ).find('.control-responsive').first().addClass( 'active' );
 		} );
 
 		// Responsive switchers
-		$( '.customize-control' ).on( 'click', '.sinatra-responsive-switchers span', function( event ) {
+		$( '.customize-control' ).on( 'click', '.prisma-core-responsive-switchers span', function( event ) {
 
 			var $this               = $(this),
-				$switcher_container = $this.closest( '.sinatra-responsive-switchers' ),
+				$switcher_container = $this.closest( '.prisma-core-responsive-switchers' ),
 				$switcher_buttons   = $switcher_container.find( 'li span' ),
 				$device 	        = $( event.currentTarget ).data( 'device' ),
-				$control         	= $( '.sinatra-control-responsive' ),
+				$control         	= $( '.prisma-core-control-responsive' ),
 				$body 		        = $( '.wp-full-overlay' ),
 				$footer_devices     = $( '.wp-full-overlay-footer .devices' );
 
@@ -121,9 +121,9 @@
 
 			// Set up variables
 			var $this 		= $( this ),
-				$devices 	= $( '.customize-control .sinatra-responsive-switchers' ),
+				$devices 	= $( '.customize-control .prisma-core-responsive-switchers' ),
 				$device 	= $( event.currentTarget ).data( 'device' ),
-				$control 	= $( '.sinatra-control-responsive' );
+				$control 	= $( '.prisma-core-control-responsive' );
 
 			// Button class
 			$devices.find( 'span' ).removeClass( 'active' );
@@ -143,20 +143,20 @@
 		});
 
 		// Tooltip positioning
-		if ( $( '.sinatra-tooltip' ).length ) {
+		if ( $( '.prisma-core-tooltip' ).length ) {
 
 			var $tooltip, $icon_pos_l, $icon_pos_r, $title_width;
 
-			$( '.sinatra-tooltip' ).each( function() {
+			$( '.prisma-core-tooltip' ).each( function() {
 				$tooltip = $(this);
 
 				if ( $tooltip.hasClass('top-right-tooltip') || $tooltip.hasClass('small-tooltip') ) {
 					return;
 				}
 
-				$title_width = $tooltip.closest( '.sinatra-control-wrapper' ).outerWidth();
+				$title_width = $tooltip.closest( '.prisma-core-control-wrapper' ).outerWidth();
 
-				$icon_pos_l = $tooltip.closest('.sinatra-info-icon').css('position', 'static').position().left;
+				$icon_pos_l = $tooltip.closest('.prisma-core-info-icon').css('position', 'static').position().left;
 				$icon_pos_r = $title_width - $icon_pos_l;
 
 				if ( $icon_pos_l < $icon_pos_r ) {

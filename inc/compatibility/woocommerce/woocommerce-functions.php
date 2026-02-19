@@ -1,35 +1,35 @@
 <?php
 /**
- * Sinatra WooCommerce compatibility functions.
+ * Prisma Core WooCommerce compatibility functions.
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
-if ( ! function_exists( 'sinatra_get_wc_version' ) ) :
+if ( ! function_exists( 'prisma_core_get_wc_version' ) ) :
 	/**
 	 * Get the version of the currently installed WooCommerce.
 	 *
 	 * @since 1.0.0
 	 * @return woocommerce version number or null.
 	 */
-	function sinatra_get_wc_version() {
+	function prisma_core_get_wc_version() {
 		return defined( 'WC_VERSION' ) && WC_VERSION ? WC_VERSION : null;
 	}
 endif;
 
-if ( ! function_exists( 'sinatra_header_widget_cart' ) ) :
+if ( ! function_exists( 'prisma_core_header_widget_cart' ) ) :
 	/**
 	 * Outputs the header cart widget.
 	 *
 	 * @since 1.0.0
 	 * @param array $options Array of widget options.
 	 */
-	function sinatra_header_widget_cart( $options ) {
+	function prisma_core_header_widget_cart( $options ) {
 
 		// Cart widget.
-		sinatra_wc_cart_icon();
+		prisma_core_wc_cart_icon();
 
 		// Skip dropdown on checkout and cart.
 		if ( is_checkout() || is_cart() ) {
@@ -37,18 +37,18 @@ if ( ! function_exists( 'sinatra_header_widget_cart' ) ) :
 		}
 
 		// Cart dropdown contents.
-		sinatra_wc_cart_dropdown();
+		prisma_core_wc_cart_dropdown();
 	}
 endif;
 
-if ( ! function_exists( 'sinatra_wc_cart_icon' ) ) :
+if ( ! function_exists( 'prisma_core_wc_cart_icon' ) ) :
 	/**
 	 * Outputs the WooCommerce cart widget icon.
 	 *
 	 * @since 1.0.0
 	 * @param boolean $echo Return or print.
 	 */
-	function sinatra_wc_cart_icon( $echo = true ) {
+	function prisma_core_wc_cart_icon( $echo = true ) {
 
 		ob_start();
 
@@ -64,14 +64,14 @@ if ( ! function_exists( 'sinatra_wc_cart_icon' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'sinatra_wc_cart_dropdown' ) ) :
+if ( ! function_exists( 'prisma_core_wc_cart_dropdown' ) ) :
 	/**
 	 * Outputs the WooCommerce cart dropdown.
 	 *
 	 * @since 1.0.0
 	 * @param bool $echo Print or return content.
 	 */
-	function sinatra_wc_cart_dropdown( $echo = true ) {
+	function prisma_core_wc_cart_dropdown( $echo = true ) {
 
 		ob_start();
 
@@ -87,23 +87,23 @@ if ( ! function_exists( 'sinatra_wc_cart_dropdown' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'sinatra_wc_out_of_stock_badge' ) ) :
+if ( ! function_exists( 'prisma_core_wc_out_of_stock_badge' ) ) :
 	/**
 	 * Outputs out of stock (sold out) badge for product.
 	 *
 	 * @since 1.0.0
 	 */
-	function sinatra_wc_out_of_stock_badge() {
+	function prisma_core_wc_out_of_stock_badge() {
 
 		global $product;
 
 		if ( ! $product->is_in_stock() ) {
-			esc_html( sprintf( apply_filters( 'sinatra_woocommerce_out_of_stock_badge', sprintf( '<span class="onsale sold-out">%s</span>', esc_html__( 'Sold Out', 'sinatra' ) ) ) ) );
+			esc_html( sprintf( apply_filters( 'prisma_core_woocommerce_out_of_stock_badge', sprintf( '<span class="onsale sold-out">%s</span>', esc_html__( 'Sold Out', 'prisma-core' ) ) ) ) );
 		}
 	}
 endif;
 
-if ( ! function_exists( 'sinatra_wc_add_percentage_to_sale_badge' ) ) :
+if ( ! function_exists( 'prisma_core_wc_add_percentage_to_sale_badge' ) ) :
 	/**
 	 * Outputs badge with percentage discount for product.
 	 *
@@ -112,9 +112,9 @@ if ( ! function_exists( 'sinatra_wc_add_percentage_to_sale_badge' ) ) :
 	 * @param object $post    Post object.
 	 * @param object $product Product object.
 	 */
-	function sinatra_wc_add_percentage_to_sale_badge( $html, $post, $product ) {
+	function prisma_core_wc_add_percentage_to_sale_badge( $html, $post, $product ) {
 
-		$badge = sinatra_option( 'product_sale_badge' );
+		$badge = prisma_core_option( 'product_sale_badge' );
 
 		if ( 'hide' === $badge ) {
 			return '';
@@ -128,7 +128,7 @@ if ( ! function_exists( 'sinatra_wc_add_percentage_to_sale_badge' ) ) :
 
 		if ( 'text' === $badge ) {
 
-			$text = sinatra_option( 'product_sale_badge_text' );
+			$text = prisma_core_option( 'product_sale_badge_text' );
 
 		} elseif ( 'percentage' === $badge ) {
 
@@ -176,40 +176,40 @@ if ( ! function_exists( 'sinatra_wc_add_percentage_to_sale_badge' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'sinatra_wc_empty_cart_button' ) ) :
+if ( ! function_exists( 'prisma_core_wc_empty_cart_button' ) ) :
 	/**
 	 * Add empty cart - button to return to cart page.
 	 *
 	 * @since 1.0.0
 	 */
-	function sinatra_wc_empty_cart_button() {
+	function prisma_core_wc_empty_cart_button() {
 
 		if ( ! wc_get_page_id( 'shop' ) ) {
 			return;
 		}
 		?>
-		<p class="return-to-shop si-woo-return">
-			<a class="si-btn btn-reveal btn-left-icon" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>" role="button">
-				<span><?php esc_html_e( 'Return to Shop', 'sinatra' ); ?></span>
-				<?php echo sinatra()->icons->get_svg( 'arrow-left', array( 'aria-hidden' => 'true' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<p class="return-to-shop pr-woo-return">
+			<a class="pr-btn btn-reveal btn-left-icon" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound ?>" role="button">
+				<span><?php esc_html_e( 'Return to Shop', 'prisma-core' ); ?></span>
+				<?php echo prisma_core()->icons->get_svg( 'arrow-left', array( 'aria-hidden' => 'true' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</a>
 		</p>
 		<?php
 	}
 endif;
 
-if ( ! function_exists( 'sinatra_wc_widget_shopping_cart_buttons' ) ) :
+if ( ! function_exists( 'prisma_core_wc_widget_shopping_cart_buttons' ) ) :
 	/**
 	 * Mini cart buttons for Shopping Cart Widget.
 	 *
 	 * @since 1.0.0
 	 */
-	function sinatra_wc_widget_shopping_cart_buttons() {
+	function prisma_core_wc_widget_shopping_cart_buttons() {
 		wc_get_template_part( 'cart/header-widget/buttons' );
 	}
 endif;
 
-if ( ! function_exists( 'sinatra_wc_layered_count_filter' ) ) :
+if ( ! function_exists( 'prisma_core_wc_layered_count_filter' ) ) :
 	/**
 	 * Removes parentheses from WooCommerce layered filter count.
 	 *
@@ -220,7 +220,7 @@ if ( ! function_exists( 'sinatra_wc_layered_count_filter' ) ) :
 	 * @param array  $term The term.
 	 * @return string
 	 */
-	function sinatra_wc_layered_count_filter( $output, $count, $term ) {
+	function prisma_core_wc_layered_count_filter( $output, $count, $term ) {
 
 		$output = str_replace( '(', ' ', $output );
 		$output = str_replace( ')', ' ', $output );
@@ -229,7 +229,7 @@ if ( ! function_exists( 'sinatra_wc_layered_count_filter' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'sinatra_wc_rating_count_filter' ) ) :
+if ( ! function_exists( 'prisma_core_wc_rating_count_filter' ) ) :
 	/**
 	 * Removes parentheses from WooCommerce rating filter count.
 	 *
@@ -240,7 +240,7 @@ if ( ! function_exists( 'sinatra_wc_rating_count_filter' ) ) :
 	 * @param array  $rating The term.
 	 * @return  string
 	 */
-	function sinatra_wc_rating_count_filter( $output, $count, $rating ) {
+	function prisma_core_wc_rating_count_filter( $output, $count, $rating ) {
 
 		$output = str_replace( '(', '<em>', $output );
 		$output = str_replace( ')', '</em>', $output );
@@ -249,7 +249,7 @@ if ( ! function_exists( 'sinatra_wc_rating_count_filter' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'sinatra_wc_cat_count_filter' ) ) :
+if ( ! function_exists( 'prisma_core_wc_cat_count_filter' ) ) :
 	/**
 	 * Filters product category subtitle (count).
 	 *
@@ -259,12 +259,12 @@ if ( ! function_exists( 'sinatra_wc_cat_count_filter' ) ) :
 	 * @param array  $category The category.
 	 * @return  string
 	 */
-	function sinatra_wc_cat_count_filter( $output, $category ) {
+	function prisma_core_wc_cat_count_filter( $output, $category ) {
 
 		$count = $category->count;
 
 		/* translators: %s is category count */
-		$text = sprintf( _n( '%s product', '%s products', $count, 'sinatra' ), $count );
+		$text = sprintf( _n( '%s product', '%s products', $count, 'prisma-core' ), $count );
 
 		return '<span class="count">' . esc_html( $text ) . '</span>';
 	}

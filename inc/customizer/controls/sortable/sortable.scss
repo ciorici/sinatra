@@ -7,12 +7,12 @@
  */
 @import '../../../../assets/sass/config';
 
-.sinatra-sortable-control {
+.prisma-core-sortable-control {
 	margin-top: 12px;
 	margin-bottom: 24px;
 }
 
-.sinatra-sortable-item.invisible {
+.prisma-core-sortable-item.invisible {
 	background-color: rgba(255,255,255,0);
 
 	.dashicons-visibility:before {
@@ -20,7 +20,7 @@
 	}
 }
 
-.sinatra-sortable-item {
+.prisma-core-sortable-item {
 	display: flex;
 	align-items: center;
 	background-color: #fff;

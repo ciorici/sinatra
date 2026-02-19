@@ -4,34 +4,34 @@
 /**
  * Import configuration file with variables.
  */
-.sinatra-toggle-wrapper {
+.prisma-core-toggle-wrapper {
   display: flex;
 }
-.sinatra-toggle-wrapper .sinatra-toggle {
+.prisma-core-toggle-wrapper .prisma-core-toggle {
   margin-left: auto;
   padding-left: 10px;
   box-sizing: border-box;
   align-items: center;
 }
-.sinatra-toggle-wrapper .customize-control-title {
+.prisma-core-toggle-wrapper .customize-control-title {
   margin-bottom: 0;
 }
 
-.sinatra-toggle {
+.prisma-core-toggle {
   display: flex;
   align-items: center;
   margin-left: auto;
 }
-.sinatra-toggle input[type=checkbox] {
+.prisma-core-toggle input[type=checkbox] {
   display: none;
 }
-.sinatra-toggle input[type=checkbox]:checked + label .sinatra-toggle-switch {
+.prisma-core-toggle input[type=checkbox]:checked + label .prisma-core-toggle-switch {
   background-color: #0085ba !important;
 }
-.sinatra-toggle input[type=checkbox]:checked + label .sinatra-toggle-switch:after {
+.prisma-core-toggle input[type=checkbox]:checked + label .prisma-core-toggle-switch:after {
   transform: translateX(14px);
 }
-.sinatra-toggle .sinatra-toggle-switch {
+.prisma-core-toggle .prisma-core-toggle-switch {
   box-sizing: border-box;
   background-color: rgb(150.3181818182, 176.4886363636, 195.1818181818);
   border-radius: 9px;
@@ -48,7 +48,7 @@
           user-select: none;
   margin: 0;
 }
-.sinatra-toggle .sinatra-toggle-switch:after {
+.prisma-core-toggle .prisma-core-toggle-switch:after {
   position: relative;
   display: block;
   content: "";
@@ -60,11 +60,11 @@
   transition: all 0.15s ease;
   transform: translateX(0px);
 }
-.sinatra-toggle label {
+.prisma-core-toggle label {
   display: flex;
   align-items: center;
   color: #23282d;
 }
-.sinatra-toggle label:hover .sinatra-toggle-switch {
+.prisma-core-toggle label:hover .prisma-core-toggle-switch {
   background-color: rgb(117.8636363636, 152.1477272727, 176.6363636364);
 }

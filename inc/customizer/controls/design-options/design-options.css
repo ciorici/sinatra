@@ -1,18 +1,18 @@
 /*****************************************/
 /* Customizer control design options style
 /*****************************************/
-.sinatra-design-options-wrapper .background-color-overlay .wp-color-result.button {
+.prisma-core-design-options-wrapper .background-color-overlay .wp-color-result.button {
   top: 1.33em !important;
 }
-.sinatra-design-options-wrapper .sinatra-design-options-heading {
+.prisma-core-design-options-wrapper .prisma-core-design-options-heading {
   flex-grow: 1;
 }
-.sinatra-design-options-wrapper .sinatra-range-suffix {
+.prisma-core-design-options-wrapper .prisma-core-range-suffix {
   margin-left: 6px;
 }
-.sinatra-design-options-wrapper .reset-defaults {
+.prisma-core-design-options-wrapper .reset-defaults {
   display: none;
 }
-.sinatra-design-options-wrapper .reset-defaults.active {
+.prisma-core-design-options-wrapper .reset-defaults.active {
   display: block;
 }

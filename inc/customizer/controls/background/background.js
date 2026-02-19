@@ -1,6 +1,6 @@
 ;(function( $ ) {
 
-	wp.customize.controlConstructor['sinatra-background'] = wp.customize.Control.extend({
+	wp.customize.controlConstructor['prisma-core-background'] = wp.customize.Control.extend({
 
 		ready: function() {
 
@@ -10,7 +10,7 @@
 				range,
 				range_input,
 				timer,
-				sinatra_range_input_number_timeout,
+				prisma_core_range_input_number_timeout,
 				value   = control.setting._value;
 
 			// Hide unnecessary controls.
@@ -127,17 +127,17 @@
 			});
 
 			// Change the text value
-			control.container.find( 'input.sinatra-range-input' ).on( 'change keyup', function() {
-				control.autocorrect_range_input_number( $( this ), 1000, sinatra_range_input_number_timeout );
+			control.container.find( 'input.prisma-core-range-input' ).on( 'change keyup', function() {
+				control.autocorrect_range_input_number( $( this ), 1000, prisma_core_range_input_number_timeout );
 			} ).on( 'focusout', function() {
-				control.autocorrect_range_input_number( $( this ), 0, sinatra_range_input_number_timeout );
+				control.autocorrect_range_input_number( $( this ), 0, prisma_core_range_input_number_timeout );
 			} );
 
 			// Update the range value
 			control.container.find( 'input[type=range]' ).on( 'mousedown', function() {
 
 				range 			= $( this );
-				range_input 	= range.parent().children( '.sinatra-range-input' );
+				range_input 	= range.parent().children( '.prisma-core-range-input' );
 				value 			= range.attr( 'value' );
 
 				range_input.val( value );
@@ -147,9 +147,9 @@
 					value = range.attr( 'value' );
 					range_input.val( value );
 						
-					clearTimeout( sinatra_range_input_number_timeout );
+					clearTimeout( prisma_core_range_input_number_timeout );
 
-					sinatra_range_input_number_timeout = setTimeout( function() {
+					prisma_core_range_input_number_timeout = setTimeout( function() {
 						control.saveValue( range.data( 'key' ), value );
 					}, 25 );
 
@@ -177,7 +177,7 @@
 			var range_input 	= input_number,
 				range 			= range_input.parent().find( 'input[type="range"]' ),
 				value 			= parseFloat( range_input.val() ),
-				reset 			= parseFloat( range.find( '.sinatra-reset-range' ).attr( 'data-reset_value' ) ),
+				reset 			= parseFloat( range.find( '.prisma-core-reset-range' ).attr( 'data-reset_value' ) ),
 				step 			= parseFloat( range_input.attr( 'step' ) ),
 				min 			= parseFloat( range_input.attr( 'min') ),
 				max 			= parseFloat( range_input.attr( 'max') );

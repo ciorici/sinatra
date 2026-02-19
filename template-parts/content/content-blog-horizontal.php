@@ -4,39 +4,39 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
 ?>
 
-<?php do_action( 'sinatra_before_article' ); ?>
+<?php do_action( 'prisma_core_before_article' ); ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'sinatra-article' ); ?><?php sinatra_schema_markup( 'article' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'prisma-core-article' ); ?><?php prisma_core_schema_markup( 'article' ); ?>>
 
 	<?php
-	$sinatra_blog_entry_format = get_post_format();
+	$prisma_core_blog_entry_format = get_post_format();
 
-	if ( 'quote' === $sinatra_blog_entry_format ) {
-		get_template_part( 'template-parts/entry/format/media', $sinatra_blog_entry_format );
+	if ( 'quote' === $prisma_core_blog_entry_format ) {
+		get_template_part( 'template-parts/entry/format/media', $prisma_core_blog_entry_format );
 	} else {
 
-		$sinatra_classes     = array();
-		$sinatra_classes[]   = 'si-blog-entry-wrapper';
-		$sinatra_thumb_align = sinatra_option( 'blog_image_position' );
-		$sinatra_thumb_align = apply_filters( 'sinatra_horizontal_blog_image_position', $sinatra_thumb_align );
-		$sinatra_classes[]   = 'si-thumb-' . $sinatra_thumb_align;
-		$sinatra_classes     = implode( ' ', $sinatra_classes );
+		$prisma_core_classes     = array();
+		$prisma_core_classes[]   = 'pr-blog-entry-wrapper';
+		$prisma_core_thumb_align = prisma_core_option( 'blog_image_position' );
+		$prisma_core_thumb_align = apply_filters( 'prisma_core_horizontal_blog_image_position', $prisma_core_thumb_align );
+		$prisma_core_classes[]   = 'pr-thumb-' . $prisma_core_thumb_align;
+		$prisma_core_classes     = implode( ' ', $prisma_core_classes );
 		?>
 
-		<div class="<?php echo esc_attr( $sinatra_classes ); ?>">
+		<div class="<?php echo esc_attr( $prisma_core_classes ); ?>">
 			<?php get_template_part( 'template-parts/entry/entry-thumbnail' ); ?>
 
-			<div class="si-entry-content-wrapper">
+			<div class="pr-entry-content-wrapper">
 
 				<?php
-				if ( sinatra_option( 'blog_horizontal_post_categories' ) ) {
+				if ( prisma_core_option( 'blog_horizontal_post_categories' ) ) {
 					get_template_part( 'template-parts/entry/entry-category' );
 				}
 
@@ -44,7 +44,7 @@
 				get_template_part( 'template-parts/entry/entry-summary' );
 
 
-				if ( sinatra_option( 'blog_horizontal_read_more' ) ) {
+				if ( prisma_core_option( 'blog_horizontal_read_more' ) ) {
 					get_template_part( 'template-parts/entry/entry-summary-footer' );
 				}
 
@@ -57,4 +57,4 @@
 
 </article><!-- #post-<?php the_ID(); ?> -->
 
-<?php do_action( 'sinatra_after_article' ); ?>
+<?php do_action( 'prisma_core_after_article' ); ?>

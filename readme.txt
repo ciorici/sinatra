@@ -1,5 +1,5 @@
-=== Sinatra ===
-Contributors: ciorici, sinatrateam
+=== Prisma Core ===
+Contributors: ciorici
 Tags: two-columns, right-sidebar, left-sidebar, footer-widgets, blog, news, custom-background, custom-menu, post-formats, sticky-post, editor-style, threaded-comments, translation-ready, custom-colors, featured-images, full-width-template, microformats, theme-options, e-commerce
 Requires at least: 6.4
 Tested up to: 6.9
@@ -11,20 +11,20 @@ Stable tag: 1.4.0
 A lightweight and highly customizable multi-purpose theme that makes it easy for anyone to create their perfect website.
 
 == Description ==
-Sinatra is a lightweight and highly customizable multi-purpose theme that makes it easy for anyone to create their perfect website. It comes with microdata integration, unlimited colors, multiple layouts and so much more. It's also translatable and built with best SEO practices. It works well with your favorite plugins such as WooCommerce, JetPack, page builders, SEO plugins and others.
+Prisma Core is a lightweight and highly customizable multi-purpose theme that makes it easy for anyone to create their perfect website. It comes with microdata integration, unlimited colors, multiple layouts and so much more. It's also translatable and built with best SEO practices. It works well with your favorite plugins such as WooCommerce, JetPack, page builders, SEO plugins and others.
 
-This is a community-maintained fork of the original Sinatra theme by Sinatra Team. The original theme was last updated in 2023 and is no longer maintained. This fork includes security fixes, PHP 8.2+ compatibility, WordPress 6.7+ compatibility, and updated WooCommerce support.
+This is a community-maintained fork of the original Sinatra theme. The original theme was last updated in 2023 and is no longer maintained. This fork includes security fixes, PHP 8.2+ compatibility, WordPress 6.7+ compatibility, and updated WooCommerce support.
 
-Source code: https://github.com/ciorici/sinatra
+Source code: https://github.com/ciorici/prisma-core
 
 == Frequently Asked Questions ==
 
-= How to install Sinatra? =
+= How to install Prisma Core? =
 
-1. Download the latest release from https://github.com/ciorici/sinatra/releases.
+1. Download the latest release from https://github.com/ciorici/prisma-core/releases.
 2. Log into your WordPress Dashboard and go to Appearance » Themes and click the "Add New" button.
 3. Click "Upload Theme" and select the downloaded zip file.
-4. Click the "Activate" button to activate Sinatra theme on your site.
+4. Click the "Activate" button to activate Prisma Core theme on your site.
 5. Navigate to Appearance » Customize to access theme options.
 
 == Changelog ==
@@ -38,7 +38,7 @@ Source code: https://github.com/ciorici/sinatra
 * Fixed: Block editor button block appearing full-width.
 * Updated: WooCommerce template overrides to latest versions.
 * Updated: Replaced WooCommerce template overrides with hooks where possible.
-* Removed: IE-only assets (html5shiv, flexibility.js, sinatra-ie stylesheet).
+* Removed: IE-only assets (html5shiv, flexibility.js, prisma-core-ie stylesheet).
 * Removed: Outdated vendor prefixes from CSS source files.
 * Added: Gulp build system for CSS/JS compilation and minification.
 * Improved: Dropped legacy browser support (IE11).
@@ -89,7 +89,7 @@ Source code: https://github.com/ciorici/sinatra
 * Improved: Block Editor styles to match frontend design.
 
 = 1.1.3 =
-* Added: 'sinatra_entry_meta_post_type' filter that allows post meta tags to be displayed on custom post types.
+* Added: 'prisma_core_entry_meta_post_type' filter that allows post meta tags to be displayed on custom post types.
 * Added: Sticky header option.
 * Added: New Main Footer column layout: 1/3 + 2/3.
 * Added: New Main Footer column layout: 2/3 + 1/3.
@@ -143,8 +143,8 @@ Source code: https://github.com/ciorici/sinatra
 * Fixed: Main Navigation » Typography » Font Size issue.
 * Fixed: Footer » Pre Footer » Call to Action » Typography not working.
 * Fixed: Mobile menu dissappears when scrolling.
-* Fixed: Links in Sinatra widgets always open in same tab.
-* Updated: Appearance » Sinatra Theme page.
+* Fixed: Links in Prisma Core widgets always open in same tab.
+* Updated: Appearance » Prisma Core Theme page.
 * Updated: Google Fonts list.
 * Improved: Browser compatibility.
 * Improved: Responsive styling.

@@ -4,21 +4,21 @@
 /**
  * Import configuration file with variables.
  */
-.sinatra-add-widget-wrap {
+.prisma-core-add-widget-wrap {
   display: flex;
   justify-content: flex-end;
 }
 
-.sinatra-control-wrapper.sinatra-widget-wrapper .customize-control-description {
+.prisma-core-control-wrapper.prisma-core-widget-wrapper .customize-control-description {
   margin-bottom: 12px !important;
 }
 
-.sinatra-customizer-widget-form,
-.sinatra-widget-tmpls {
+.prisma-core-customizer-widget-form,
+.prisma-core-widget-tmpls {
   display: none;
 }
 
-.sinatra-add-widget::before {
+.prisma-core-add-widget::before {
   content: "\f132";
   display: inline-block;
   position: relative;
@@ -30,24 +30,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body.sinatra-adding-widget #customize-preview {
+body.prisma-core-adding-widget #customize-preview {
   opacity: 0.4;
 }
-body.sinatra-adding-widget #sinatra-available-widgets {
+body.prisma-core-adding-widget #prisma-core-available-widgets {
   transform: translate3d(0, 0, 0);
   visibility: visible;
 }
-body.sinatra-adding-widget .sinatra-add-widget {
+body.prisma-core-adding-widget .prisma-core-add-widget {
   background: #eee;
   border-color: #929793;
   color: #32373c;
   box-shadow: inset 0 2px 5px -3px rgba(0, 0, 0, 0.5);
 }
-body.sinatra-adding-widget .sinatra-add-widget:before {
+body.prisma-core-adding-widget .prisma-core-add-widget:before {
   transform: rotate(45deg);
 }
 
-.sinatra-widget-caption {
+.prisma-core-widget-caption {
   padding: 0 0 0 25px;
   display: flex;
   align-items: center;
@@ -55,7 +55,7 @@ body.sinatra-adding-widget .sinatra-add-widget:before {
   flex: 1;
   border-bottom: 1px solid #ddd;
 }
-.sinatra-widget-caption h3 {
+.prisma-core-widget-caption h3 {
   font-size: 14px;
   display: block;
   font-weight: 200;
@@ -63,7 +63,7 @@ body.sinatra-adding-widget .sinatra-add-widget:before {
   padding: 0;
   line-height: 1;
 }
-.sinatra-widget-caption a {
+.prisma-core-widget-caption a {
   margin-left: auto;
   display: flex;
   align-items: center;
@@ -81,17 +81,17 @@ body.sinatra-adding-widget .sinatra-add-widget:before {
   box-sizing: content-box;
   text-decoration: none;
 }
-.sinatra-widget-caption a:before {
+.prisma-core-widget-caption a:before {
   font: normal 18px/1 dashicons;
   content: "\f335";
 }
-.sinatra-widget-caption a:hover, .sinatra-widget-caption a:focus {
+.prisma-core-widget-caption a:hover, .prisma-core-widget-caption a:focus {
   background-color: #f3f3f5;
   box-shadow: none;
   outline: none;
 }
 
-#sinatra-available-widgets-list .sinatra-widget {
+#prisma-core-available-widgets-list .prisma-core-widget {
   position: relative;
   padding: 15px 15px 15px 60px;
   background-color: #fff;
@@ -100,26 +100,26 @@ body.sinatra-adding-widget .sinatra-add-widget:before {
   transition: 0.15s color ease-in-out, 0.15s background-color ease-in-out, 0.15s border-color ease-in-out;
   cursor: pointer;
 }
-#sinatra-available-widgets-list .sinatra-widget.disabled {
+#prisma-core-available-widgets-list .prisma-core-widget.disabled {
   opacity: 0.5;
   pointer-events: none;
 }
-#sinatra-available-widgets-list .sinatra-widget .widget {
+#prisma-core-available-widgets-list .prisma-core-widget .widget {
   margin: 0;
 }
-#sinatra-available-widgets-list .sinatra-widget .widget-top {
+#prisma-core-available-widgets-list .prisma-core-widget .widget-top {
   border: none;
   background: inherit;
   box-shadow: none !important;
 }
-#sinatra-available-widgets-list .sinatra-widget .widget-title {
+#prisma-core-available-widgets-list .prisma-core-widget .widget-title {
   position: relative;
 }
-#sinatra-available-widgets-list .sinatra-widget .widget-title h3 {
+#prisma-core-available-widgets-list .prisma-core-widget .widget-title h3 {
   padding: 0 0 5px;
   font-size: 14px;
 }
-#sinatra-available-widgets-list .sinatra-widget .widget-title i {
+#prisma-core-available-widgets-list .prisma-core-widget .widget-title i {
   position: absolute;
   top: -3px;
   right: 100%;
@@ -133,7 +133,7 @@ body.sinatra-adding-widget .sinatra-add-widget:before {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-#sinatra-available-widgets-list .sinatra-widget .widget-description {
+#prisma-core-available-widgets-list .prisma-core-widget .widget-description {
   padding: 0;
   color: #72777c;
   display: block;
@@ -142,83 +142,83 @@ body.sinatra-adding-widget .sinatra-add-widget:before {
   word-wrap: break-word;
   hyphens: auto;
 }
-#sinatra-available-widgets-list .sinatra-widget .widget-title-action button {
+#prisma-core-available-widgets-list .prisma-core-widget .widget-title-action button {
   display: none;
 }
-#sinatra-available-widgets-list .sinatra-widget:hover, #sinatra-available-widgets-list .sinatra-widget.selected, #sinatra-available-widgets-list .sinatra-widget:focus {
+#prisma-core-available-widgets-list .prisma-core-widget:hover, #prisma-core-available-widgets-list .prisma-core-widget.selected, #prisma-core-available-widgets-list .prisma-core-widget:focus {
   background-color: #f3f3f5;
   border-bottom-color: #ccc;
   color: #0073aa;
   border-left: 4px solid #0073aa;
 }
 
-.sinatra-widget-container .widget {
+.prisma-core-widget-container .widget {
   margin-bottom: 5px;
 }
-.sinatra-widget-container .widget:last-child {
+.prisma-core-widget-container .widget:last-child {
   margin-bottom: 12px;
 }
-.sinatra-widget-container .widget .widget-content p {
+.prisma-core-widget-container .widget .widget-content p {
   margin: 0 0 20px 0;
 }
-.sinatra-widget-container .widget .widget-content label:not(.switch-label) {
+.prisma-core-widget-container .widget .widget-content label:not(.switch-label) {
   color: #23282d;
   font-weight: 500;
   display: block;
 }
-.sinatra-widget-container .widget .widget-content button {
+.prisma-core-widget-container .widget .widget-content button {
   display: inline-block;
   margin-top: 6px;
 }
-.sinatra-widget-container .widget .widget-content .description {
+.prisma-core-widget-container .widget .widget-content .description {
   font-size: 11px;
 }
-.sinatra-widget-container .widget:first-child .widget-top {
+.prisma-core-widget-container .widget:first-child .widget-top {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
-.sinatra-widget-container .widget:last-child .widget-top {
+.prisma-core-widget-container .widget:last-child .widget-top {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-.sinatra-widget-container .widget .widget-top {
+.prisma-core-widget-container .widget .widget-top {
   border: 1px solid #ddd !important;
   box-shadow: none !important;
 }
-.sinatra-widget-container .widget .widget-top .widget-title i {
+.prisma-core-widget-container .widget .widget-top .widget-title i {
   display: none;
 }
-.sinatra-widget-container .widget .widget-inside {
+.prisma-core-widget-container .widget .widget-inside {
   padding: 20px;
   border-radius: 0 0 3px 3px;
 }
-.sinatra-widget-container .widget.sinatra-expanded .widget-top {
+.prisma-core-widget-container .widget.prisma-core-expanded .widget-top {
   background-color: #FFF;
   border-radius: 3px 3px 0 0 !important;
 }
-.sinatra-widget-container .widget.sinatra-expanded .toggle-indicator {
+.prisma-core-widget-container .widget.prisma-core-expanded .toggle-indicator {
   transform: rotate(180deg);
 }
-.sinatra-widget-container .widget .widget-control-actions {
+.prisma-core-widget-container .widget .widget-control-actions {
   margin-top: 15px;
   display: flex;
   align-items: center;
 }
-.sinatra-widget-container .widget .widget-control-actions .spinner {
+.prisma-core-widget-container .widget .widget-control-actions .spinner {
   margin-left: auto;
   margin-right: 0;
   visibility: visible;
 }
-.sinatra-widget-container .widget .widget-control-actions .widget-control-separator {
+.prisma-core-widget-container .widget .widget-control-actions .widget-control-separator {
   display: inline-block;
   margin: 0 2px;
 }
-.sinatra-widget-container .sinatra-widget-nav-selected {
+.prisma-core-widget-container .prisma-core-widget-nav-selected {
   display: none;
 }
-.sinatra-widget-container .sinatra-widget-nav-has-menu .sinatra-widget-nav-empty {
+.prisma-core-widget-container .prisma-core-widget-nav-has-menu .prisma-core-widget-nav-empty {
   display: none;
 }
-.sinatra-widget-container .sinatra-widget-nav-has-menu .sinatra-widget-nav-selected {
+.prisma-core-widget-container .prisma-core-widget-nav-has-menu .prisma-core-widget-nav-selected {
   display: block;
 }

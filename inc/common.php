@@ -2,8 +2,8 @@
 /**
  * Common functions used in backend and frontend of the theme.
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'sinatra_get_allowed_html_tags' ) ) {
+if ( ! function_exists( 'prisma_core_get_allowed_html_tags' ) ) {
 	/**
 	 * Array of allowed HTML Tags.
 	 *
@@ -22,7 +22,7 @@ if ( ! function_exists( 'sinatra_get_allowed_html_tags' ) ) {
 	 * @param string $type predefined HTML tags group name.
 	 * @return array, allowed HTML tags.
 	 */
-	function sinatra_get_allowed_html_tags( $type = 'post' ) {
+	function prisma_core_get_allowed_html_tags( $type = 'post' ) {
 
 		$tags = array();
 
@@ -179,7 +179,7 @@ if ( ! function_exists( 'sinatra_get_allowed_html_tags' ) ) {
 				break;
 		}
 
-		return apply_filters( 'sinatra_allowed_html_tags', $tags, $type );
+		return apply_filters( 'prisma_core_allowed_html_tags', $tags, $type );
 	}
 }
 
@@ -193,12 +193,12 @@ if ( ! function_exists( 'sinatra_get_allowed_html_tags' ) ) {
  * @param  string $type Option or Theme Mod.
  * @return mixed Option value.
  */
-function sinatra_option( $id, $prefix = 'sinatra_', $type = 'theme_mod' ) {
+function prisma_core_option( $id, $prefix = 'prisma_core_', $type = 'theme_mod' ) {
 
 	if ( 'theme_mod' === $type ) {
-		return sinatra()->options->get( $prefix . $id );
+		return prisma_core()->options->get( $prefix . $id );
 	} else {
-		return get_option( $prefix . $id, sinatra()->options->get( $prefix . $id ) );
+		return get_option( $prefix . $id, prisma_core()->options->get( $prefix . $id ) );
 	}
 }
 
@@ -211,8 +211,8 @@ function sinatra_option( $id, $prefix = 'sinatra_', $type = 'theme_mod' ) {
  * @param  string $prefix Theme prefix.
  * @return mixed Option value.
  */
-function sinatra_get_default( $id, $prefix = 'sinatra_' ) {
-	return sinatra()->options->get_default( $prefix . $id );
+function prisma_core_get_default( $id, $prefix = 'prisma_core_' ) {
+	return prisma_core()->options->get_default( $prefix . $id );
 }
 
 /**
@@ -223,16 +223,16 @@ function sinatra_get_default( $id, $prefix = 'sinatra_' ) {
  * @param  int $post_id Optional. The post ID to check.
  * @return boolean if Top Bar is enabled.
  */
-function sinatra_is_top_bar_displayed( $post_id = 0 ) {
+function prisma_core_is_top_bar_displayed( $post_id = 0 ) {
 
 	if ( ! $post_id ) {
-		$post_id = sinatra_get_the_id();
+		$post_id = prisma_core_get_the_id();
 	}
 
-	$top_bar_displayed = sinatra_option( 'top_bar_enable' );
+	$top_bar_displayed = prisma_core_option( 'top_bar_enable' );
 
 	if ( $post_id && $top_bar_displayed ) {
-		$top_bar_displayed = ! get_post_meta( $post_id, 'sinatra_disable_topbar', true );
+		$top_bar_displayed = ! get_post_meta( $post_id, 'prisma_core_disable_topbar', true );
 	}
 
 	// Do not show top bar on 404 page.
@@ -240,7 +240,7 @@ function sinatra_is_top_bar_displayed( $post_id = 0 ) {
 		$top_bar_displayed = false;
 	}
 
-	return apply_filters( 'sinatra_is_top_bar_displayed', $top_bar_displayed, $post_id );
+	return apply_filters( 'prisma_core_is_top_bar_displayed', $top_bar_displayed, $post_id );
 }
 
 /**
@@ -250,11 +250,11 @@ function sinatra_is_top_bar_displayed( $post_id = 0 ) {
  *
  * @return boolean, true if Preloader is displayed.
  */
-function sinatra_is_preloader_displayed() {
+function prisma_core_is_preloader_displayed() {
 
-	$displayed = (bool) sinatra_option( 'preloader' );
+	$displayed = (bool) prisma_core_option( 'preloader' );
 
-	return apply_filters( 'sinatra_is_preloader_displayed', $displayed );
+	return apply_filters( 'prisma_core_is_preloader_displayed', $displayed );
 }
 
 /**
@@ -265,19 +265,19 @@ function sinatra_is_preloader_displayed() {
  * @param  int $post_id Optional. The post ID to check.
  * @return boolean true if Header is displayed.
  */
-function sinatra_is_header_displayed( $post_id = 0 ) {
+function prisma_core_is_header_displayed( $post_id = 0 ) {
 
 	if ( ! $post_id ) {
-		$post_id = sinatra_get_the_id();
+		$post_id = prisma_core_get_the_id();
 	}
 
 	$displayed = true;
 
 	if ( $post_id ) {
-		$displayed = ! get_post_meta( $post_id, 'sinatra_disable_header', true );
+		$displayed = ! get_post_meta( $post_id, 'prisma_core_disable_header', true );
 	}
 
-	return apply_filters( 'sinatra_is_header_displayed', $displayed, $post_id );
+	return apply_filters( 'prisma_core_is_header_displayed', $displayed, $post_id );
 }
 
 /**
@@ -287,21 +287,21 @@ function sinatra_is_header_displayed( $post_id = 0 ) {
  * @param  int $post_id Optional. The post ID to check.
  * @return boolean, true if Header is transparent.
  */
-function sinatra_is_header_transparent( $post_id = 0 ) {
+function prisma_core_is_header_transparent( $post_id = 0 ) {
 
 	if ( ! $post_id ) {
-		$post_id = sinatra_get_the_id();
+		$post_id = prisma_core_get_the_id();
 	}
 
-	$enabled = sinatra_option( 'tsp_header' );
+	$enabled = prisma_core_option( 'tsp_header' );
 
-	if ( $enabled && sinatra_is_section_disabled( sinatra_option( 'tsp_header_disable_on' ), $post_id ) ) {
+	if ( $enabled && prisma_core_is_section_disabled( prisma_core_option( 'tsp_header_disable_on' ), $post_id ) ) {
 		$enabled = false;
 	}
 
 	if ( $post_id ) {
 
-		$_meta = get_post_meta( $post_id, 'sinatra_transparent_header', true );
+		$_meta = get_post_meta( $post_id, 'prisma_core_transparent_header', true );
 
 		if ( 'enable' === $_meta ) {
 			$enabled = true;
@@ -310,7 +310,7 @@ function sinatra_is_header_transparent( $post_id = 0 ) {
 		}
 	}
 
-	return apply_filters( 'sinatra_transparent_header', $enabled, $post_id );
+	return apply_filters( 'prisma_core_transparent_header', $enabled, $post_id );
 }
 
 /**
@@ -321,25 +321,25 @@ function sinatra_is_header_transparent( $post_id = 0 ) {
  * @param  int $post_id Optional. The post ID to check.
  * @return boolean true if Pre Footer is enabled.
  */
-function sinatra_is_pre_footer_displayed( $post_id = 0 ) {
+function prisma_core_is_pre_footer_displayed( $post_id = 0 ) {
 
 	if ( ! $post_id ) {
-		$post_id = sinatra_get_the_id();
+		$post_id = prisma_core_get_the_id();
 	}
 
 	$displayed = false;
 
 	// Customizer option to enable pre-footer.
-	if ( sinatra_option( 'enable_pre_footer_cta' ) ) {
+	if ( prisma_core_option( 'enable_pre_footer_cta' ) ) {
 		$displayed = true;
 	}
 
 	// At least one pre-footer are has to be enabled.
-	if ( ! sinatra_is_pre_footer_cta_displayed( $post_id ) ) {
+	if ( ! prisma_core_is_pre_footer_cta_displayed( $post_id ) ) {
 		$displayed = false;
 	}
 
-	return apply_filters( 'sinatra_is_pre_footer_displayed', $displayed, $post_id );
+	return apply_filters( 'prisma_core_is_pre_footer_displayed', $displayed, $post_id );
 }
 
 /**
@@ -350,24 +350,24 @@ function sinatra_is_pre_footer_displayed( $post_id = 0 ) {
  * @param  int $post_id Optional. The post ID to check.
  * @return boolean True if Pre Footer is enabled.
  */
-function sinatra_is_pre_footer_cta_displayed( $post_id = 0 ) {
+function prisma_core_is_pre_footer_cta_displayed( $post_id = 0 ) {
 
 	if ( ! $post_id ) {
-		$post_id = sinatra_get_the_id();
+		$post_id = prisma_core_get_the_id();
 	}
 
 	$displayed = false;
 
-	if ( sinatra_option( 'enable_pre_footer_cta' ) ) {
+	if ( prisma_core_option( 'enable_pre_footer_cta' ) ) {
 		$displayed = true;
 	}
 
-	if ( $displayed && sinatra_is_section_disabled( sinatra_option( 'pre_footer_cta_hide_on' ), $post_id ) ) {
+	if ( $displayed && prisma_core_is_section_disabled( prisma_core_option( 'pre_footer_cta_hide_on' ), $post_id ) ) {
 		$displayed = false;
 	}
 
 	if ( $post_id && $displayed ) {
-		$displayed = ! get_post_meta( $post_id, 'sinatra_disable_prefooter_cta', true );
+		$displayed = ! get_post_meta( $post_id, 'prisma_core_disable_prefooter_cta', true );
 	}
 
 	// Do not show pre footer widgets on 404 page.
@@ -375,7 +375,7 @@ function sinatra_is_pre_footer_cta_displayed( $post_id = 0 ) {
 		$displayed = false;
 	}
 
-	return apply_filters( 'sinatra_is_pre_footer_cta_displayed', $displayed, $post_id );
+	return apply_filters( 'prisma_core_is_pre_footer_cta_displayed', $displayed, $post_id );
 }
 
 /**
@@ -386,19 +386,19 @@ function sinatra_is_pre_footer_cta_displayed( $post_id = 0 ) {
  * @param  int $post_id Optional. The post ID to check.
  * @return boolean True if Hero is enabled.
  */
-function sinatra_is_hero_displayed( $post_id = 0 ) {
+function prisma_core_is_hero_displayed( $post_id = 0 ) {
 
 	$displayed = true;
 
-	if ( ! sinatra_option( 'enable_hero' ) ) {
+	if ( ! prisma_core_option( 'enable_hero' ) ) {
 		$displayed = false;
 	}
 
-	if ( $displayed && ! sinatra_is_section_disabled( sinatra_option( 'hero_enable_on' ), $post_id ) ) {
+	if ( $displayed && ! prisma_core_is_section_disabled( prisma_core_option( 'hero_enable_on' ), $post_id ) ) {
 		$displayed = false;
 	}
 
-	return apply_filters( 'sinatra_is_hero_displayed', $displayed, $post_id );
+	return apply_filters( 'prisma_core_is_hero_displayed', $displayed, $post_id );
 }
 
 /**
@@ -409,16 +409,16 @@ function sinatra_is_hero_displayed( $post_id = 0 ) {
  * @param  int $post_id Optional. The post ID to check.
  * @return boolean, true if Main Footer is enabled.
  */
-function sinatra_is_footer_displayed( $post_id = 0 ) {
+function prisma_core_is_footer_displayed( $post_id = 0 ) {
 
 	if ( ! $post_id ) {
-		$post_id = sinatra_get_the_id();
+		$post_id = prisma_core_get_the_id();
 	}
 
-	$footer_displayed = sinatra_option( 'enable_footer' );
+	$footer_displayed = prisma_core_option( 'enable_footer' );
 
 	if ( $post_id && $footer_displayed ) {
-		$footer_displayed = ! get_post_meta( $post_id, 'sinatra_disable_footer', true );
+		$footer_displayed = ! get_post_meta( $post_id, 'prisma_core_disable_footer', true );
 	}
 
 	// Do not show footer widgets on 404 page.
@@ -428,17 +428,17 @@ function sinatra_is_footer_displayed( $post_id = 0 ) {
 
 	if ( $footer_displayed && ! current_user_can( 'edit_theme_options' ) ) {
 
-		$footer_columns = sinatra_get_footer_column_count();
+		$footer_columns = prisma_core_get_footer_column_count();
 		$footer_active  = false;
 
 		for ( $i = 1; $i <= $footer_columns; $i++ ) {
-			$footer_active = $footer_active || is_active_sidebar( 'sinatra-footer-' . $i );
+			$footer_active = $footer_active || is_active_sidebar( 'prisma-core-footer-' . $i );
 		}
 
 		$footer_displayed = $footer_displayed && $footer_active;
 	}
 
-	return apply_filters( 'sinatra_is_footer_displayed', $footer_displayed, $post_id );
+	return apply_filters( 'prisma_core_is_footer_displayed', $footer_displayed, $post_id );
 }
 
 /**
@@ -449,21 +449,21 @@ function sinatra_is_footer_displayed( $post_id = 0 ) {
  * @param  int $post_id Optional. The post ID to check.
  * @return boolean, true if Copyright bar is enabled.
  */
-function sinatra_is_copyright_bar_displayed( $post_id = 0 ) {
+function prisma_core_is_copyright_bar_displayed( $post_id = 0 ) {
 
 	if ( ! $post_id ) {
-		$post_id = sinatra_get_the_id();
+		$post_id = prisma_core_get_the_id();
 	}
 
-	$displayed = sinatra_option( 'enable_copyright' );
-	$widgets   = sinatra_option( 'copyright_widgets' );
+	$displayed = prisma_core_option( 'enable_copyright' );
+	$widgets   = prisma_core_option( 'copyright_widgets' );
 
 	if ( $displayed && ! is_array( $widgets ) || empty( $widgets ) ) {
 		$displayed = false;
 	}
 
 	if ( $post_id && $displayed ) {
-		$displayed = ! get_post_meta( $post_id, 'sinatra_disable_copyright', true );
+		$displayed = ! get_post_meta( $post_id, 'prisma_core_disable_copyright', true );
 	}
 
 	// Do not show copyright bar on 404 page.
@@ -471,7 +471,7 @@ function sinatra_is_copyright_bar_displayed( $post_id = 0 ) {
 		$displayed = false;
 	}
 
-	return apply_filters( 'sinatra_is_copyright_displayed', $displayed, $post_id );
+	return apply_filters( 'prisma_core_is_copyright_displayed', $displayed, $post_id );
 }
 
 /**
@@ -482,16 +482,16 @@ function sinatra_is_copyright_bar_displayed( $post_id = 0 ) {
  * @param  int $post_id Optional. The post ID to check.
  * @return boolean, true if Colophon is enabled.
  */
-function sinatra_is_colophon_displayed( $post_id = 0 ) {
+function prisma_core_is_colophon_displayed( $post_id = 0 ) {
 
 	if ( ! $post_id ) {
-		$post_id = sinatra_get_the_id();
+		$post_id = prisma_core_get_the_id();
 	}
 
 	$displayed = true;
 
 	// Do not show colophon if both footer and copyright bar are not displayed.
-	if ( ! sinatra_is_footer_displayed( $post_id ) && ! sinatra_is_copyright_bar_displayed( $post_id ) ) {
+	if ( ! prisma_core_is_footer_displayed( $post_id ) && ! prisma_core_is_copyright_bar_displayed( $post_id ) ) {
 		$displayed = false;
 	}
 
@@ -500,7 +500,7 @@ function sinatra_is_colophon_displayed( $post_id = 0 ) {
 		$displayed = false;
 	}
 
-	return apply_filters( 'sinatra_is_colophon_displayed', $displayed, $post_id );
+	return apply_filters( 'prisma_core_is_colophon_displayed', $displayed, $post_id );
 }
 
 /**
@@ -511,16 +511,16 @@ function sinatra_is_colophon_displayed( $post_id = 0 ) {
  * @param  int $post_id Optional. The post ID to check.
  * @return boolean, if Page Header is displayed.
  */
-function sinatra_is_page_header_displayed( $post_id = 0 ) {
+function prisma_core_is_page_header_displayed( $post_id = 0 ) {
 
 	if ( ! $post_id ) {
-		$post_id = sinatra_get_the_id();
+		$post_id = prisma_core_get_the_id();
 	}
 
-	$displayed = sinatra_option( 'page_header_enable' );
+	$displayed = prisma_core_option( 'page_header_enable' );
 
 	if ( $post_id && $displayed ) {
-		$displayed = sinatra_page_header_has_title( $post_id ) || sinatra_page_header_has_breadcrumbs( $post_id );
+		$displayed = prisma_core_page_header_has_title( $post_id ) || prisma_core_page_header_has_breadcrumbs( $post_id );
 	} elseif ( is_404() ) {
 		$displayed = false;
 	}
@@ -529,7 +529,7 @@ function sinatra_is_page_header_displayed( $post_id = 0 ) {
 		$displayed = false;
 	}
 
-	return apply_filters( 'sinatra_is_page_header_displayed', $displayed, $post_id );
+	return apply_filters( 'prisma_core_is_page_header_displayed', $displayed, $post_id );
 }
 
 /**
@@ -538,7 +538,7 @@ function sinatra_is_page_header_displayed( $post_id = 0 ) {
  * @since 1.0.0
  * @return boolean, if Copyright bar is enabled.
  */
-function sinatra_is_woocommerce_activated() {
+function prisma_core_is_woocommerce_activated() {
 	return class_exists( 'woocommerce' );
 }
 
@@ -549,7 +549,7 @@ function sinatra_is_woocommerce_activated() {
  * @param  string $sidebar_id Sidebar ID.
  * @return string Sidebar name.
  */
-function sinatra_get_sidebar_name_by_id( $sidebar_id = '' ) {
+function prisma_core_get_sidebar_name_by_id( $sidebar_id = '' ) {
 
 	if ( ! $sidebar_id ) {
 		return;
@@ -573,7 +573,7 @@ function sinatra_get_sidebar_name_by_id( $sidebar_id = '' ) {
  * @param  string | boolean $opacity opacity value.
  * @return string color in rgba format.
  */
-function sinatra_hex2rgba( $color, $opacity = false ) {
+function prisma_core_hex2rgba( $color, $opacity = false ) {
 
 	$default = 'rgb(0,0,0)';
 
@@ -626,7 +626,7 @@ function sinatra_hex2rgba( $color, $opacity = false ) {
  * @param  string $color rgb(a) color code.
  * @return string color in HEX format.
  */
-function sinatra_rgba2hex( $color ) {
+function prisma_core_rgba2hex( $color ) {
 
 	preg_match( '/rgba?\(\s?([0-9]{1,3}),\s?([0-9]{1,3}),\s?([0-9]{1,3})/i', $color, $matches );
 
@@ -657,7 +657,7 @@ function sinatra_rgba2hex( $color ) {
  * @param float  $percent Decimal ( 0.2 = lighten by 20%, -0.4 = darken by 40% ).
  * @return string Lightened/Darkend color as hexadecimal (with hash)
  */
-function sinatra_luminance( $hexcolor, $percent ) {
+function prisma_core_luminance( $hexcolor, $percent ) {
 
 	if ( empty( $hexcolor ) ) {
 		return;
@@ -665,7 +665,7 @@ function sinatra_luminance( $hexcolor, $percent ) {
 
 	// Check if color is in RGB format and convert to HEX.
 	if ( false !== strpos( $hexcolor, 'rgb' ) ) {
-		$hexcolor = sinatra_rgba2hex( $hexcolor );
+		$hexcolor = prisma_core_rgba2hex( $hexcolor );
 	}
 
 	$hexcolor = trim( $hexcolor, '#' );
@@ -695,11 +695,11 @@ function sinatra_luminance( $hexcolor, $percent ) {
  * @param  mixed $color Color.
  * @return bool  True if a light color.
  */
-function sinatra_is_light_color( $color ) {
+function prisma_core_is_light_color( $color ) {
 
 	// Ensure we color is in hex format.
 	if ( false !== strpos( $color, 'rgb' ) ) {
-		$color = sinatra_rgba2hex( $color );
+		$color = prisma_core_rgba2hex( $color );
 	}
 
 	$hex = str_replace( '#', '', $color );
@@ -721,11 +721,11 @@ function sinatra_is_light_color( $color ) {
  * @param string $light Lightest reference. Defaults to '#FFFFFF'.
  * @return string
  */
-function sinatra_light_or_dark( $color, $dark = '#000000', $light = '#FFFFFF' ) {
-	return sinatra_is_light_color( $color ) ? $dark : $light;
+function prisma_core_light_or_dark( $color, $dark = '#000000', $light = '#FFFFFF' ) {
+	return prisma_core_is_light_color( $color ) ? $dark : $light;
 }
 
-if ( ! function_exists( 'sinatra_get_prop' ) ) :
+if ( ! function_exists( 'prisma_core_get_prop' ) ) :
 
 	/**
 	 * Get a specific property of an array without needing to check if that property exists.
@@ -740,7 +740,7 @@ if ( ! function_exists( 'sinatra_get_prop' ) ) :
 	 *
 	 * @return null|string|mixed The value
 	 */
-	function sinatra_get_prop( $array, $prop, $default = null ) {
+	function prisma_core_get_prop( $array, $prop, $default = null ) {
 
 		if ( ! is_array( $array ) && ! ( is_object( $array ) && $array instanceof ArrayAccess ) ) {
 			return $default;
@@ -762,7 +762,7 @@ endif;
  * @since  1.0.0
  * @param  string $object Object to be printed.
  */
-function sinatra_log( $object ) {
+function prisma_core_log( $object ) {
 	// phpcs:disable
 	ob_start();
 	print_r( $object );
@@ -776,7 +776,7 @@ function sinatra_log( $object ) {
  * @since 1.0.0
  * @return String, current page URL.
  */
-function sinatra_get_blog_url() {
+function prisma_core_get_blog_url() {
 
 	$blog_url = '';
 
@@ -794,7 +794,7 @@ function sinatra_get_blog_url() {
 		$blog_url = home_url( '/' );
 	}
 
-	return apply_filters( 'sinatra_site_url', $blog_url );
+	return apply_filters( 'prisma_core_site_url', $blog_url );
 }
 
 /**
@@ -804,7 +804,7 @@ function sinatra_get_blog_url() {
  * @param  array $options Default options.
  * @return array $defaults array of default values.
  */
-function sinatra_design_options_defaults( $options = array() ) {
+function prisma_core_design_options_defaults( $options = array() ) {
 
 	$defaults = array();
 
@@ -890,7 +890,7 @@ function sinatra_design_options_defaults( $options = array() ) {
 		);
 	}
 
-	return apply_filters( 'sinatra_design_options_defaults', $defaults, $options );
+	return apply_filters( 'prisma_core_design_options_defaults', $defaults, $options );
 }
 
 /**
@@ -900,10 +900,10 @@ function sinatra_design_options_defaults( $options = array() ) {
  * @param  array $options Default options.
  * @return array $defaults array of default values.
  */
-function sinatra_typography_defaults( $options = array() ) {
+function prisma_core_typography_defaults( $options = array() ) {
 
 	$defaults = apply_filters(
-		'sinatra_typography_defaults',
+		'prisma_core_typography_defaults',
 		array(
 			'font-family'         => 'inherit',
 			'font-subsets'        => array(),
@@ -929,7 +929,7 @@ function sinatra_typography_defaults( $options = array() ) {
 	return $options;
 }
 
-if ( ! function_exists( 'sinatra_enable_page_builder_compatibility' ) ) :
+if ( ! function_exists( 'prisma_core_enable_page_builder_compatibility' ) ) :
 
 	/**
 	 * Allow filter to enable/disable page builder compatibility.
@@ -938,8 +938,8 @@ if ( ! function_exists( 'sinatra_enable_page_builder_compatibility' ) ) :
 	 *
 	 * @return  bool True - If the page builder compatibility is enabled. False - IF the page builder compatibility is disabled.
 	 */
-	function sinatra_enable_page_builder_compatibility() {
-		return apply_filters( 'sinatra_enable_page_builder_compatibility', true );
+	function prisma_core_enable_page_builder_compatibility() {
+		return apply_filters( 'prisma_core_enable_page_builder_compatibility', true );
 	}
 
 endif;
@@ -954,7 +954,7 @@ endif;
  * @param string $position  Before or after $key.
  * @return array $result    Array with inserted $new value.
  */
-function sinatra_array_insert( $array, $pairs, $key, $position = 'after' ) {
+function prisma_core_array_insert( $array, $pairs, $key, $position = 'after' ) {
 
 	$key_pos = array_search( $key, array_keys( $array ), true );
 
@@ -979,12 +979,12 @@ function sinatra_array_insert( $array, $pairs, $key, $position = 'after' ) {
  * @since  1.0.0
  * @return string Background color.
  */
-function sinatra_get_background_color() {
+function prisma_core_get_background_color() {
 
-	$site_layout = sinatra_get_site_layout();
+	$site_layout = prisma_core_get_site_layout();
 
 	if ( in_array( $site_layout, array( 'boxed', 'boxed-separated' ), true ) ) {
-		$background_color = sinatra_option( 'boxed_content_background_color' );
+		$background_color = prisma_core_option( 'boxed_content_background_color' );
 	} else {
 		$background_color = '#' . get_background_color();
 	}
@@ -1001,7 +1001,7 @@ function sinatra_get_background_color() {
  * @param  int   $post_id     Current page ID.
  * @return bool               Section is displayed.
  */
-function sinatra_is_section_disabled( $disabled_on = array(), $post_id = 0 ) {
+function prisma_core_is_section_disabled( $disabled_on = array(), $post_id = 0 ) {
 
 	$disabled = false;
 
@@ -1018,7 +1018,7 @@ function sinatra_is_section_disabled( $disabled_on = array(), $post_id = 0 ) {
 	} elseif ( ( is_singular() || ! empty( $post_id ) ) && ! is_front_page() ) {
 
 		if ( empty( $post_id ) ) {
-			$post_id = sinatra_get_the_id();
+			$post_id = prisma_core_get_the_id();
 		}
 
 		if ( in_array( get_post_type( $post_id ), $disabled_on, true ) ) {
@@ -1035,7 +1035,7 @@ function sinatra_is_section_disabled( $disabled_on = array(), $post_id = 0 ) {
  * @since 1.1.0
  * @return array $image_sizes The image sizes
  */
-function sinatra_get_image_sizes() {
+function prisma_core_get_image_sizes() {
 	global $_wp_additional_image_sizes;
 
 	$default_image_sizes = get_intermediate_image_sizes();
@@ -1059,11 +1059,11 @@ function sinatra_get_image_sizes() {
 	return $image_sizes;
 }
 
-if ( ! function_exists( 'sinatra_display_notices' ) ) :
+if ( ! function_exists( 'prisma_core_display_notices' ) ) :
 	/**
 	 * Display notices.
 	 */
-	function sinatra_display_notices() {
+	function prisma_core_display_notices() {
 		return defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG || defined( 'WP_DEBUG' ) && WP_DEBUG;
 	}
 endif;

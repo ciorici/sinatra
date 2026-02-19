@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * Sinatra changes: moved shipping to col-1, moved order review to col-2.
+ * Prisma Core changes: moved shipping to col-1, moved order review to col-2.
  *
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
@@ -38,7 +38,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
 		<div class="col2-set" id="customer_details">
-			<?php // Sinatra: billing + shipping in col-1, order review in col-2. ?>
+			<?php // Prisma Core: billing + shipping in col-1, order review in col-2. ?>
 			<div class="col-1">
 				<?php do_action( 'woocommerce_checkout_billing' ); ?>
 				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
@@ -47,7 +47,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			<div class="col-2">
 				<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
-				<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'sinatra' ); ?></h3>
+				<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'prisma-core' ); ?></h3>
 
 				<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 

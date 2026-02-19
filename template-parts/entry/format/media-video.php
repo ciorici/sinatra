@@ -4,8 +4,8 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
@@ -26,13 +26,13 @@ if ( has_post_thumbnail() ) :
 
 else :
 
-	$sinatra_media = sinatra_get_post_media( 'video' );
+	$prisma_core_media = prisma_core_get_post_media( 'video' );
 
-	if ( $sinatra_media ) : ?>
+	if ( $prisma_core_media ) : ?>
 
 		<div class="post-thumb entry-media thumbnail">
-			<div class="si-video-container">
-				<?php echo $sinatra_media; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<div class="pr-video-container">
+				<?php echo $prisma_core_media; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</div>
 		</div>
 

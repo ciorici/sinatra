@@ -22,23 +22,23 @@ const paths = {
 		'assets/css/compatibility/woocommerce.css',
 		'assets/css/compatibility/elementor.css',
 		'assets/css/compatibility/elementor-editor-style.css',
-		'inc/admin/assets/css/sinatra-admin.css',
-		'inc/admin/assets/css/sinatra-meta-boxes.css',
-		'inc/admin/assets/css/sinatra-block-editor-styles.css',
-		'inc/customizer/assets/css/sinatra-customizer.css',
-		'inc/customizer/assets/css/sinatra-customizer-preview.css',
+		'inc/admin/assets/css/prisma-core-admin.css',
+		'inc/admin/assets/css/prisma-core-meta-boxes.css',
+		'inc/admin/assets/css/prisma-core-block-editor-styles.css',
+		'inc/customizer/assets/css/prisma-core-customizer.css',
+		'inc/customizer/assets/css/prisma-core-customizer-preview.css',
 	],
 
 	// Pipeline 3: Frontend JS (dev/ → parent directory)
 	frontJs: [
-		'assets/js/dev/sinatra.js',
-		'assets/js/dev/sinatra-slider.js',
-		'assets/js/dev/sinatra-wc.js',
+		'assets/js/dev/prisma-core.js',
+		'assets/js/dev/prisma-core-slider.js',
+		'assets/js/dev/prisma-core-wc.js',
 		'assets/js/dev/skip-link-focus-fix.js',
 	],
 
 	// Pipeline 4: Admin/Customizer JS (dev/ → parent .min.js only)
-	adminJs: 'inc/admin/assets/js/dev/sinatra-admin.js',
+	adminJs: 'inc/admin/assets/js/dev/prisma-core-admin.js',
 	customizerJs: 'inc/customizer/assets/js/dev/*.js',
 
 	// Pipeline 5: Customizer control JS (in-place minify)
@@ -232,22 +232,22 @@ function readme( cb ) {
 	txt = txt.replace(
 		'## Resources ##',
 		'## Copyright ##\n\n' +
-		'Sinatra WordPress Theme, Copyright 2025 ciorici\n' +
-		'Originally created by Sinatra Team (https://sinatrawp.com).\n' +
-		'Sinatra is distributed under the terms of the GNU GPL.\n\n' +
-		'Sinatra bundles the following third-party resources:'
+		'Prisma Core WordPress Theme, Copyright 2025 ciorici\n' +
+		'Originally created by Sinatra Team.\n' +
+		'Prisma Core is distributed under the terms of the GNU GPL.\n\n' +
+		'Prisma Core bundles the following third-party resources:'
 	);
 
 	// Custom header — matches the Inspiro pattern.
 	const customHeader =
-		'# Sinatra #\n' +
+		'# Prisma Core #\n' +
 		'### A lightweight and highly customizable multi-purpose theme that makes it easy for anyone to create their perfect website.\n\n' +
-		'Community-maintained fork of the original Sinatra theme by [Sinatra Team](https://sinatrawp.com). ' +
+		'Community-maintained fork of the original Sinatra theme. ' +
 		'Includes security fixes, PHP 8.2+ compatibility, WordPress 6.9+ support, and updated WooCommerce templates.\n\n' +
-		'[Download Latest Release](https://github.com/ciorici/sinatra/releases) ' +
+		'[Download Latest Release](https://github.com/ciorici/prisma-core/releases) ' +
 		'&nbsp;&middot;&nbsp; ' +
-		'[View on WordPress.org](https://wordpress.org/themes/flavor/)\n\n' +
-		'![Sinatra Theme Screenshot](screenshot.jpg)\n\n';
+		'[View on WordPress.org](https://wordpress.org/themes/prisma-core/)\n\n' +
+		'![Prisma Core Theme Screenshot](screenshot.jpg)\n\n';
 
 	// Replace everything before "**Contributors:" with custom header.
 	const contribIndex = txt.indexOf( '**Contributors:' );
@@ -261,10 +261,12 @@ function readme( cb ) {
 }
 
 // ─── Theme rename ────────────────────────────────────────────────────
-// Usage: gulp rename --name=Flavor [--prefix=flv]
+// Usage: gulp rename --name=PrismaCore [--prefix=pr]
 //
-// One-time task that renames the theme (and sinatra-core plugin) from
-// "Sinatra" to the given name.  Review the result with `git diff`.
+// One-time task that renames the Prisma Core theme to a new name.
+// Supports CamelCase multi-word names: PrismaCore → slug "prisma-core".
+// Does NOT touch the sinatra-core plugin (rename that separately).
+// Review the result with `git diff`.
 
 function themeRename( cb ) {
 	const args = process.argv;
@@ -272,74 +274,100 @@ function themeRename( cb ) {
 	const prefixFlag = args.find( ( a ) => a.startsWith( '--prefix=' ) );
 
 	if ( ! nameFlag ) {
-		console.error( 'Usage: gulp rename --name=Flavor [--prefix=flv]' );
+		console.error( 'Usage: gulp rename --name=PrismaCore [--prefix=pr]' );
 		return cb( new Error( 'Missing --name argument' ) );
 	}
 
-	const Name = nameFlag.split( '=' )[ 1 ]; // Title Case
-	const name = Name.toLowerCase(); // lowercase slug
-	const NAME = Name.toUpperCase(); // UPPER_CASE
+	const rawName = nameFlag.split( '=' )[ 1 ]; // e.g. "PrismaCore"
+
+	if ( ! /^[A-Z][a-zA-Z]+$/.test( rawName ) ) {
+		return cb( new Error( 'Name must be CamelCase, letters only (e.g. Flavor, PrismaCore)' ) );
+	}
+
+	// Split CamelCase into words: "PrismaCore" → ["Prisma", "Core"].
+	const words = rawName.match( /[A-Z][a-z]*/g ) || [ rawName ];
+	const displayName = words.join( ' ' ); // "Prisma Core"
+	const slug = words.join( '-' ).toLowerCase(); // "prisma-core"
+	const classPrefix = words.join( '_' ); // "Prisma_Core"
+	const funcPrefix = words.join( '_' ).toLowerCase(); // "prisma_core"
+	const constPrefix = words.join( '_' ).toUpperCase(); // "PRISMA_CORE"
+	const camelCase = words[ 0 ].toLowerCase() + words.slice( 1 ).join( '' ); // "prismaCore"
 	const prefix = prefixFlag
 		? prefixFlag.split( '=' )[ 1 ]
-		: name.substring( 0, 2 ); // default: first 2 chars
-
-	if ( ! /^[A-Z][a-zA-Z]+$/.test( Name ) ) {
-		return cb( new Error( 'Name must be TitleCase, letters only (e.g. Flavor)' ) );
-	}
+		: words[ 0 ].substring( 0, 2 ).toLowerCase(); // "pr"
 
 	// Verify the theme hasn't already been renamed.
 	const styleCss = fs.readFileSync( 'style.css', 'utf8' );
-	if ( ! /Theme Name:\s*Sinatra/.test( styleCss ) ) {
+	if ( ! /Theme Name:\s*Prisma Core/.test( styleCss ) ) {
 		return cb( new Error( 'Theme already renamed. This task can only run once.' ) );
 	}
 
-	console.log( 'Renaming: Sinatra → ' + Name );
-	console.log( '  slug:       sinatra → ' + name );
-	console.log( '  CSS prefix: si- → ' + prefix + '-' );
+	console.log( 'Renaming: Prisma Core → ' + displayName );
+	console.log( '  slug:         prisma-core → ' + slug );
+	console.log( '  class prefix: Prisma_Core_ → ' + classPrefix + '_' );
+	console.log( '  func prefix:  prisma_core_ → ' + funcPrefix + '_' );
+	console.log( '  constants:    PRISMA_CORE_ → ' + constPrefix + '_' );
+	console.log( '  CSS prefix:   pr- → ' + prefix + '-' );
+	console.log( '  JS camelCase: prisma-core → ' + camelCase );
 	console.log( '' );
 
 	const themeDir = path.resolve( '.' );
-	const pluginDir = path.resolve( themeDir, '..', '..', '..', 'plugins', 'sinatra-core' );
 	const extensions = [
 		'.php', '.css', '.scss', '.js', '.json', '.xml',
 		'.txt', '.md', '.pot', '.svg',
 	];
 	const excludedDirs = [ 'node_modules', '.git', 'vendor' ];
 
-	// ── Text replacements (most specific → least specific) ──
+	// ── Text replacements ──
+	// Phase 1: Tokenize sinatra-core PLUGIN references (protect from rename).
+	// Phase 2: Rename theme identifiers.
+	// Phase 3: Restore plugin tokens.
 
 	const replacements = [
-		// PHP constants (UPPER_CASE).
-		[ /\bSINATRA_CORE_/g, NAME + '_CORE_' ],
-		[ /\bSINATRA_THEME_/g, NAME + '_THEME_' ],
-		[ /\bSINATRA_/g, NAME + '_' ],
+		// ── Phase 1: Tokenize plugin references ──
+		[ /\bPRISMA_CORE_CORE_/g, 'SINATRA_CORE_' ],
+		[ /\bPrisma Core_Core_/g, 'Sinatra_Core_' ],
+		[ /\bprisma-core_core_/g, 'sinatra_core_' ],
+		[ /\bprisma-core_core\b/g, 'sinatra_core' ],
+		[ /sinatra-core/g, 'sinatra-core' ],
 
-		// PHP class names (Title_Case).
-		[ /\bSinatra_Core_/g, Name + '_Core_' ],
-		[ /\bSinatra_/g, Name + '_' ],
+		// ── Phase 2: Theme rename ──
+		// PHP constants.
+		[ /\bPRISMA_CORE_THEME_/g, constPrefix + '_THEME_' ],
+		[ /\bPRISMA_CORE_/g, constPrefix + '_' ],
 
-		// PHP function/hook names (snake_case).
-		[ /\bsinatra_core_/g, name + '_core_' ],
-		[ /\bsinatra_core\b/g, name + '_core' ],
-		[ /\bsinatra_/g, name + '_' ],
+		// PHP class names.
+		[ /\bPrisma Core_/g, classPrefix + '_' ],
+
+		// PHP function/hook names.
+		[ /\bprisma-core_/g, funcPrefix + '_' ],
 
 		// JS camelCase identifiers.
-		[ /\bsinatraCoreDemoLibrary\b/g, name + 'CoreDemoLibrary' ],
-		[ /\bsinatra([A-Z])/g, name + '$1' ],
-		[ /window\.sinatra\b/g, 'window.' + name ],
-		[ /\bsinatra\(\)/g, name + '()' ],
+		[ /\bprisma-core([A-Z])/g, camelCase + '$1' ],
+		[ /window\.prisma-core\b/g, 'window.' + camelCase ],
+		[ /\bprisma-core\(\)/g, funcPrefix + '()' ],
 
-		// Hyphenated identifiers (CSS classes, text domains, file refs).
-		[ /sinatra-core/g, name + '-core' ],
-		[ /sinatra-/g, name + '-' ],
+		// Text domains (quoted strings).
+		[ /'prisma-core'/g, "'" + slug + "'" ],
+		[ /"prisma-core"/g, '"' + slug + '"' ],
+
+		// Hyphenated identifiers (CSS classes, file refs).
+		[ /prisma-core-/g, slug + '-' ],
 
 		// Short CSS prefix.
 		[ /\bsi-/g, prefix + '-' ],
 
-		// Remaining display text (catches comments, descriptions, etc.).
-		[ /Sinatra/g, Name ],
-		[ /sinatra/g, name ],
-		[ /SINATRA/g, NAME ],
+		// Remaining display text.
+		[ /Prisma Core/g, displayName ],
+		[ /prisma-core/g, slug ],
+		[ /PRISMA_CORE/g, constPrefix ],
+
+		// ── Phase 3: Restore plugin tokens ──
+		[ /\{\{__PC_CONST__\}\}/g, 'SINATRA_CORE_' ],
+		[ /\{\{__PC_CLASS__\}\}/g, 'Sinatra_Core_' ],
+		[ /\{\{__PC_FUNC__\}\}/g, 'sinatra_core_' ],
+		[ /\{\{__PC_NAME__\}\}/g, 'sinatra_core' ],
+		[ /\{\{__PC_SLUG__\}\}/g, 'sinatra-core' ],
 	];
 
 	// ── Helper: walk directory tree ──
@@ -361,32 +389,22 @@ function themeRename( cb ) {
 		return results;
 	}
 
-	// ── 1. Replace file contents ──
+	// ── 1. Replace file contents (theme only) ──
 
-	function replaceContents( dir ) {
-		let count = 0;
-		const files = walkDir( dir );
-		for ( const filePath of files ) {
-			let content = fs.readFileSync( filePath, 'utf8' );
-			const original = content;
-			for ( const [ search, replacement ] of replacements ) {
-				content = content.replace( search, replacement );
-			}
-			if ( content !== original ) {
-				fs.writeFileSync( filePath, content );
-				count++;
-			}
+	let count = 0;
+	const files = walkDir( themeDir );
+	for ( const filePath of files ) {
+		let content = fs.readFileSync( filePath, 'utf8' );
+		const original = content;
+		for ( const [ search, replacement ] of replacements ) {
+			content = content.replace( search, replacement );
 		}
-		return count;
+		if ( content !== original ) {
+			fs.writeFileSync( filePath, content );
+			count++;
+		}
 	}
-
-	let changed = replaceContents( themeDir );
-	console.log( 'Theme: ' + changed + ' files updated.' );
-
-	if ( fs.existsSync( pluginDir ) ) {
-		changed = replaceContents( pluginDir );
-		console.log( 'Plugin: ' + changed + ' files updated.' );
-	}
+	console.log( 'Content: ' + count + ' files updated.' );
 
 	// ── 2. Rename files and directories ──
 
@@ -401,7 +419,7 @@ function themeRename( cb ) {
 			if ( entry.isDirectory() ) {
 				results.push( ...collectRenames( full ) );
 			}
-			if ( entry.name.includes( 'sinatra' ) ) {
+			if ( entry.name.includes( 'prisma-core' ) ) {
 				results.push( {
 					fullPath: full,
 					dir: dir,
@@ -413,88 +431,55 @@ function themeRename( cb ) {
 		return results;
 	}
 
-	function renameEntries( dir ) {
-		const entries = collectRenames( dir );
-		let count = 0;
+	const entries = collectRenames( themeDir );
+	let renamed = 0;
 
-		// Files first.
-		entries
-			.filter( ( e ) => ! e.isDir )
-			.forEach( ( e ) => {
-				const newName = e.name.replace( /sinatra/g, name );
-				fs.renameSync( e.fullPath, path.join( e.dir, newName ) );
-				count++;
-			} );
-
-		// Directories deepest-first.
-		entries
-			.filter( ( e ) => e.isDir )
-			.sort( ( a, b ) => b.fullPath.length - a.fullPath.length )
-			.forEach( ( e ) => {
-				const newName = e.name.replace( /sinatra/g, name );
-				const newPath = path.join( path.dirname( e.fullPath ), newName );
-				if ( ! fs.existsSync( newPath ) ) {
-					fs.renameSync( e.fullPath, newPath );
-					count++;
-				}
-			} );
-
-		return count;
-	}
-
-	let renamed = renameEntries( themeDir );
-	console.log( 'Theme: ' + renamed + ' files/dirs renamed.' );
-
-	let currentPluginDir = pluginDir;
-	if ( fs.existsSync( pluginDir ) ) {
-		renamed = renameEntries( pluginDir );
-
-		// Rename the plugin directory itself.
-		const newPluginDir = path.resolve( pluginDir, '..', name + '-core' );
-		if ( ! fs.existsSync( newPluginDir ) ) {
-			fs.renameSync( pluginDir, newPluginDir );
-			currentPluginDir = newPluginDir;
+	// Files first.
+	entries
+		.filter( ( e ) => ! e.isDir )
+		.forEach( ( e ) => {
+			const newName = e.name.replace( /prisma-core/g, slug );
+			fs.renameSync( e.fullPath, path.join( e.dir, newName ) );
 			renamed++;
-		}
-		console.log( 'Plugin: ' + renamed + ' files/dirs renamed.' );
-	}
+		} );
+
+	// Directories deepest-first.
+	entries
+		.filter( ( e ) => e.isDir )
+		.sort( ( a, b ) => b.fullPath.length - a.fullPath.length )
+		.forEach( ( e ) => {
+			const newName = e.name.replace( /prisma-core/g, slug );
+			const newPath = path.join( path.dirname( e.fullPath ), newName );
+			if ( ! fs.existsSync( newPath ) ) {
+				fs.renameSync( e.fullPath, newPath );
+				renamed++;
+			}
+		} );
+
+	console.log( 'Renamed: ' + renamed + ' files/dirs.' );
 
 	// ── 3. Post-rename fixups ──
 
 	// Restore migration class backwards-compat constants.
 	const migrationFile = path.join(
-		themeDir, 'inc', 'core', 'class-' + name + '-migration.php'
+		themeDir, 'inc', 'core', 'class-' + slug + '-migration.php'
 	);
 	if ( fs.existsSync( migrationFile ) ) {
 		let mc = fs.readFileSync( migrationFile, 'utf8' );
 		mc = mc.replace(
-			"const OLD_SLUG = '" + name + "'",
-			"const OLD_SLUG = 'sinatra'"
+			"const OLD_SLUG = '" + slug + "'",
+			"const OLD_SLUG = 'prisma-core'"
 		);
 		mc = mc.replace(
-			"const OLD_PREFIX = '" + name + "_'",
-			"const OLD_PREFIX = 'sinatra_'"
+			"const OLD_PREFIX = '" + funcPrefix + "_'",
+			"const OLD_PREFIX = 'prisma_core_'"
 		);
 		fs.writeFileSync( migrationFile, mc );
 		console.log( 'Fixed: migration class OLD_SLUG/OLD_PREFIX restored.' );
 	}
 
-	// Add backwards-compat theme check in plugin bootstrap.
-	const pluginBootstrap = path.join( currentPluginDir, name + '-core.php' );
-	if ( fs.existsSync( pluginBootstrap ) ) {
-		let pc = fs.readFileSync( pluginBootstrap, 'utf8' );
-		const newCheck =
-			"'" + Name + "' === $theme->name || '" + name + "' === $theme->template";
-		const compatCheck = newCheck +
-			" ||\n\t     'Sinatra' === $theme->name || 'sinatra' === $theme->template";
-		if ( pc.includes( newCheck ) && ! pc.includes( "'Sinatra'" ) ) {
-			pc = pc.replace( newCheck, compatCheck );
-			fs.writeFileSync( pluginBootstrap, pc );
-			console.log( 'Fixed: plugin theme check — added Sinatra backwards compat.' );
-		}
-	}
-
 	console.log( '\nDone! Review changes with: git diff' );
+	console.log( 'Note: sinatra-core plugin was NOT renamed — do that separately.' );
 	cb();
 }
 

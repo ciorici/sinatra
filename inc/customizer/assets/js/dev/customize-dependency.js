@@ -1,7 +1,7 @@
 ;( function( $ ) {
 	"use strict";
 
-	var sinatraDependencies = {
+	var prismaCoreDependencies = {
 		listenTo: {},
 
 		init: function() {
@@ -9,7 +9,7 @@
 
 			// Initialize visibility on load
 			wp.customize.control.each( function( control ) {
-				self.showSinatraControl( control );
+				self.showPrismaCoreControl( control );
 			});
 
 			_.each( self.listenTo, function( slaves, master ) {
@@ -20,7 +20,7 @@
 								isDisplayed;
 
 							isDisplayed = function() {
-								return self.showSinatraControl( wp.customize.control( slave ) );
+								return self.showPrismaCoreControl( wp.customize.control( slave ) );
 							};
 							setActiveState = function() {
 								control.active.set( isDisplayed() );
@@ -44,7 +44,7 @@
 		 * @param {string|object} control - The control-id or the control object.
 		 * @returns {bool}
 		 */
-		showSinatraControl: function( control ) {
+		showPrismaCoreControl: function( control ) {
 			var self     = this,
 				show     = true,
 				i;
@@ -72,7 +72,7 @@
 		 * Check a condition.
 		 *
 		 * @since 1.0.0
-		 * @param {Object} requirement - The requirement, inherited from showSinatraControl.
+		 * @param {Object} requirement - The requirement, inherited from showPrismaCoreControl.
 		 * @param {Object} control - The control object.
 		 * @param {string} relation - Can be one of 'AND' or 'OR'.
 		 */
@@ -191,10 +191,10 @@
 			}
 			return value1 == value2;
 		},
-	}; // END var sinatraDependencies
+	}; // END var prismaCoreDependencies
 
 	$( document ).ready( function() {
-		sinatraDependencies.init();
+		prismaCoreDependencies.init();
 	});
 
 } )( jQuery );

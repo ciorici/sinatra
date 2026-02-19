@@ -7,8 +7,8 @@
  */
 @import '../../../../assets/sass/config';
 
-.sinatra-range-wrapper {
-	.sinatra-control-wrap { 
+.prisma-core-range-wrapper {
+	.prisma-core-control-wrap { 
 		display: flex; 
 		flex-wrap: wrap; 
 		align-items: center; 
@@ -16,8 +16,8 @@
 		margin-top: 12px;
 
 		input[type=range],
-		.sinatra-range-input,
-		.sinatra-reset-range {
+		.prisma-core-range-input,
+		.prisma-core-reset-range {
 			flex: 1;
 		}
 
@@ -112,7 +112,7 @@
 		}
 	}
 	
-	.sinatra-range-input {
+	.prisma-core-range-input {
 		max-width: 50px; 
 		height: 28px; 
 		text-align: center;
@@ -130,7 +130,7 @@
 		}
 	}
 
-	.sinatra-reset-range { 
+	.prisma-core-reset-range { 
 		max-width: 16px;
 		margin-left: 12px;
 		display: inline-block; 
@@ -152,7 +152,7 @@
 		}
 	}
 
-	.sinatra-range-unit {
+	.prisma-core-range-unit {
 		margin-left: 6px;
 		color: #555d66;
 	}

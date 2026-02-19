@@ -1,7 +1,7 @@
 /*****************************************/
 /* Customizer radio image control style
 /*****************************************/
-.customize-control-sinatra-radio-image .sinatra-radio-image-choices {
+.customize-control-prisma-core-radio-image .prisma-core-radio-image-choices {
   box-sizing: border-box;
   margin-top: -6px;
   margin-left: -6px;
@@ -11,13 +11,13 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-.customize-control-sinatra-radio-image input {
+.customize-control-prisma-core-radio-image input {
   display: none;
 }
-.customize-control-sinatra-radio-image input:checked + label > img {
+.customize-control-prisma-core-radio-image input:checked + label > img {
   border-color: #0085ba;
 }
-.customize-control-sinatra-radio-image input:checked + label:after {
+.customize-control-prisma-core-radio-image input:checked + label:after {
   content: "\f147";
   -webkit-font-smoothing: antialiased;
   font: normal 16px/1 "dashicons";
@@ -33,7 +33,7 @@
   justify-content: center;
   color: #FFF;
 }
-.customize-control-sinatra-radio-image label {
+.customize-control-prisma-core-radio-image label {
   position: relative;
   box-sizing: border-box;
   flex: 0 0 auto;
@@ -42,11 +42,11 @@
   padding: 12px 6px 0 6px;
   margin: 0;
 }
-.customize-control-sinatra-radio-image label img {
+.customize-control-prisma-core-radio-image label img {
   box-sizing: border-box;
   border: solid 2px #fff;
   display: block;
 }
-.customize-control-sinatra-radio-image label:hover .small-tooltip {
+.customize-control-prisma-core-radio-image label:hover .small-tooltip {
   display: block;
 }

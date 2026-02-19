@@ -2,43 +2,43 @@
 /**
  * The template for displaying theme sidebar.
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
-if ( ! sinatra_is_sidebar_displayed() ) {
+if ( ! prisma_core_is_sidebar_displayed() ) {
 	return;
 }
 
-$sinatra_sidebar = sinatra_get_sidebar();
+$prisma_core_sidebar = prisma_core_get_sidebar();
 ?>
 
-<aside id="secondary" class="widget-area si-sidebar-container"<?php sinatra_schema_markup( 'sidebar' ); ?> role="complementary">
+<aside id="secondary" class="widget-area pr-sidebar-container"<?php prisma_core_schema_markup( 'sidebar' ); ?> role="complementary">
 
-	<div class="si-sidebar-inner">
-		<?php do_action( 'sinatra_before_sidebar' ); ?>
+	<div class="pr-sidebar-inner">
+		<?php do_action( 'prisma_core_before_sidebar' ); ?>
 
 		<?php
-		if ( is_active_sidebar( $sinatra_sidebar ) ) {
+		if ( is_active_sidebar( $prisma_core_sidebar ) ) {
 
-			dynamic_sidebar( $sinatra_sidebar );
+			dynamic_sidebar( $prisma_core_sidebar );
 
 		} elseif ( current_user_can( 'edit_theme_options' ) ) {
 
-			$sinatra_sidebar_name = sinatra_get_sidebar_name_by_id( $sinatra_sidebar );
+			$prisma_core_sidebar_name = prisma_core_get_sidebar_name_by_id( $prisma_core_sidebar );
 			?>
-			<div class="si-sidebar-widget si-widget sinatra-no-widget">
+			<div class="pr-sidebar-widget pr-widget prisma-core-no-widget">
 
-				<div class='h4 widget-title'><?php echo esc_html( $sinatra_sidebar_name ); ?></div>
+				<div class='h4 widget-title'><?php echo esc_html( $prisma_core_sidebar_name ); ?></div>
 
 				<p class='no-widget-text'>
 					<?php if ( is_customize_preview() ) { ?>
-						<a href='#' class="sinatra-set-widget" data-sidebar-id="<?php echo esc_attr( $sinatra_sidebar ); ?>">
+						<a href='#' class="prisma-core-set-widget" data-sidebar-id="<?php echo esc_attr( $prisma_core_sidebar ); ?>">
 					<?php } else { ?>
 						<a href='<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>'>
 					<?php } ?>
-						<?php esc_html_e( 'Click here to assign a widget.', 'sinatra' ); ?>
+						<?php esc_html_e( 'Click here to assign a widget.', 'prisma-core' ); ?>
 					</a>
 				</p>
 			</div>
@@ -46,7 +46,7 @@ $sinatra_sidebar = sinatra_get_sidebar();
 		}
 		?>
 
-		<?php do_action( 'sinatra_after_sidebar' ); ?>
+		<?php do_action( 'prisma_core_after_sidebar' ); ?>
 	</div>
 
 </aside><!--#secondary .widget-area -->

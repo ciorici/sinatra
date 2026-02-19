@@ -1,9 +1,9 @@
 <?php
 /**
- * Sinatra Customizer helper functions.
+ * Prisma Core Customizer helper functions.
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
@@ -20,17 +20,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  * @return array, $widgets array of available widgets.
  */
-function sinatra_get_customizer_widgets() {
+function prisma_core_get_customizer_widgets() {
 
 	$widgets = array(
-		'text'    => 'Sinatra_Customizer_Widget_Text',
-		'nav'     => 'Sinatra_Customizer_Widget_Nav',
-		'socials' => 'Sinatra_Customizer_Widget_Socials',
-		'search'  => 'Sinatra_Customizer_Widget_Search',
-		'button'  => 'Sinatra_Customizer_Widget_Button',
+		'text'    => 'Prisma_Core_Customizer_Widget_Text',
+		'nav'     => 'Prisma_Core_Customizer_Widget_Nav',
+		'socials' => 'Prisma_Core_Customizer_Widget_Socials',
+		'search'  => 'Prisma_Core_Customizer_Widget_Search',
+		'button'  => 'Prisma_Core_Customizer_Widget_Button',
 	);
 
-	return apply_filters( 'sinatra_customizer_widgets', $widgets );
+	return apply_filters( 'prisma_core_customizer_widgets', $widgets );
 }
 
 /**
@@ -39,28 +39,28 @@ function sinatra_get_customizer_widgets() {
  * @since  1.0.0
  * @return array
  */
-function sinatra_get_display_choices() {
+function prisma_core_get_display_choices() {
 
 	// Default options.
 	$return = array(
 		'home'       => array(
-			'title' => esc_html__( 'Home Page', 'sinatra' ),
+			'title' => esc_html__( 'Home Page', 'prisma-core' ),
 		),
 		'posts_page' => array(
-			'title' => esc_html__( 'Blog / Posts Page', 'sinatra' ),
+			'title' => esc_html__( 'Blog / Posts Page', 'prisma-core' ),
 		),
 		'search'     => array(
-			'title' => esc_html__( 'Search', 'sinatra' ),
+			'title' => esc_html__( 'Search', 'prisma-core' ),
 		),
 		'archive'    => array(
-			'title' => esc_html__( 'Archive', 'sinatra' ),
-			'desc'  => esc_html__( 'Dynamic pages such as categories, tags, custom taxonomies...', 'sinatra' ),
+			'title' => esc_html__( 'Archive', 'prisma-core' ),
+			'desc'  => esc_html__( 'Dynamic pages such as categories, tags, custom taxonomies...', 'prisma-core' ),
 		),
 		'post'       => array(
-			'title' => esc_html__( 'Single Post', 'sinatra' ),
+			'title' => esc_html__( 'Single Post', 'prisma-core' ),
 		),
 		'page'       => array(
-			'title' => esc_html__( 'Single Page', 'sinatra' ),
+			'title' => esc_html__( 'Single Page', 'prisma-core' ),
 		),
 	);
 
@@ -81,7 +81,7 @@ function sinatra_get_display_choices() {
 		}
 	}
 
-	return apply_filters( 'sinatra_display_choices', $return );
+	return apply_filters( 'prisma_core_display_choices', $return );
 }
 
 /**
@@ -90,20 +90,20 @@ function sinatra_get_display_choices() {
  * @since  1.2.0
  * @return array
  */
-function sinatra_get_device_choices() {
+function prisma_core_get_device_choices() {
 
 	// Default options.
 	$return = array(
 		'desktop' => array(
-			'title' => esc_html__( 'Hide On Desktop', 'sinatra' ),
+			'title' => esc_html__( 'Hide On Desktop', 'prisma-core' ),
 		),
 		'tablet' => array(
-			'title' => esc_html__( 'Hide On Tablet', 'sinatra' ),
+			'title' => esc_html__( 'Hide On Tablet', 'prisma-core' ),
 		),
 		'mobile' => array(
-			'title' => esc_html__( 'Hide On Mobile', 'sinatra' ),
+			'title' => esc_html__( 'Hide On Mobile', 'prisma-core' ),
 		),
 	);
 
-	return apply_filters( 'sinatra_device_choices', $return );
+	return apply_filters( 'prisma_core_device_choices', $return );
 }

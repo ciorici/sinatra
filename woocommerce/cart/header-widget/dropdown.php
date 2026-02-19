@@ -2,7 +2,7 @@
 /**
  * Header Cart Widget dropdown.
  *
- * @package Sinatra
+ * @package Prisma Core
  */
 
 // Exit if accessed directly.

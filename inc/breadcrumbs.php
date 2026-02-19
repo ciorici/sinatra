@@ -2,8 +2,8 @@
 /**
  * Custom breadcrumbs.
  *
- * @package     Sinatra
- * @author      Sinatra Team <hello@sinatrawp.com>
+ * @package     Prisma Core
+ * @author      Prisma Core Team
  * @since       1.0.0
  */
 
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'sinatra_breadcrumb_trail' ) ) {
+if ( ! function_exists( 'prisma_core_breadcrumb_trail' ) ) {
 
 	/**
 	 * Show a breadcrumb.
@@ -22,7 +22,7 @@ if ( ! function_exists( 'sinatra_breadcrumb_trail' ) ) {
 	 * @since  1.0.0
 	 * @param  array $args Arguments to pass.
 	 */
-	function sinatra_breadcrumb_trail( $args = array() ) {
+	function prisma_core_breadcrumb_trail( $args = array() ) {
 
 		// Check if breadcrumb is turned on from WPSEO option.
 		$breadcrumb_enable = is_callable( 'WPSEO_Options::get' ) ? WPSEO_Options::get( 'breadcrumbs-enable' ) : false;
@@ -49,11 +49,11 @@ if ( ! function_exists( 'sinatra_breadcrumb_trail' ) ) {
 			return rank_math_the_breadcrumbs();
 		}
 
-		// Sinatra breadcrumb trail.
-		$breadcrumb = apply_filters( 'sinatra_breadcrumb_trail_object', null, $args );
+		// Prisma Core breadcrumb trail.
+		$breadcrumb = apply_filters( 'prisma_core_breadcrumb_trail_object', null, $args );
 
 		if ( ! is_object( $breadcrumb ) ) {
-			$breadcrumb = new Sinatra_Breadcrumb_Trail( $args );
+			$breadcrumb = new Prisma_Core_Breadcrumb_Trail( $args );
 		}
 
 		return $breadcrumb->trail();
@@ -64,20 +64,20 @@ if ( ! function_exists( 'sinatra_breadcrumb_trail' ) ) {
 	 *
 	 * @since 1.0.0
 	 */
-	function sinatra_seopress_breadcrumbs_before_html() {
-		echo '<div class="si-breadcrumbs-wrapper">';
+	function prisma_core_seopress_breadcrumbs_before_html() {
+		echo '<div class="pr-breadcrumbs-wrapper">';
 	}
-	add_action( 'seopress_breadcrumbs_before_html', 'sinatra_seopress_breadcrumbs_before_html' );
+	add_action( 'seopress_breadcrumbs_before_html', 'prisma_core_seopress_breadcrumbs_before_html' );
 
 	/**
 	 * After HTML for SEOPress breadcrumbs.
 	 *
 	 * @since 1.0.0
 	 */
-	function sinatra_seopress_breadcrumbs_after_html() {
+	function prisma_core_seopress_breadcrumbs_after_html() {
 		echo '</div>';
 	}
-	add_action( 'seopress_breadcrumbs_after_html', 'sinatra_seopress_breadcrumbs_after_html' );
+	add_action( 'seopress_breadcrumbs_after_html', 'prisma_core_seopress_breadcrumbs_after_html' );
 
 	/**
 	 * Overwrite the items for the breadcrumb trail.
@@ -87,7 +87,7 @@ if ( ! function_exists( 'sinatra_breadcrumb_trail' ) ) {
 	 * @param array $items Array of items belonging to the current breadcrumb trail.
 	 * @param array $args  Arguments used to build the breadcrumb trail.
 	 */
-	function sinatra_breadcrumb_trail_items( $items, $args ) {
+	function prisma_core_breadcrumb_trail_items( $items, $args ) {
 
 		// Add link to the Blog page.
 		if ( is_singular( 'post' ) ) {
@@ -104,7 +104,7 @@ if ( ! function_exists( 'sinatra_breadcrumb_trail' ) ) {
 
 		return $items;
 	}
-	add_filter( 'sinatra_breadcrumb_trail_items', 'sinatra_breadcrumb_trail_items', 10, 2 );
+	add_filter( 'prisma_core_breadcrumb_trail_items', 'prisma_core_breadcrumb_trail_items', 10, 2 );
 }
 
 /**
@@ -113,7 +113,7 @@ if ( ! function_exists( 'sinatra_breadcrumb_trail' ) ) {
  * @since  1.0.0
  * @access public
  */
-class Sinatra_Breadcrumb_Trail {
+class Prisma_Core_Breadcrumb_Trail {
 
 	/**
 	 * Array of items belonging to the current breadcrumb trail.
@@ -206,7 +206,7 @@ class Sinatra_Breadcrumb_Trail {
 		);
 
 		// Parse the arguments with the deaults.
-		$this->args = apply_filters( 'sinatra_breadcrumb_trail_args', wp_parse_args( $args, $defaults ) );
+		$this->args = apply_filters( 'prisma_core_breadcrumb_trail_args', wp_parse_args( $args, $defaults ) );
 
 		// Set the labels and post taxonomy properties.
 		$this->set_labels();
@@ -307,7 +307,7 @@ class Sinatra_Breadcrumb_Trail {
 		}
 
 		// Allow developers to filter the breadcrumb trail HTML.
-		$breadcrumb = apply_filters( 'sinatra_breadcrumb_trail', $breadcrumb, $this->args );
+		$breadcrumb = apply_filters( 'prisma_core_breadcrumb_trail', $breadcrumb, $this->args );
 
 		if ( false === $this->args['echo'] ) {
 			return $breadcrumb;
@@ -328,21 +328,21 @@ class Sinatra_Breadcrumb_Trail {
 	protected function set_labels() {
 
 		$defaults = array(
-			'browse'              => esc_html__( 'Browse:', 'sinatra' ),
-			'aria_label'          => esc_attr_x( 'Breadcrumbs', 'breadcrumbs aria label', 'sinatra' ),
-			'home'                => esc_html__( 'Home', 'sinatra' ),
-			'error_404'           => esc_html__( '404 Not Found', 'sinatra' ),
-			'archives'            => esc_html__( 'Archives', 'sinatra' ),
+			'browse'              => esc_html__( 'Browse:', 'prisma-core' ),
+			'aria_label'          => esc_attr_x( 'Breadcrumbs', 'breadcrumbs aria label', 'prisma-core' ),
+			'home'                => esc_html__( 'Home', 'prisma-core' ),
+			'error_404'           => esc_html__( '404 Not Found', 'prisma-core' ),
+			'archives'            => esc_html__( 'Archives', 'prisma-core' ),
 			// Translators: %s is the search query.
-			'search'              => esc_html__( 'Search results for: %s', 'sinatra' ),
+			'search'              => esc_html__( 'Search results for: %s', 'prisma-core' ),
 			// Translators: %s is the page number.
-			'paged'               => esc_html__( 'Page %s', 'sinatra' ),
+			'paged'               => esc_html__( 'Page %s', 'prisma-core' ),
 			// Translators: %s is the page number.
-			'paged_comments'      => esc_html__( 'Comment Page %s', 'sinatra' ),
+			'paged_comments'      => esc_html__( 'Comment Page %s', 'prisma-core' ),
 			// Translators: Minute archive title. %s is the minute time format.
-			'archive_minute'      => esc_html__( 'Minute %s', 'sinatra' ),
+			'archive_minute'      => esc_html__( 'Minute %s', 'prisma-core' ),
 			// Translators: Weekly archive title. %s is the week date format.
-			'archive_week'        => esc_html__( 'Week %s', 'sinatra' ),
+			'archive_week'        => esc_html__( 'Week %s', 'prisma-core' ),
 
 			// "%s" is replaced with the translated date/time format.
 			'archive_minute_hour' => '%s',
@@ -352,7 +352,7 @@ class Sinatra_Breadcrumb_Trail {
 			'archive_year'        => '%s',
 		);
 
-		$this->labels = apply_filters( 'sinatra_breadcrumb_trail_labels', wp_parse_args( $this->args['labels'], $defaults ) );
+		$this->labels = apply_filters( 'prisma_core_breadcrumb_trail_labels', wp_parse_args( $this->args['labels'], $defaults ) );
 	}
 
 	/**
@@ -372,7 +372,7 @@ class Sinatra_Breadcrumb_Trail {
 			$defaults['post'] = 'category';
 		}
 
-		$this->post_taxonomy = apply_filters( 'sinatra_breadcrumb_trail_post_taxonomy', wp_parse_args( $this->args['post_taxonomy'], $defaults ) );
+		$this->post_taxonomy = apply_filters( 'prisma_core_breadcrumb_trail_post_taxonomy', wp_parse_args( $this->args['post_taxonomy'], $defaults ) );
 	}
 
 	/**
@@ -443,7 +443,7 @@ class Sinatra_Breadcrumb_Trail {
 		$this->add_paged_items();
 
 		// Allow developers to overwrite the items for the breadcrumb trail.
-		$this->items = array_unique( apply_filters( 'sinatra_breadcrumb_trail_items', $this->items, $this->args ) );
+		$this->items = array_unique( apply_filters( 'prisma_core_breadcrumb_trail_items', $this->items, $this->args ) );
 	}
 
 	/**
@@ -664,7 +664,7 @@ class Sinatra_Breadcrumb_Trail {
 							$label = ! empty( $post_type_object->labels->archive_title ) ? $post_type_object->labels->archive_title : $post_type_object->labels->name;
 
 							// Core filter hook.
-							$label = apply_filters( 'sinatra_post_type_archive_title', $label, $post_type_object->name );
+							$label = apply_filters( 'prisma_core_post_type_archive_title', $label, $post_type_object->name );
 
 							// Add the post type archive link to the trail.
 							$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_post_type_archive_link( $post_type_object->name ) ), $label );
@@ -697,7 +697,7 @@ class Sinatra_Breadcrumb_Trail {
 				$label = ! empty( $post_type_object->labels->archive_title ) ? $post_type_object->labels->archive_title : $post_type_object->labels->name;
 
 				// Core filter hook.
-				$label = apply_filters( 'sinatra_post_type_archive_title', $label, $post_type_object->name );
+				$label = apply_filters( 'prisma_core_post_type_archive_title', $label, $post_type_object->name );
 
 				$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_post_type_archive_link( $post_type_object->name ) ), $label );
 			}
@@ -801,7 +801,7 @@ class Sinatra_Breadcrumb_Trail {
 
 		// Add the minute + hour item.
 		if ( true === $this->args['show_title'] ) {
-			$this->items[] = sprintf( $this->labels['archive_minute_hour'], get_the_time( esc_html_x( 'g:i a', 'minute and hour archives time format', 'sinatra' ) ) );
+			$this->items[] = sprintf( $this->labels['archive_minute_hour'], get_the_time( esc_html_x( 'g:i a', 'minute and hour archives time format', 'prisma-core' ) ) );
 		}
 	}
 
@@ -819,7 +819,7 @@ class Sinatra_Breadcrumb_Trail {
 
 		// Add the minute item.
 		if ( true === $this->args['show_title'] ) {
-			$this->items[] = sprintf( $this->labels['archive_minute'], get_the_time( esc_html_x( 'i', 'minute archives time format', 'sinatra' ) ) );
+			$this->items[] = sprintf( $this->labels['archive_minute'], get_the_time( esc_html_x( 'i', 'minute archives time format', 'prisma-core' ) ) );
 		}
 	}
 
@@ -837,7 +837,7 @@ class Sinatra_Breadcrumb_Trail {
 
 		// Add the hour item.
 		if ( true === $this->args['show_title'] ) {
-			$this->items[] = sprintf( $this->labels['archive_hour'], get_the_time( esc_html_x( 'g a', 'hour archives time format', 'sinatra' ) ) );
+			$this->items[] = sprintf( $this->labels['archive_hour'], get_the_time( esc_html_x( 'g a', 'hour archives time format', 'prisma-core' ) ) );
 		}
 	}
 
@@ -854,9 +854,9 @@ class Sinatra_Breadcrumb_Trail {
 		$this->add_rewrite_front_items();
 
 		// Get year, month, and day.
-		$year  = sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'sinatra' ) ) );
-		$month = sprintf( $this->labels['archive_month'], get_the_time( esc_html_x( 'F', 'monthly archives date format', 'sinatra' ) ) );
-		$day   = sprintf( $this->labels['archive_day'], get_the_time( esc_html_x( 'j', 'daily archives date format', 'sinatra' ) ) );
+		$year  = sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'prisma-core' ) ) );
+		$month = sprintf( $this->labels['archive_month'], get_the_time( esc_html_x( 'F', 'monthly archives date format', 'prisma-core' ) ) );
+		$day   = sprintf( $this->labels['archive_day'], get_the_time( esc_html_x( 'j', 'daily archives date format', 'prisma-core' ) ) );
 
 		// Add the year and month items.
 		$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_year_link( get_the_time( 'Y' ) ) ), $year );
@@ -884,8 +884,8 @@ class Sinatra_Breadcrumb_Trail {
 		$this->add_rewrite_front_items();
 
 		// Get the year and week.
-		$year = sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'sinatra' ) ) );
-		$week = sprintf( $this->labels['archive_week'], get_the_time( esc_html_x( 'W', 'weekly archives date format', 'sinatra' ) ) );
+		$year = sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'prisma-core' ) ) );
+		$week = sprintf( $this->labels['archive_week'], get_the_time( esc_html_x( 'W', 'weekly archives date format', 'prisma-core' ) ) );
 
 		// Add the year item.
 		$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_year_link( get_the_time( 'Y' ) ) ), $year );
@@ -924,8 +924,8 @@ class Sinatra_Breadcrumb_Trail {
 		$this->add_rewrite_front_items();
 
 		// Get the year and month.
-		$year  = sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'sinatra' ) ) );
-		$month = sprintf( $this->labels['archive_month'], get_the_time( esc_html_x( 'F', 'monthly archives date format', 'sinatra' ) ) );
+		$year  = sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'prisma-core' ) ) );
+		$month = sprintf( $this->labels['archive_month'], get_the_time( esc_html_x( 'F', 'monthly archives date format', 'prisma-core' ) ) );
 
 		// Add the year item.
 		$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_year_link( get_the_time( 'Y' ) ) ), $year );
@@ -952,7 +952,7 @@ class Sinatra_Breadcrumb_Trail {
 		$this->add_rewrite_front_items();
 
 		// Get the year.
-		$year = sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'sinatra' ) ) );
+		$year = sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'prisma-core' ) ) );
 
 		// Add the year item.
 		if ( is_paged() ) {
@@ -1105,7 +1105,7 @@ class Sinatra_Breadcrumb_Trail {
 			$label = ! empty( $post_type_object->labels->archive_title ) ? $post_type_object->labels->archive_title : $post_type_object->labels->name;
 
 			// Core filter hook.
-			$label = apply_filters( 'sinatra_post_type_archive_title', $label, $post_type_object->name );
+			$label = apply_filters( 'prisma_core_post_type_archive_title', $label, $post_type_object->name );
 
 			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_post_type_archive_link( $post_type ) ), $label );
 		}
@@ -1302,13 +1302,13 @@ class Sinatra_Breadcrumb_Trail {
 
 				if ( '%year%' === $tag ) {
 					// If using the %year% tag, add a link to the yearly archive.
-					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_year_link( get_the_time( 'Y', $post_id ) ) ), sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'sinatra' ) ) ) );
+					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_year_link( get_the_time( 'Y', $post_id ) ) ), sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'prisma-core' ) ) ) );
 				} elseif ( '%monthnum%' === $tag ) {
 					// If using the %monthnum% tag, add a link to the monthly archive.
-					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_month_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ) ) ), sprintf( $this->labels['archive_month'], get_the_time( esc_html_x( 'F', 'monthly archives date format', 'sinatra' ) ) ) );
+					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_month_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ) ) ), sprintf( $this->labels['archive_month'], get_the_time( esc_html_x( 'F', 'monthly archives date format', 'prisma-core' ) ) ) );
 				} elseif ( '%day%' === $tag ) {
 					// If using the %day% tag, add a link to the daily archive.
-					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_day_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ), get_the_time( 'd', $post_id ) ) ), sprintf( $this->labels['archive_day'], get_the_time( esc_html_x( 'j', 'daily archives date format', 'sinatra' ) ) ) );
+					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_day_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ), get_the_time( 'd', $post_id ) ) ), sprintf( $this->labels['archive_day'], get_the_time( esc_html_x( 'j', 'daily archives date format', 'prisma-core' ) ) ) );
 				} elseif ( '%author%' === $tag ) {
 					// If using the %author% tag, add a link to the post author archive.
 					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_author_posts_url( $post->post_author ) ), get_the_author_meta( 'display_name', $post->post_author ) );

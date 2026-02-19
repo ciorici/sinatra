@@ -2,7 +2,7 @@
 
  	"use strict";
 
-	wp.customize.controlConstructor['sinatra-widget'] = wp.customize.Control.extend({
+	wp.customize.controlConstructor['prisma-core-widget'] = wp.customize.Control.extend({
 
 		ready: function() {
 
@@ -14,17 +14,17 @@
 			control.setupSortable();
 
 			// Expand widget content on header click
-			control.container.on( 'click', '.sinatra-widget-container .widget-top', function(){
-				$(this).closest( '.widget' ).toggleClass( 'sinatra-expanded' ).find( '.widget-inside' ).slideToggle( 200 );
+			control.container.on( 'click', '.prisma-core-widget-container .widget-top', function(){
+				$(this).closest( '.widget' ).toggleClass( 'prisma-core-expanded' ).find( '.widget-inside' ).slideToggle( 200 );
 			});
 			
 			// Minimize widget content when clicked on Done
-			control.container.on( 'click', '.sinatra-widget-container .widget-control-close', function() {
-				$(this).closest( '.widget' ).toggleClass( 'sinatra-expanded' ).find( '.widget-inside' ).slideToggle( 200 );
+			control.container.on( 'click', '.prisma-core-widget-container .widget-control-close', function() {
+				$(this).closest( '.widget' ).toggleClass( 'prisma-core-expanded' ).find( '.widget-inside' ).slideToggle( 200 );
 			});
 
 			// Show available widgets
-			control.container.on( 'click', '.sinatra-add-widget', function(e) {
+			control.container.on( 'click', '.prisma-core-add-widget', function(e) {
 				e.preventDefault();
 				control.updateList();
 			});
@@ -39,15 +39,15 @@
 		 		control.updateList();
 		 	});
 
-		 	control.container.on( 'click', '.sinatra-widget-edit-nav', function(){
-		 		wp.customize.control( 'nav_menu_locations[' + $(this).closest( '.sinatra-widget-nav-container' ).data( 'menu-location' ) + ']' ).focus();
+		 	control.container.on( 'click', '.prisma-core-widget-edit-nav', function(){
+		 		wp.customize.control( 'nav_menu_locations[' + $(this).closest( '.prisma-core-widget-nav-container' ).data( 'menu-location' ) + ']' ).focus();
 		 		control.close();
 		 	});
 
 		 	// Close the panel if the URL in the preview changes
 			wp.customize.previewer.bind( 'url', this.close );
 
-			$( control.container ).find( '.sinatra-widget-nav-container' ).each( function(){
+			$( control.container ).find( '.prisma-core-widget-nav-container' ).each( function(){
 
 				var $this = $(this);
 				control.bindMenuLocation( $this );
@@ -64,11 +64,11 @@
 					if ( newval ) {
 						var menu_name = wp.customize.control( 'nav_menu_locations[' + menu_location + ']' ).container.find('option:selected').html();
 					
-						$container.addClass( 'sinatra-widget-nav-has-menu' )
-							.find( '.sinatra-widget-nav-name' )
+						$container.addClass( 'prisma-core-widget-nav-has-menu' )
+							.find( '.prisma-core-widget-nav-name' )
 							.html( menu_name );
 					} else {
-						$container.removeClass('sinatra-widget-nav-has-menu');
+						$container.removeClass('prisma-core-widget-nav-has-menu');
 					}
 
 				});
@@ -86,22 +86,22 @@
 			if ( widgets ) {
 
 				// Hide all widgets.
-				$( '#sinatra-available-widgets-list .sinatra-widget' ).hide().removeClass('disabled');
+				$( '#prisma-core-available-widgets-list .prisma-core-widget' ).hide().removeClass('disabled');
 
 				// Display allowed widgets.
 				$.each( widgets, function( index, el ) {
 
-					widget = $( '#sinatra-available-widgets-list #sinatra-widget-tpl-sinatra_customizer_widget_' + index );
+					widget = $( '#prisma-core-available-widgets-list #prisma-core-widget-tpl-prisma_core_customizer_widget_' + index );
 
 					widget.show();
 
-					if ( el.hasOwnProperty( 'max_uses' ) && el.max_uses > 0 && el.max_uses <= $(self.container).find('.sinatra-widget-container [data-widget-type="' + index + '"]').length ) {
+					if ( el.hasOwnProperty( 'max_uses' ) && el.max_uses > 0 && el.max_uses <= $(self.container).find('.prisma-core-widget-container [data-widget-type="' + index + '"]').length ) {
 						widget.addClass('disabled');
 					}
 				});
 			} else {
 				// Show all widgets
-				$( '#sinatra-available-widgets-list .sinatra-widget' ).show();
+				$( '#prisma-core-available-widgets-list .prisma-core-widget' ).show();
 			}
 		},
 
@@ -112,13 +112,13 @@
 			widget_uuid = this.setting.id + '-' + this.widget_count;
 
 			// Get widget form
-			widget_html = $.trim( $(this.container).find( '.sinatra-widget-tpl-' + widget_id_base ).html() );
+			widget_html = $.trim( $(this.container).find( '.prisma-core-widget-tpl-' + widget_id_base ).html() );
 			widget_html = widget_html.replace( /<[^<>]+>/g, function( m ) {
 				return m.replace( /__i__|%i%/g, widget_uuid );
 			} );
 
 			// Append new widget.
-			var $widget = $( widget_html ).appendTo( this.container.find( '.sinatra-widget-container' ) );
+			var $widget = $( widget_html ).appendTo( this.container.find( '.prisma-core-widget-container' ) );
 			
 			// Increase widget count.
 			this.widget_count++;
@@ -128,19 +128,19 @@
 
 			this.update();
 
-			if ( $widget.find( '.sinatra-widget-nav-container' ).length ) {
-				this.bindMenuLocation( $widget.find( '.sinatra-widget-nav-container' ) );
+			if ( $widget.find( '.prisma-core-widget-nav-container' ).length ) {
+				this.bindMenuLocation( $widget.find( '.prisma-core-widget-nav-container' ) );
 			}
 		},
 
 		close: function() {
-			$( 'body' ).removeClass( 'sinatra-adding-widget' );
+			$( 'body' ).removeClass( 'prisma-core-adding-widget' );
 		},
 
 		update: function() {
 
 			// Get all widgets in the area
-			var widgets = this.container.find( '.sinatra-widget-container .widget' );
+			var widgets = this.container.find( '.prisma-core-widget-container .widget' );
 			var inputs, widgetobj, new_value = [], option, checked, $widget;
 
 			if ( widgets.length ) {
@@ -190,7 +190,7 @@
 
 			var self = this;
 
-			$( this.container ).find( '.sinatra-widget-container' ).sortable({
+			$( this.container ).find( '.prisma-core-widget-container' ).sortable({
 				items: '> .widget',
 				handle: '.widget-top',
 				intersect: 'pointer',
@@ -207,27 +207,27 @@
 
  		var control;
 
-	 	$( '.wp-full-overlay' ).on( 'click', '.sinatra-add-widget, .sinatra-close-widgets-panel', function(e) {
+	 	$( '.wp-full-overlay' ).on( 'click', '.prisma-core-add-widget, .prisma-core-close-widgets-panel', function(e) {
 	 		e.preventDefault();
 
-	 		$( 'body' ).toggleClass( 'sinatra-adding-widget' );
+	 		$( 'body' ).toggleClass( 'prisma-core-adding-widget' );
 
 	 		if ( $( this ).data( 'location-title' ) ) {
 	 			control = wp.customize.control( $(this).data('control') );
-	 			$( '#sinatra-available-widgets' ).attr( 'data-control', control.params.id ).find( '.sinatra-widget-caption' ).find( 'h3' ).html( $(this).data( 'location-title' ) );
+	 			$( '#prisma-core-available-widgets' ).attr( 'data-control', control.params.id ).find( '.prisma-core-widget-caption' ).find( 'h3' ).html( $(this).data( 'location-title' ) );
 	 		}
 	 	});
 
 	 	$( '.wp-full-overlay' ).on( 'click', '.customize-section-back', function(e) {
-	 		$( 'body' ).removeClass( 'sinatra-adding-widget' );
-	 		$( '#sinatra-available-widgets' ).removeAttr( 'data-control' );
+	 		$( 'body' ).removeClass( 'prisma-core-adding-widget' );
+	 		$( '#prisma-core-available-widgets' ).removeAttr( 'data-control' );
 	 	});
 
 		// Add widget to widget control.
-	 	$( '#sinatra-available-widgets' ).on( 'click', '.sinatra-widget', function(e) {
+	 	$( '#prisma-core-available-widgets' ).on( 'click', '.prisma-core-widget', function(e) {
 
 	 		// Get active control.
-			control = wp.customize.control( $( '#sinatra-available-widgets' ).attr('data-control') );
+			control = wp.customize.control( $( '#prisma-core-available-widgets' ).attr('data-control') );
 
 	 		var widget_id = $( this ).data( 'widget-id' );
 	 		var widget_form = control.addWidget( widget_id );

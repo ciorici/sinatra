@@ -2,7 +2,7 @@
 
  	"use strict";
 
- 	wp.customize.controlConstructor['sinatra-range'] = wp.customize.Control.extend({
+ 	wp.customize.controlConstructor['prisma-core-range'] = wp.customize.Control.extend({
 
 		ready: function() {
 
@@ -12,7 +12,7 @@
 				setting = control.setting.get();
 
 			// Initialize range control.
-			control.container.find( '.sinatra-range-wrapper' ).rangeControl({
+			control.container.find( '.prisma-core-range-wrapper' ).rangeControl({
 				id: control.params.id,
 				unit: control.params.unit,
 				value: setting,
@@ -39,15 +39,15 @@
 				devices = this.params.responsive;
 
 			if ( false === devices || devices === undefined || devices.length == 0 ) {
-				value.value = parseFloat( this.container.find( '.sinatra-range-input' ).val() );
+				value.value = parseFloat( this.container.find( '.prisma-core-range-input' ).val() );
 			} else {
 				for ( var device in devices ) {
-					value[ device ] = parseFloat( this.container.find( '.control-responsive.' + device + ' .sinatra-range-input' ).val() );
+					value[ device ] = parseFloat( this.container.find( '.control-responsive.' + device + ' .prisma-core-range-input' ).val() );
 				}
 			}
 
-			if ( this.container.find( '.sinatra-control-unit' ).length ) {
-				value.unit = this.container.find( '.sinatra-control-unit input:checked' ).val();
+			if ( this.container.find( '.prisma-core-control-unit' ).length ) {
+				value.unit = this.container.find( '.prisma-core-control-unit input:checked' ).val();
 			}
 
 			this.setting.set( value );
@@ -88,7 +88,7 @@
 				var self = this,
 					el = self.element;
 
-				self.unit = el.find( '.sinatra-control-wrap' ).attr( 'data-unit' );
+				self.unit = el.find( '.prisma-core-control-wrap' ).attr( 'data-unit' );
 
 				self._addListeners();
 
@@ -136,7 +136,7 @@
 				 *
 				 * @since 1.0.0
 				 */
-				self.element.on( 'keyup input paste', '.sinatra-range-input', function() {
+				self.element.on( 'keyup input paste', '.prisma-core-range-input', function() {
 					self._autocorrectSlider( $( this ) );
 				} ).on( 'focusout', function() {
 					self._autocorrectSlider( $( this ) );
@@ -150,7 +150,7 @@
 				self.element.on( 'click', 'input[type=range]', function() {
 
 					range = $( this );
-					input = range.parent().children( '.sinatra-range-input' );
+					input = range.parent().children( '.prisma-core-range-input' );
 
 					newVal = range.val();
 
@@ -168,7 +168,7 @@
 				self.element.on( 'mousedown', 'input[type=range]', function() {
 
 					range = $( this );
-					input = range.parent().children( '.sinatra-range-input' );
+					input = range.parent().children( '.prisma-core-range-input' );
 
 					// Handle mousemove.
 					range.mousemove( function() {
@@ -194,17 +194,17 @@
 				 *
 				 * @since 1.0.0
 				 */
-				self.element.on( 'click', '.sinatra-reset-range', function() {
+				self.element.on( 'click', '.prisma-core-reset-range', function() {
 
 					var $el;
 					
-					self.element.find( '.sinatra-reset-range' ).each( function( index, el ) {
+					self.element.find( '.prisma-core-reset-range' ).each( function( index, el ) {
 						
 						$el = $( el );
 
 						// Reset range unit.
 						self.unit = $el.data( 'reset_unit' );
-						$el.closest( '.sinatra-range-wrapper' ).find( '.sinatra-control-unit input[type="radio"][value="' + $el.data( 'reset_unit' ) + '"]' ).click();
+						$el.closest( '.prisma-core-range-wrapper' ).find( '.prisma-core-control-unit input[type="radio"][value="' + $el.data( 'reset_unit' ) + '"]' ).click();
 
 						// Reset range value.
 						$el.siblings( 'input' ).val( $el.data( 'reset_value' ) );
@@ -219,11 +219,11 @@
 				 *
 				 * @since 1.0.0
 				 */
-				self.element.on( 'click', '.sinatra-control-unit input', function() {
+				self.element.on( 'click', '.prisma-core-control-unit input', function() {
 					
 					var $unit = $(this);
 
-					self.element.find( '.sinatra-control-wrap input[type="range"]' ).each( function( index, el ) {
+					self.element.find( '.prisma-core-control-wrap input[type="range"]' ).each( function( index, el ) {
 						$(this).attr( 'min', $unit.data('min') );
 						$(this).attr( 'max', $unit.data('max') );
 						$(this).attr( 'step', $unit.data('step') );
@@ -231,7 +231,7 @@
 
 					if ( 'px' === $unit.val() && ( 'rem' === self.unit || 'em' === self.unit ) ) {
 
-						self.element.find( 'input.sinatra-range-input' ).each( function( index, el ) {
+						self.element.find( 'input.prisma-core-range-input' ).each( function( index, el ) {
 							$(el).val( Math.floor( $(el).val() * 16 ) );
 							self._autocorrectSlider( $(el) );
 						});
@@ -240,7 +240,7 @@
 
 					} else if ( ( 'rem' === $unit.val() || 'em' === $unit.val() ) && 'px' === self.unit ) {
 
-						self.element.find( 'input.sinatra-range-input' ).each( function( index, el ) {
+						self.element.find( 'input.prisma-core-range-input' ).each( function( index, el ) {
 							$(el).val( $(el).val() / 16 );
 							self._autocorrectSlider( $(el) );
 						});
@@ -304,17 +304,17 @@
 
 				var self = this,
 					el = self.element,
-					wrap = el.find( '.sinatra-control-wrap' );
+					wrap = el.find( '.prisma-core-control-wrap' );
 
-				el.addClass( 'sinatra-control-responsive' );
+				el.addClass( 'prisma-core-control-responsive' );
 				
 				// Populate responsive switcher.
 				if ( el.find( '.customize-control-title' ).length ) {
 
-					var $switcher = $( '<ul class="sinatra-responsive-switchers"></ul>' );
+					var $switcher = $( '<ul class="prisma-core-responsive-switchers"></ul>' );
 
 					for ( var device in self.options.responsive ) {
-						$switcher.append( '<li class="' + device + '"><span class="preview-' + device + '" data-device="' + device + '"><span class="sinatra-tooltip small-tooltip">' + device + '</span><i class="' + self.options.responsive[device].icon + '"></i></span></li>' );
+						$switcher.append( '<li class="' + device + '"><span class="preview-' + device + '" data-device="' + device + '"><span class="prisma-core-tooltip small-tooltip">' + device + '</span><i class="' + self.options.responsive[device].icon + '"></i></span></li>' );
 					}
 
 					el.find( '.customize-control-title' ).append( $switcher );
@@ -334,9 +334,9 @@
 
 				var self = this,
 					el = self.element,
-					wrap = el.find( '.sinatra-control-wrap' );
+					wrap = el.find( '.prisma-core-control-wrap' );
 
-				var template = wp.template( 'sinatra-control-unit' );
+				var template = wp.template( 'prisma-core-control-unit' );
 
 				var data = {
 					unit: self.options.unit,
@@ -353,15 +353,15 @@
 					}
 
 				} else if ( 'string' === typeof self.options.unit ) {
-					$( '<span class="sinatra-range-unit">' + self.options.unit + '</span>' ).insertAfter( wrap.find( '.sinatra-range-input' ) );
+					$( '<span class="prisma-core-range-unit">' + self.options.unit + '</span>' ).insertAfter( wrap.find( '.prisma-core-range-input' ) );
 				}
 
-				wrap.parent().find( '.sinatra-control-unit input:checked' ).click();
+				wrap.parent().find( '.prisma-core-control-unit input:checked' ).click();
 			}
 		};
 
 		// Register the color picker as a widget.
-		$.widget( 'sinatra.rangeControl', RangeControl );
+		$.widget( 'prisma-core.rangeControl', RangeControl );
 	}( jQuery ) );
 
 })(jQuery);
