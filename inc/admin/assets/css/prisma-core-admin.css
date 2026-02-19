@@ -460,10 +460,12 @@ body.wp-core-ui .pr-btn svg {
   align-items: center;
   justify-content: flex-start;
 }
-#prisma-core-header .prisma-core-logo img {
-  height: 26px;
-  width: auto;
-  display: block;
+#prisma-core-header .prisma-core-logo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  text-decoration: none;
+  letter-spacing: -0.2px;
 }
 #prisma-core-header .prisma-core-logo:focus {
   box-shadow: none;

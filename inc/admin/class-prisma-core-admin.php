@@ -215,7 +215,7 @@ if ( ! class_exists( 'Prisma_Core_Admin' ) ) :
 				<div class="pr-container">
 
 					<a href="<?php echo esc_url( admin_url( 'admin.php?page=prisma-core-dashboard' ) ); ?>" class="prisma-core-logo">
-						<img src="<?php echo esc_url( PRISMA_CORE_THEME_URI . '/assets/images/prisma-core-logo.svg' ); ?>" alt="<?php echo esc_html( 'Prisma Core' ); ?>" />
+						<?php esc_html_e( 'Prisma Core', 'prisma-core' ); ?>
 					</a>
 
 					<span class="prisma-core-header-action">
