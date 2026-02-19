@@ -94,6 +94,10 @@ if ( ! class_exists( 'Prisma_Core_Migration' ) ) :
 
 			// Trigger one-time admin notice.
 			set_transient( 'prisma_core_migration_notice', true, 60 );
+
+			// Force dynamic CSS regeneration on next page load.
+			delete_transient( 'prisma_core_has_dynamic_css' );
+			delete_transient( 'prisma_core_google_fonts_enqueue' );
 		}
 
 		/**
